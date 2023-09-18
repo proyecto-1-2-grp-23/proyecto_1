@@ -1,0 +1,102 @@
+version: '3'
+networks:
+    db_net:
+      driver: bridge
+services:
+  aspirantes:
+    build: ./aspirantes
+    ports:
+    - "3001:3000"
+    environment:
+      DB_NAME: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      FLASK_APP: ./src/main.py
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db_net
+  empresas:
+    build: ./empresas
+    ports:
+    - "3002:3000"
+    environment:
+      DB_NAME: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      FLASK_APP: ./src/main.py
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db_net
+  proyectos:
+    build: ./proyectos
+    ports:
+    - "3003:3000"
+    environment:
+      DB_NAME: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      FLASK_APP: ./src/main.py
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db_net
+  pruebas:
+    build: ./pruebas
+    ports:
+      - "3004:3000"
+    environment:
+      DB_NAME: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      FLASK_APP: ./src/main.py
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db_net
+  users:
+    build: ./users
+    ports:
+      - "3000:3000"
+    environment:
+      DB_NAME: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      EMPRESAS_PATH: "http://empresas:3000"
+      PROYECTOS_PATH: "http://proyectos:3000"
+      ASPIRANTES_PATH: "http://aspirantes:3000"
+      PRUEBAS_PATH: "http://pruebas:3000"
+      FLASK_APP: ./src/main.py
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db_net
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+    networks:
+      - db_net
