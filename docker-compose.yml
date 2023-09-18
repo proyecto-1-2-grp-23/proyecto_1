@@ -5,8 +5,6 @@ networks:
 services:
   aspirantes:
     build: ./aspirantes
-    ports:
-    - "3001:3000"
     environment:
       DB_NAME: postgres
       DB_HOST: db
@@ -21,8 +19,6 @@ services:
       - db_net
   empresas:
     build: ./empresas
-    ports:
-    - "3002:3000"
     environment:
       DB_NAME: postgres
       DB_HOST: db
@@ -37,8 +33,6 @@ services:
       - db_net
   proyectos:
     build: ./proyectos
-    ports:
-    - "3003:3000"
     environment:
       DB_NAME: postgres
       DB_HOST: db
@@ -53,8 +47,6 @@ services:
       - db_net
   pruebas:
     build: ./pruebas
-    ports:
-      - "3004:3000"
     environment:
       DB_NAME: postgres
       DB_HOST: db
