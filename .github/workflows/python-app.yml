@@ -20,12 +20,11 @@ jobs:
       - name: Construir imagen Docker
         run: |
           docker build -t authentication .
-        working-directory: authentication  
+        
       - name: Ejecutar contenedor Docker
         run: |
           docker run -d -p 3000:3000 authentication 
-        working-directory: authentication
-      
+                
       - name: Esperar para que la aplicación se inicie
         run: |
           sleep 10  # Puedes ajustar el tiempo de espera según las necesidades de tu aplicación
