@@ -9,12 +9,18 @@ on:
       - main
       - develop
 
-
 jobs:
-  builds:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Construir imagen Docker
-        uses: ./proyecto_1/backend/authentication/Dockerfile
+  run-tests-docker:
+    runs-on: ubuntu-20.04
+    steps: 
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Build Docker Containers
+      run:  docker-compose -f "docker-compose.yml" up -d --build
+    
+    - name: Stop Containers
+      if: always()
+      run: docker-compose -f "docker-compose.yml" down
+      
   
