@@ -19,12 +19,12 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t authentication -f ./backend/authentication/Dockerfile .
-        working-directory: ./proyecto_1  
+          docker build -t authentication .
+        working-directory: client  
       - name: Ejecutar contenedor Docker
         run: |
           docker run -d -p 3000:3000 authentication 
-        working-directory: ./proyecto_1
+        working-directory: client
       
       - name: Esperar para que la aplicación se inicie
         run: |
