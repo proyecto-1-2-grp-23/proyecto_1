@@ -11,11 +11,10 @@ on:
 
 
 jobs:
-  build-and-run:
+  builds:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Construir imagen Docker
-        run: docker build --file ./proyecto_1/backend/authentication/Dockerfile --tag authentication:latest .
-
+        uses: ./proyecto_1/backend/authentication/Dockerfile
   
