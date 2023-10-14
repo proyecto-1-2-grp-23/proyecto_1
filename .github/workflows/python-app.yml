@@ -16,6 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Construir imagen Docker
-        run: docker build --file ./proyecto_1/backend/authentication/Dockerfile --tag authentication:$(date +%s)
+        run: docker build --file ./proyecto_1/backend/authentication/Dockerfile --tag authentication:latest .
 
   
