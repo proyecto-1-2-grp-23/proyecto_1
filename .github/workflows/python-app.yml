@@ -19,7 +19,7 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t authentication -f proyecto_1/backend/authentication
+          docker build -t authentication -f proyecto_1/backend/authentication .
         
       - name: Ejecutar contenedor Docker
         run: |
