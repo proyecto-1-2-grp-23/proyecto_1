@@ -19,12 +19,12 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t authentication . 
-        working-directory: ./Users/asus/Documents/Universidad de los Andes/MISO2023/II Semestre/Proyecto 1/Semana 6/proyecto_1/backend/authentication/Dockerfile  
+          docker build -t authentication -f ./backend/authentication/Dockerfile .
+        working-directory: ./proyecto_1  
       - name: Ejecutar contenedor Docker
         run: |
-          docker run -d -p 3000:3000 authentication
-        working-directory: ./Users/asus/Documents/Universidad de los Andes/MISO2023/II Semestre/Proyecto 1/Semana 6/proyecto_1/backend/authentication/Dockerfile
+          docker run -d -p 3000:3000 authentication 
+        working-directory: ./proyecto_1/backend/authentication/Dockerfile
       
       - name: Esperar para que la aplicación se inicie
         run: |
