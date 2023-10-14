@@ -20,11 +20,11 @@ jobs:
       - name: Construir imagen Docker
         run: |
           docker build -t authentication .
-        working-directory: client  
+        working-directory: authentication  
       - name: Ejecutar contenedor Docker
         run: |
           docker run -d -p 3000:3000 authentication 
-        working-directory: client
+        working-directory: authentication
       
       - name: Esperar para que la aplicación se inicie
         run: |
@@ -37,6 +37,6 @@ jobs:
 
       - name: Finalizar contenedor Docker
         run: |
-          docker stop $(docker ps -q --filter ancestor=my-docker-image)
-          docker rm $(docker ps -aq --filter ancestor=my-docker-image)
+          docker stop $(docker ps -q --filter ancestor=authentication)
+          docker rm $(docker ps -aq --filter ancestor=authentication)
         continue-on-error: true
