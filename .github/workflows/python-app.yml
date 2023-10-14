@@ -24,7 +24,7 @@ jobs:
       - name: Ejecutar contenedor Docker
         run: |
           docker run -d -p 3000:3000 authentication 
-        working-directory: ./proyecto_1/backend/authentication/Dockerfile
+        working-directory: ./proyecto_1
       
       - name: Esperar para que la aplicación se inicie
         run: |
