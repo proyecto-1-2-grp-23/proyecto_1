@@ -9,6 +9,7 @@ on:
       - main
       - develop
 
+
 jobs:
   build-and-run:
     runs-on: ubuntu-latest
@@ -19,11 +20,11 @@ jobs:
       - name: Construir imagen Docker
         run: |
           docker build -t authentication . 
-        working-directory: ./proyecto_1/backend/authentication/Dockerfile
+        working-directory: ./backend/authentication/Dockerfile
       - name: Ejecutar contenedor Docker
         run: |
           docker run -d -p 3000:3000 authentication
-        working-directory: ./proyecto_1/backend/authentication/Dockerfile
+        working-directory: ./backend/authentication/Dockerfile
       
       - name: Esperar para que la aplicación se inicie
         run: |
