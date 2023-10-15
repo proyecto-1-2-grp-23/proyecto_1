@@ -18,9 +18,10 @@ jobs:
       - name: Build and push to  Docker hub
         uses: docker/build-push-action@v4
         with:
-          context: .
-          push: true
-          tags: daviddocker22/proyecto_2023:latest, daviddocker22/proyecto_2023:${{ github.run_number}}
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: daviddocker22/prueba
+          tags: latest, ${{ github.run_number}}
 
        
   
