@@ -19,8 +19,8 @@ jobs:
       - name: Build and push to  Docker hub
         uses: docker/build-push-action@v5
         with:
-          context: /backend
-          file: ./docker-compose.yml
+          context: .
+          file: ./docker-compose
           push: true
           tags: ${{ secrets.DOCKERHUB_USER }}/clockbox:latest
        
