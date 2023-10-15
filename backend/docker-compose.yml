@@ -4,6 +4,7 @@ networks:
       driver: bridge 
 services:
   users:
+    image: users-backend:latest
     build: ./users
     ports:
       - "3000:3000"

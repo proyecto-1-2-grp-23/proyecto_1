@@ -17,7 +17,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker-compose build
-          docker tag backend-auth:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
+          docker tag users-backend:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
         working-directory: backend/
           # docker tag daviddocker22/proyecto_2023:version1  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
       # - name: Build Docker image
