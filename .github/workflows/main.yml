@@ -20,7 +20,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./docker-compose
+          file: ./backend/docker-compose.yml
           push: true
           tags: ${{ secrets.DOCKERHUB_USER }}/clockbox:latest
        
