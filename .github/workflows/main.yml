@@ -17,15 +17,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker-compose build
-        working-directory: backend/
-      - name: Tag backend images
-        run: |
-          docker tag users-backend:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
-          docker tag tests-backend:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
-          docker tag proyects-backend:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
           docker tag auth-backend:latest  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
+        working-directory: backend/
         # - name: Build Docker image
-          # docker tag daviddocker22/proyecto_2023:version1  ${{ secrets.DOCKERHUB_USER }}/daviddocker22/proyecto_2023
       #   run: |
       #     docker-compose up --build -d
       #   working-directory: backend/
