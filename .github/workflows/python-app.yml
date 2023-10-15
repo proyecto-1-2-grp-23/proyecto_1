@@ -13,18 +13,17 @@ jobs:
 
       - name: Start Docker Compose services
         run: |
-          docker-compose -f docker/docker-compose.yml up -d
-        working-directory: ./proyecto_1 
+          docker-compose -f proyecto_1/docker-compose.yml up -d
 
       - name: Run tests
         run: |
           # Ejecuta tus pruebas aquí
-        working-directory: ./proyecto_1 
+        
 
       - name: Stop Docker Compose services
         run: |
-          docker-compose -f docker/docker-compose.yml down
-        working-directory: ./proyecto_1 
+          docker-compose -f proyecto_1/docker-compose.yml down
+        
 
 
 
