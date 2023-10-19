@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: code checkout
-        uses: actions/checkout@v2
-           
+        uses: actions/checkout@v2    
       - name: install the gcloud cli
         uses: google-github-actions/setup-gcloud@v0
         with:
