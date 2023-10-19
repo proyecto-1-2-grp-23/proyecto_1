@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: ## Remplazar con uri de la imagen en gcp
+          image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/users
           env:
             - name: "DB_USER"
               valueFrom:
@@ -102,7 +102,7 @@ spec:
     spec:
       containers:
         - name: proyects
-          image: ## Remplazar con uri de la imagen en gcp
+          image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/proyects
           env:
             - name: "DB_USER"
               valueFrom:
@@ -268,7 +268,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ## Remplazar con uri de la imagen en gcp
+          image: us-central1-docker.pkg.dev/proyectofinal-401703/authentication
           env:
             - name: "DB_USER"
               valueFrom:
