@@ -214,7 +214,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: us-central1-docker.pkg.dev/proyectofinal-401703/authentication
+          image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/authentication
           env:
             - name: "DB_USER"
               valueFrom:
