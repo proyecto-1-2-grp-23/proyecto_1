@@ -25,14 +25,14 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud auth configure-docker us-central1-docker.pkg.dev
-        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/users:latest users/
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/users:latest
-        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/tests:latest tests/
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/tests:latest
-        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/proyects:latest proyects/
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/proyects:latest
-        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/auth:latest authentication/
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/github-actions-demo/auth:latest
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest users/
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest tests/
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest proyects/
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest authentication/
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
       working-directory: backend/
     - name: Deploy to GKE
       env:
