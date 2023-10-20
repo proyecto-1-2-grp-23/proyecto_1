@@ -165,7 +165,7 @@ spec:
 ---
 
 ###################################
-# Proyects
+# Tests
 ###################################
 apiVersion: apps/v1
 kind: Deployment
@@ -322,7 +322,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: tests
+    app: auth
   ports:
     - protocol: TCP
       port: 80
