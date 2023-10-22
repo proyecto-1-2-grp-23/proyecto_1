@@ -49,4 +49,14 @@ export class SinginComponent implements OnInit {
       this.router.navigate([`/loginCandidato`]);
     }
   }
+
+  ingresar() {
+    if (this.parametros.tipoUsuario == 'empresas') {
+      this.router.navigate([`/menu/empresa`]);
+    } else if (this.parametros.tipoUsuario == 'candidato') {
+      this.router.navigate([`/menu/candidato`]);
+    } else {
+      this.router.navigate([`/menu/administrador`]);
+    }
+  }
 }
