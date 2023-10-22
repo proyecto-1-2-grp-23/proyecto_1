@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="dropdown col-12 d-flex justify-content-end mt-5">
+    <button class="btn optionButton" (click)="toggleDropdown()">
+      Opciones
+    </button>
+    <div class="dropdown-menu mt-5" [ngClass]="{ show: estaAbierto }">
+      <button class="dropdown-item" (click)="salir()">Salir</button>
+      <button class="dropdown-item">Configuración</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="col-12">
+      <h1 class="title">BIENVENIDO</h1>
+    </div>
+    <div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
+        <button
+          id="reigstro"
+          class="commonButton btn btn-info mt-3"
+          (click)="verEquipoDeTrabajo()"
+        >
+          Equipos de trabajo
+        </button>
+      </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'candidato'">
+        <button
+          id="ingreso"
+          class="commonButton btn btn-info mt-3"
+          (click)="verRegistroLaboral()"
+        >
+          Agregar registro laboral
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
