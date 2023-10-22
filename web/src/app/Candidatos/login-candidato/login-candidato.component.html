@@ -1,0 +1,135 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">REGISTRO USUARIO</h1>
+  </div>
+
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre Candidato"
+          formControlName="nombre"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Edad"
+          formControlName="edad"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Telefono"
+          formControlName="telefono"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="correo"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pais"
+          formControlName="pais"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ciudad"
+          formControlName="ciudad"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Idiomas"
+          formControlName="idiomas"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Rasgos de personalidad"
+          formControlName="rasgos"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          [type]="fieldTextType ? 'text' : 'password'"
+          class="form-control"
+          formControlName="contraseña"
+          placeholder="Ingrese Contraseña"
+        />
+        <span class="input-group-text">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !fieldTextType,
+              'fa-eye': fieldTextType
+            }"
+            (click)="toggleFieldTextType()"
+          ></i>
+        </span>
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          [type]="repeatFieldTextType ? 'text' : 'password'"
+          class="form-control"
+          formControlName="repContraseña"
+          placeholder="Repita Contraseña"
+        />
+        <span class="input-group-text">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !repeatFieldTextType,
+              'fa-eye': repeatFieldTextType
+            }"
+            (click)="toggleRepeatFieldTextType()"
+          ></i>
+        </span>
+      </div>
+    </form>
+    <div class="mt-5 d-flex justify-content-around">
+      <button
+        id="reigstro"
+        class="commonButton btn btn-info mt-3"
+        (click)="hacerRegistro()"
+      >
+        Registrarme
+      </button>
+      <button
+        id="ingreso"
+        class="commonButton btn btn-info mt-3"
+        (click)="signIn()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
