@@ -1,0 +1,66 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+  integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+  crossorigin="anonymous"
+/>
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">ABC JOBS</h1>
+    <h1 class="title title1">{{ titulo }}</h1>
+  </div>
+  <div class="row">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="form-group d-flex mb-5">
+        <div class="col-5">
+          <label for="emailInput" class="text m-3">Correo</label>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend"></div>
+          <input
+            type="email"
+            class="form-control border"
+            placeholder="Ingrese correo"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <div class="form-group d-flex mt-3 mb-5">
+        <div class="col-5">
+          <label for="emailInput" class="text m-3 mt-3">Contraseña</label>
+        </div>
+        <div class="input-group">
+          <input
+            [type]="fieldTextType ? 'text' : 'password'"
+            class="form-control border"
+            formControlName="password"
+            placeholder="Ingrese Contraseña"
+          />
+          <span class="input-group-text">
+            <i
+              class="fa"
+              [ngClass]="{
+                'fa-eye-slash': !fieldTextType,
+                'fa-eye': fieldTextType
+              }"
+              (click)="toggleFieldTextType()"
+            ></i>
+          </span>
+        </div>
+      </div>
+      <div class="m-3 d-flex justify-content-around">
+        <button
+          id="reigstro"
+          class="commonButton btn btn-info mt-3"
+          *ngIf="titulo != 'ADMINISTRACION'"
+          (click)="registro()"
+        >
+          Registrarme
+        </button>
+        <button id="ingreso" class="commonButton btn btn-info mt-3">
+          Ingresar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
