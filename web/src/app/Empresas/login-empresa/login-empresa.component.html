@@ -1,0 +1,117 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">REGISTRO EMPRESA</h1>
+  </div>
+
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Razón social"
+          formControlName="razonSocial"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="tipoEmpresa">
+          <option value="" disabled selected>Tipo de empresa</option>
+          <option value="Pequeña">Pequeña</option>
+          <option value="Mediana">Mediana</option>
+          <option value="Grande">Grande</option>
+        </select>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Verticales de negocio"
+          formControlName="verticales"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pais"
+          formControlName="pais"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ciudad"
+          formControlName="ciudad"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="correo"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          [type]="fieldTextType ? 'text' : 'password'"
+          class="form-control"
+          formControlName="contraseña"
+          placeholder="Ingrese Contraseña"
+        />
+        <span class="input-group-text">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !fieldTextType,
+              'fa-eye': fieldTextType
+            }"
+            (click)="toggleFieldTextType()"
+          ></i>
+        </span>
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          [type]="repeatFieldTextType ? 'text' : 'password'"
+          class="form-control"
+          formControlName="repContraseña"
+          placeholder="Repita Contraseña"
+        />
+        <span class="input-group-text">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !repeatFieldTextType,
+              'fa-eye': repeatFieldTextType
+            }"
+            (click)="toggleRepeatFieldTextType()"
+          ></i>
+        </span>
+      </div>
+    </form>
+    <div class="mt-5 d-flex justify-content-around">
+      <button
+        id="reigstro"
+        class="commonButton btn btn-info mt-3"
+        (click)="hacerRegistro()"
+      >
+        Registrarme
+      </button>
+      <button
+        id="ingreso"
+        class="commonButton btn btn-info mt-3"
+        (click)="signIn()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
