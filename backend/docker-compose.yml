@@ -4,7 +4,7 @@ networks:
       driver: bridge 
 services:
   users:
-    image: users-backend:latest
+    image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/users:latest
     build: ./users
     ports:
       - "3000:3000"
@@ -35,7 +35,7 @@ services:
     networks:
       - app_net
   tests:
-    image: tests-backend:latest
+    image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/tests:latest
     build: ./tests
     ports:
       - "3001:3000"
@@ -66,7 +66,7 @@ services:
     networks:
       - app_net
   proyects:
-    image: proyects-backend:latest
+    image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/proyects:latest
     build: ./proyects
     ports:
       - "3002:3000"
@@ -97,7 +97,7 @@ services:
     networks:
       - app_net
   auth:
-    image: auth-backend:latest
+    image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/auth:latest
     build: ./authentication
     ports:
       - "3003:3000"
