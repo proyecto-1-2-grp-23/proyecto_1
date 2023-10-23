@@ -39,5 +39,3 @@ export type empresaoRegistro = Pick<
   | 'verticalesNegocio'
   | 'password'
 >;
-
-export type emrpesaSignIn = Pick<Empresa, 'correo' | 'password'>;
