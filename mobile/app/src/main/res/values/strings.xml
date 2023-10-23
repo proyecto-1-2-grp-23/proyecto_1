@@ -16,8 +16,10 @@
     <string name="abc_jobs">ABC JOBS</string>
     <string name="empresa">Empresa</string>
     <string name="nombre_candidato">Nombre de candidato</string>
+    <string name="nombre_empresa">Nombre de empresa</string>
     <string name="password">Contraseña</string>
     <string name="iniciar_sesion">Iniciar sesión</string>
     <string name="registrarse">Registrarse</string>
+    <string name="cancelar">Cancelar</string>
     <string name="pais">    País*</string>
 </resources>

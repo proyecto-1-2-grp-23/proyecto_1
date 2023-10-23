@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/candidato_login"
+    android:id="@+id/empresa_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -24,16 +24,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:hint="@string/nombre_candidato"
+        android:hint="@string/nombre_empresa"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/register_pasw_1_candidato"
+        app:layout_constraintBottom_toTopOf="@+id/register_pasw_1_empresa"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.846"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/register_pasw_1_candidato"
+        android:id="@+id/register_pasw_1_empresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="312dp"
@@ -46,28 +46,28 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btnLoginCandidato"
+        android:id="@+id/btnLoginEmpresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/register_pasw_1_candidato"
+        android:layout_below="@id/register_pasw_1_empresa"
         android:text="@string/iniciar_sesion"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegisterCandidato"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterEmpresa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_pasw_1_candidato"
+        app:layout_constraintTop_toBottomOf="@+id/register_pasw_1_empresa"
         app:layout_constraintVertical_bias="0.832"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btnRegisterCandidato"
+        android:id="@+id/btnRegisterEmpresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnLoginCandidato"
+        android:layout_below="@id/btnLoginEmpresa"
         android:text="@string/registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_pasw_1_candidato"
+        app:layout_constraintTop_toBottomOf="@+id/register_pasw_1_empresa"
         app:layout_constraintVertical_bias="0.645"
         tools:ignore="MissingConstraints" />
 
