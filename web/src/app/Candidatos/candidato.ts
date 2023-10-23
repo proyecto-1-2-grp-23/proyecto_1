@@ -47,5 +47,3 @@ export type candidatoRegistroPersonal = Pick<
   | 'rasgosPersonalidad'
   | 'password'
 >;
-
-export type candidatoSignIn = Pick<Candidato, 'correo' | 'password'>;
