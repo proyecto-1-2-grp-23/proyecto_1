@@ -1,6 +1,9 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { empresaoRegistro } from '../empresa';
+import Swal from 'sweetalert2';
+import { ServicioCandidatosService } from '../servicio/servicio-empresa.service';
 
 @Component({
   selector: 'app-login-empresa',
@@ -10,6 +13,8 @@ import { Router } from '@angular/router';
 export class LoginEmpresaComponent implements OnInit {
   fieldTextType!: boolean;
   repeatFieldTextType!: boolean;
+
+  empresa!: empresaoRegistro;
 
   registrationForm: FormGroup = new FormGroup({
     correo: new FormControl('', [Validators.required, Validators.email]),
@@ -22,7 +27,10 @@ export class LoginEmpresaComponent implements OnInit {
     contraseña: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private empresaService: ServicioCandidatosService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -39,6 +47,31 @@ export class LoginEmpresaComponent implements OnInit {
   }
 
   hacerRegistro() {
-    this.router.navigate([`/signin/empresas`]);
+    if (
+      this.registrationForm.get('repContraseña')?.value ==
+      this.registrationForm.get('contraseña')?.value
+    ) {
+      this.empresa = {
+        razonSocial: this.registrationForm.get('razonSocial')?.value,
+        tipoEmpresa: this.registrationForm.get('tipoEmpresa')?.value,
+        correo: this.registrationForm.get('correo')?.value,
+        pais: this.registrationForm.get('pais')?.value,
+        ciudad: this.registrationForm.get('ciudad')?.value,
+        verticalesNegocio: this.registrationForm.get('verticales')?.value,
+        password: this.registrationForm.get('contraseña')?.value,
+      };
+
+      this.empresaService.empresaRegistro(this.empresa).subscribe((res) => {
+        console.log(res);
+        if (res.id > 0) {
+          Swal.fire('', 'Empresa registrada', 'success');
+          this.router.navigate([`/signin/empresas`]);
+        } else {
+          Swal.fire('', 'Error en el registro', 'error');
+        }
+      });
+    } else {
+      Swal.fire('', 'Las contraseñas no coinciden', 'error');
+    }
   }
 }
