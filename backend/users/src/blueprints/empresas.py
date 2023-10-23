@@ -1,22 +1,22 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
-from ..commands.create_user import CreateUser
+from ..commands.create_empresa import CreateEmpresa
 
-users_blueprint = Blueprint("users", __name__)
+empresa_blueprint = Blueprint("empresa", __name__)
 
 
-@users_blueprint.route("/users/ping", methods=["GET"])
+@empresa_blueprint.route("/empresa/ping", methods=["GET"])
 def ping():
     return "pong"
 
 
-@users_blueprint.route("/users", methods=["POST"])
+@empresa_blueprint.route("/empresa", methods=["POST"])
 def create():
-    user = CreateUser(request.get_json()).execute()
+    user = CreateEmpresa(request.get_json()).execute()
     return jsonify(user), 201
 
 
-@users_blueprint.route("/users/reset", methods=["POST"])
+@empresa_blueprint.route("/empresa/reset", methods=["POST"])
 def reset():
     Reset().execute()
     return jsonify({"status": "OK"})
