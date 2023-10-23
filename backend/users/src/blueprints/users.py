@@ -22,6 +22,7 @@ def reset():
     return jsonify({'status': 'OK'})
 
 
+@users_blueprint.route('/users/login', methods=['POST'])
 def auth_token():
     if 'Authorization' in request.headers:
         authorization = request.headers['Authorization']
