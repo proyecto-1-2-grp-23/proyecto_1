@@ -32,10 +32,6 @@ jobs:
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
       working-directory: backend/
-        # docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest users/
-        # docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest tests/
-        # docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest proyects/
-        # docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest authentication/
     - name: Deploy to GKE
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
