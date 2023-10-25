@@ -30,11 +30,12 @@ def login():
     token_user = session.query(User).filter_by(correo=request.get_json()['correo']).first()
     token = token_user.token
     encode_passsword = token_user.password ## validación password por implementar
+    user_contraseña = request.get_json()['contraseña']
     tokten_Header = auth_token()
-    if(str(tokten_Header) == str(token) and bcrypt.checkpw(request.get_json()['contraseña'].encode('utf8'), encode_passsword.encode('utf8'))):
-        return jsonify({'message': 'Login con exito'}), 200
+    if((str(tokten_Header) == str(token)) or (bcrypt.checkpw(str(user_contraseña).encode('utf8'), encode_passsword.encode('utf8')))):
+        return jsonify({'message': 'Usuario logueado con exito'}), 200
     else:
-        return jsonify({'message': 'Usuario no loegueado'}), 401
+        return jsonify({'message': 'Usuario no logueado'}), 401
 
 
 def auth_token():
