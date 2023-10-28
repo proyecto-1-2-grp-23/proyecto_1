@@ -22,7 +22,7 @@ class CreateEquipo(BaseCommannd):
                 empresa_data
             )
             empresa = Empresa(**posted_empresa)
-            posted_equipo = EquipoSchema(only=("nombre", "descripcion","empleados")).load(self.data)
+            posted_equipo = EquipoSchema(only=("nombre", "descripcion")).load(self.data)
             equipo = Equipo(**posted_equipo, idEmpresa=empresa.id)
             session = Session()
 
