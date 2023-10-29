@@ -47,8 +47,8 @@ jobs:
       run: |
         gcloud container clusters get-credentials autopilot-cluster-2 --region us-central1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" deployment/k8s-deployment.yml
-        sed -i "s/SECRETS_DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
-        sed -i "s/SECRETS_DB_HOST/$DB_HOST/g" deployment/secrets.yml
-        sed -i "s/SECRETS_DB_USER/$DB_USER/g" deployment/secrets.yml
+        # sed -i "s/SECRETS_DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
+        # sed -i "s/SECRETS_DB_HOST/$DB_HOST/g" deployment/secrets.yml
+        # sed -i "s/SECRETS_DB_USER/$DB_USER/g" deployment/secrets.yml
         kubectl apply -f deployment/
       working-directory: backend/
