@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv()
 
 os.environ["ENV"] = "test"
 
