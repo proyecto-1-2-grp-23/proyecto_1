@@ -40,6 +40,11 @@ def login():
     else:
         return jsonify({'message': 'Usuario no logueado'}), 401
 
+@users_blueprint.route("/usuario/asociar_candidato_equipo/<int:id_equipo>", methods=["POST"])
+def asociar_candidato(id_equipo):
+    asociar = CreateUser(request.get_json()).crear_candidato_equipo(id_equipo)
+    return jsonify(asociar), 201
+
 
 def auth_token():
     if "Authorization" in request.headers:
