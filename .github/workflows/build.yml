@@ -42,7 +42,7 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ secrets.DB_PASSWORD }}
       run: |
-        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" deployment/secrets.yml
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT" deployment/secrets.yml
         cat deployment/secrets.yml
       working-directory: backend/
     - name: Deploy to GKE
