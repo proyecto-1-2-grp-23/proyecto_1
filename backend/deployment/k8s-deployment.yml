@@ -20,32 +20,34 @@ spec:
       containers:
         - name: users
           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/users:latest
-          # env:
-          #   - name: "DB_USER"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_user
-          #   - name: "DB_HOST"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_host
-          #   - name: "DB_PORT"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_port
-          #   - name: "DB_NAME"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_name
-          #   - name: "DB_PASSWORD"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_password
+          env:
+            - name: "ENV"
+              value: "PROD"
+            - name: "DB_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_user
+            - name: "DB_HOST"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_host
+            - name: "DB_PORT"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_port
+            - name: "DB_NAME"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_name
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_password
           ports:
             - containerPort: 3000
           # Realizar pull siempre a la imagen
@@ -103,32 +105,34 @@ spec:
       containers:
         - name: proyects
           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/proyects:latest
-          # env:
-          #   - name: "DB_USER"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_user
-          #   - name: "DB_HOST"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_host
-          #   - name: "DB_PORT"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_port
-          #   - name: "DB_NAME"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_name
-          #   - name: "DB_PASSWORD"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_password
+          env:
+            - name: "ENV"
+              value: "PROD"
+            - name: "DB_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_user
+            - name: "DB_HOST"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_host
+            - name: "DB_PORT"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_port
+            - name: "DB_NAME"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_name
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_password
           ports:
             - containerPort: 3000
           # Realizar pull siempre a la imagen
@@ -186,32 +190,34 @@ spec:
       containers:
         - name: tests
           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/tests:latest
-          # env:
-          #   - name: "DB_USER"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_user
-          #   - name: "DB_HOST"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_host
-          #   - name: "DB_PORT"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_port
-          #   - name: "DB_NAME"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_name
-          #   - name: "DB_PASSWORD"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_password
+          env:
+            - name: "ENV"
+              value: "PROD"
+            - name: "DB_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_user
+            - name: "DB_HOST"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_host
+            - name: "DB_PORT"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_port
+            - name: "DB_NAME"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_name
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_password
           ports:
             - containerPort: 3000
           # Realizar pull siempre a la imagen
@@ -270,32 +276,34 @@ spec:
       containers:
         - name: auth
           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/auth:latest
-          # env:
-          #   - name: "DB_USER"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_user
-          #   - name: "DB_HOST"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_host
-          #   - name: "DB_PORT"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_port
-          #   - name: "DB_NAME"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_name
-          #   - name: "DB_PASSWORD"
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: appsecrets 
-          #         key: db_password
+          env:
+            - name: "ENV"
+              value: "PROD"
+            - name: "DB_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_user
+            - name: "DB_HOST"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_host
+            - name: "DB_PORT"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_port
+            - name: "DB_NAME"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_name
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_password
           ports:
             - containerPort: 3000
           # Realizar pull siempre a la imagen
