@@ -31,8 +31,8 @@ jobs:
       - name: pruebas+coverage
         id: pruebas
         run: |
-          python -m coverage run -m unittest discover tests 
-          python -m coverage xml -i
+          python -m backend run -m unittest discover tests 
+          python -m backend xml -i
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
