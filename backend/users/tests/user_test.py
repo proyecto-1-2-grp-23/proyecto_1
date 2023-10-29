@@ -118,6 +118,22 @@ class TestMiApp(unittest.TestCase):
         users = self.session.query(User).all()
         assert len(users) == 1
 
+    def test_creacion_equipo(self):
+        # Datos necesarios para crear un equipo
+        nombre_equipo = {
+            "tipoEmpresa": "Cualquiera",
+            "razonSocial": "Nada",
+            "verticalesNegocio": "unas",
+            "nombre": "Los vengadores8",
+            "descripcion": "Nada"
+            }
+
+        # Crear una instancia de CreateUser y crear el equipo
+        equipo = CreateEquipo(nombre_equipo).execute()
+
+        # Verificar si el equipo fue creado correctamente
+        self.assertTrue('id' in equipo)
+        self.assertTrue('createdAt' in equipo)
     
     def teardown_method(self, args):
         self.session.close()
