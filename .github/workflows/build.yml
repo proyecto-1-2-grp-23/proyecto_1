@@ -38,17 +38,29 @@ jobs:
     #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
     #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
     #   working-directory: backend/
+    - name: Replace DB Password
+      env:
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: |
+        sed -i "s/DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
+      working-directory: backend/
+    - name: Replace DB Host
+      env:
+        DB_HOST: ${{ secrets.DB_HOST }}
+      run: |
+        sed -i "s/DB_HOST/$DB_HOST/g" deployment/secrets.yml
+      working-directory: backend/
+    - name: Replace DB User
+      env:
+        DB_USER: ${{ secrets.DB_USER }}
+      run: |
+        sed -i "s/DB_USER/$DB_USER/g" deployment/secrets.yml
+      working-directory: backend/
     - name: Deploy to GKE
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_HOST: ${{ secrets.DB_HOST }}
-        DB_USER: ${{ secrets.DB_USER }}
       run: |
         gcloud container clusters get-credentials autopilot-cluster-2 --region us-central1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" deployment/k8s-deployment.yml
-        sed -i "s/DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
-        # sed -i "s/SECRETS_DB_HOST/$DB_HOST/g" deployment/secrets.yml
-        # sed -i "s/SECRETS_DB_USER/$DB_USER/g" deployment/secrets.yml
         kubectl apply -f deployment/
       working-directory: backend/
