@@ -41,7 +41,7 @@ jobs:
     - name: Replace DB Password
       env:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: 'sed -i "s/DB_PASSWORD/$DB_PASSWORD" deployment/secrets.yml'
+      run: "sed -i 's/DB_PASSWORD/$DB_PASSWORD/' deployment/secrets.yml"
       working-directory: backend/
     - name: Deploy to GKE
       env:
