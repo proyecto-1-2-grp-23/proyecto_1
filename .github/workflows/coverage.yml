@@ -1,0 +1,42 @@
+name: Test coverage
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  test_users:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:12.3
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: users_test
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    strategy:
+      matrix:
+        python-version: [3.10]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install pipenv
+        working-directory: ./backend/users
+        run: pip install pipenv
+      - name: Install psycopg2
+        working-directory: ./backend/users
+        run: pip install psycopg2
+      - name: Install dependencies
+        working-directory: ./backend/users
+        run: pipenv install --dev
+      - name: Run unit tests
+        working-directory: ./backend/users
+        env:
+          DB_NAME: users_test
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+        run: pipenv run pytest --cov=src -v -s --cov-fail-under=70
