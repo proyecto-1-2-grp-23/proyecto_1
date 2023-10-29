@@ -38,13 +38,13 @@ jobs:
     #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
     #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
     #   working-directory: backend/
-    # - name: Replace DB Password
-    #   env:
-    #     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-    #   run: |
-    #     sed -i "s/DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
-    #     cat deployment/secrets.yml
-    #   working-directory: backend/
+    - name: Replace DB Password
+      env:
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: |
+        sed -i "s/DB_PASSWORD/$DB_PASSWORD/g" deployment/secrets.yml
+        cat deployment/secrets.yml
+      working-directory: backend/
     - name: Deploy to GKE
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
