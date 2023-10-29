@@ -27,7 +27,7 @@ jobs:
       - name: Instalación de librerías y dependencias
         run: |
           python -m pip install --upgrade pip
-          pip install -r backend/users/requirements.txt
+          pip install -r backend/requirements.txt
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
@@ -35,5 +35,5 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }} # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
