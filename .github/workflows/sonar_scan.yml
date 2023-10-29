@@ -37,6 +37,11 @@ jobs:
         run: pip install tox
       - name: Run tox
         run: tox -e py
+      - name: cargar reporte
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage
+          path: htmlcov
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
