@@ -20,6 +20,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Limpiar entorno
+        run: |
+          pip cache purge
+          rm -rf ~/.cache/pip
+
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
