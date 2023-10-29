@@ -11,12 +11,14 @@ class Empresa(Model, Base):
     verticalesNegocio = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
 
-    def __init__(self, razonSocial, tipoEmpresa, verticalesNegocio, idUsuario):
+    def __init__(self, razonSocial, tipoEmpresa, verticalesNegocio, id=None, idUsuario=None):
         Model.__init__(self)
         self.razonSocial = razonSocial
         self.tipoEmpresa = tipoEmpresa
         self.verticalesNegocio = verticalesNegocio
-        self.idUsuario = idUsuario
+        if id and idUsuario is not None:
+            self.id = id
+            self.idUsuario = idUsuario
 
 
 class EmpresaSchema(Schema):
