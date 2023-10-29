@@ -1,3 +1,7 @@
+from dotenv import load_dotenv, find_dotenv
+
+loaded = load_dotenv(".env.development")
+
 from .errors.errors import ApiError
 from .blueprints.users import users_blueprint
 from .blueprints.empresas import empresa_blueprint
