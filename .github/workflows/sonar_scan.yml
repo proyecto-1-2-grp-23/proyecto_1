@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage
-          path: htmlcov
+          path: coverage-reports
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
