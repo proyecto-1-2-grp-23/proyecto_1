@@ -13,14 +13,17 @@ class Candidato(Model, Base):
     rasgosPersonalidad = Column(String)
     idUsuario = Column(Integer, ForeignKey('users.id'))
 
-    def __init__(self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario):
+    def __init__(self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario=None):
         Model.__init__(self)
         self.telefono = telefono
         self.edad = edad
         self.nombreCompleto = nombreCompleto
         self.idiomas = idiomas
         self.rasgosPersonalidad = rasgosPersonalidad
-        self.idUsuario = idUsuario 
+        if id and idUsuario is not None:
+            self.id = id
+            self.idUsuario = idUsuario
+        
 
 class CandidatoSchema(Schema):
     id = fields.Int()
