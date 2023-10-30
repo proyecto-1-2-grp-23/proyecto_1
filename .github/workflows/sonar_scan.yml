@@ -13,8 +13,8 @@ permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
 
 jobs:
-  UserTests:
-    name: UserTests
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -38,24 +38,10 @@ jobs:
         working-directory: ./backend/users
         run: pip install -r requirements.txt
       - name: Run unit tests
-        run: pytest --cov=src --cov-report=xml --cov-branch
-
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Limpiar entorno
-        run: |
-          pip cache purge
-          rm -rf ~/.cache/pip
-      - name: Setup Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10.4"
+        working-directory: ./backend/users
+        run: pytest --cov=src --cov-report=xml  --cov-branch
       - name: cargar reporte
+        working-directory: ./backend/users
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage
