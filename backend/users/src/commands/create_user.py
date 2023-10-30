@@ -70,7 +70,4 @@ class CreateUser(BaseCommannd):
         # except TypeError:
     def correo_exist(self, session, correo):
         return len(session.query(User).filter_by(correo=correo).all()) > 0
-    def correo_exist(self, session, correo):
-        return len(session.query(User).filter_by(correo=correo).all()) > 0
-    
     
