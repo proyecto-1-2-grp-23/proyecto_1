@@ -20,7 +20,7 @@ jobs:
         run: pip install psycopg2
       - name: Install dependencies
         working-directory: ./backend/users
-        run: pipenv install --dev
+        run: pip install -r requirements.txt
       - name: Run unit tests
         working-directory: ./backend/users
-        run: pipenv run pytest --cov=src -v -s --cov-fail-under=70
+        run: pytest --cov=src -v -s --cov-fail-under=70
