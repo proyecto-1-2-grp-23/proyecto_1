@@ -39,14 +39,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run unit tests
         working-directory: ./backend/users
-        run: pytest --cov=src --cov-report=xml:/code-coverage/coverage.xml  --cov-branch
+        run: pytest --cov=src --cov-report=xml:../../code-coverage/coverage.xml  --cov-branch
         env:
           ACCESS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
       - name: cargar reporte
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage
-          path: ./backend/users/code-coverage
+          path: code-coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
