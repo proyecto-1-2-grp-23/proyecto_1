@@ -39,12 +39,12 @@ jobs:
         working-directory: ./backend/users
         run: pip install -r requirements.txt
       - name: Run unit tests
-      working-directory: ./backend/users
-      run:  pytest --cov= ./backend/users -v -s  --cov-report=xml --cov-report=html --cov-config=tox.ini --cov-branch  
-    # - name: Install tox and any other packages
-   #     run: pip install tox
+        working-directory: ./backend/users
+        run: pytest --cov= ./backend/users -v -s  --cov-report=xml --cov-report=html --cov-config=tox.ini --cov-branch
+      # - name: Install tox and any other packages
+      #     run: pip install tox
       #- name: Run tox
-       # run: tox -e py
+      # run: tox -e py
       - name: cargar reporte
         uses: actions/upload-artifact@v3
         with:
