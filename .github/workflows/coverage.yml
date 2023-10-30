@@ -1,0 +1,26 @@
+name: Test coverage
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  test_users:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10.4]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install pipenv
+        working-directory: ./backend/users
+        run: pip install pipenv
+      - name: Install psycopg2
+        working-directory: ./backend/users
+        run: pip install psycopg2
+      - name: Install dependencies
+        working-directory: ./backend/users
+        run: pip install -r requirements.txt
+      - name: Run unit tests
+        working-directory: ./backend/users
+        run: pytest --cov=src -v -s --cov-fail-under=70

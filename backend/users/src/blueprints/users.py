@@ -28,18 +28,27 @@ def reset():
 
 @users_blueprint.route("/users/login", methods=["POST"])
 def login():
-    token_user = (
-        session.query(User).filter_by(correo=request.get_json()["correo"]).first()
-    )
-    token = token_user.token
-    encode_passsword = token_user.password  ## validación password por implementar
-    tokten_Header = auth_token()
-    if str(tokten_Header) == str(token) and bcrypt.checkpw(
-        request.get_json()["contraseña"].encode("utf8"), encode_passsword.encode("utf8")
-    ):
-        return jsonify({"message": "Login con exito"}), 200
+    input_correo  = request.get_json()["correo"]
+    user = (session.query(User).filter_by(correo=input_correo).first())
+    if user is None:
+        return jsonify({'message': 'Usuario no existe'})
+    encode_passsword = user.password ## validación password por implementar
+    user_contraseña = request.get_json()['contraseña']
+    usuario_correo = user.correo
+    if((str(usuario_correo) == str(input_correo)) and (bcrypt.checkpw(str(user_contraseña).encode('utf8'), encode_passsword.encode('utf8')))):
+        user_id = user.id
+        user_token =user.token   
+        return jsonify({'message': 'Usuario logueado con exito','id': user_id, 'token': user_token}), 200
     else:
-        return jsonify({"message": "Usuario no loegueado"}), 401
+        return jsonify({'message': 'Usuario no logueado'}), 401
+
+
+    
+
+@users_blueprint.route("/usuario/asociar_candidato_equipo/<int:id_equipo>", methods=["POST"])
+def asociar_candidato(id_equipo):
+    asociar = CreateUser(request.get_json()).crear_candidato_equipo(id_equipo)
+    return jsonify(asociar), 201
 
 
 def auth_token():

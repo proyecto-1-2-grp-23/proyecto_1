@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ServicioCandidatosService {
-  private backUrl: string = environment.baseUrl;
+  private backUrl: string = 'http://localhost:5000'; //environment.baseUrl
 
   constructor(private http: HttpClient) {}
 

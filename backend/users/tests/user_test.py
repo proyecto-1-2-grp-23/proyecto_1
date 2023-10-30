@@ -1,4 +1,8 @@
 import unittest
+
+from ..src.commands.create_equipo import CreateEquipo
+
+from ..src.commands.create_user import CreateUser
 from ..src.main import app
 from ..src.models.candidato import Candidato, CandidatoSchema
 from ..src.models.user import  User, Base
@@ -20,12 +24,23 @@ data = {
         }
 
 class TestMiApp(unittest.TestCase):
-        
+     
     def setUp(self):
         app.config['TESTING'] = True
         self.app = app.test_client()
         Base.metadata.create_all(engine)
         self.session = Session()
+        self.data = {
+            'correo': 'usuario324@ejemplo.com',
+            'password': '34234',
+            'ciudad': 'Bogota',
+            'pais': 'Colombia',
+            'telefono': '43534543',
+            'nombreCompleto': 'Carlos Arango',
+            'edad': 34,
+            'idiomas': 'Español',
+            'rasgosPersonalidad': 'Sociable'
+        }
 
     def test_creacion_usuario(self):
         
@@ -40,21 +55,6 @@ class TestMiApp(unittest.TestCase):
                     self.assertEqual(response.status_code, 412)
     
     def test_validacion_usuario_y_candidato(self):
-        # Datos de ejemplo para la prueba
-
-       with app.app_context():
-            usuario_existente = self.session.query(User).filter_by(correo=data['correo']).first()
-            if usuario_existente:
-                response = self.app.post('/users', data=json.dumps(data), content_type='application/json')
-                self.assertEqual(response.status_code, 412)  # Código 409 para indicar un conflicto
-                response_data = json.loads(response.data)
-                #self.assertEqual(response_data['error'], 'El usuario ya existe')
-            else:
-                # Si el usuario no existe, se puede crear
-                response = self.app.post('/users', data=json.dumps(data), content_type='application/json')
-                self.assertEqual(response.status_code, 201)
-    def test_validacion_varios_idiomas(self):
-
         data = {
             'correo': 'usuario324@ejemplo.com',
             'password': '34234',
@@ -63,10 +63,33 @@ class TestMiApp(unittest.TestCase):
             'telefono': '43534543',
             'nombreCompleto': 'Carlos Arango',
             'edad': 34,
-            'idiomas': 'Ingles',
+            'idiomas': 'Español',
             'rasgosPersonalidad': 'Sociable'
         }
+        # Datos de ejemplo para la prueba
+        with app.app_context():
+            usuario_existente = self.session.query(User).filter_by(correo=data['correo']).first()
+            if usuario_existente:
+                response = self.app.post('/users', data=json.dumps(data), content_type='application/json')
+                self.assertEqual(response.status_code, 412)  # Código 409 para indicar un conflicto
+                #self.assertEqual(response_data['error'], 'El usuario ya existe')
+            else:
+                # Si el usuario no existe, se puede crear
+                response = self.app.post('/users', data=json.dumps(data), content_type='application/json')
+                self.assertEqual(response.status_code, 201)
 
+    def test_validacion_varios_idiomas(self):
+        data = {
+            'correo': 'usuario324@ejemplo.com',
+            'password': '34234',
+            'ciudad': 'Bogota',
+            'pais': 'Colombia',
+            'telefono': '43534543',
+            'nombreCompleto': 'Carlos Arango',
+            'edad': 34,
+            'idiomas': 'Español',
+            'rasgosPersonalidad': 'Sociable'
+        }
         # Verificar si el usuario ya existe en la base de datos
         with app.app_context():
             usuario_existente = self.session.query(User).filter_by(correo=data['correo']).first()
@@ -85,6 +108,36 @@ class TestMiApp(unittest.TestCase):
                 self.assertIsNotNone(nuevo_usuario)
                 self.assertEqual(nuevo_usuario.idiomas, data['idiomas'])
     
+    
+    def test_creacion_usuario_equipo(self):
+
+        id_equipo= 1
+        user = CreateUser(data).crear_candidato_equipo(id_equipo)
+        assert 'id' in user
+        assert 'createdAt' in user
+        users = self.session.query(User).all()
+        assert len(users) == 1
+
+    def test_creacion_equipo(self):
+        # Datos necesarios para crear un equipo
+        nombre_equipo = {
+            "tipoEmpresa": "Cualquiera",
+            "razonSocial": "Nada",
+            "verticalesNegocio": "unas",
+            "nombre": "Los vengadores8",
+            "descripcion": "Nada"
+            }
+
+        # Crear una instancia de CreateUser y crear el equipo
+        equipo = CreateEquipo(nombre_equipo).execute()
+
+        # Verificar si el equipo fue creado correctamente
+        self.assertTrue('id' in equipo)
+        self.assertTrue('createdAt' in equipo)
+    
     def teardown_method(self, args):
         self.session.close()
         Base.metadata.drop_all(bind=engine)
+
+
+    
