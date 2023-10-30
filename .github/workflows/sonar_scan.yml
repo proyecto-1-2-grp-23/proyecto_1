@@ -32,7 +32,6 @@ jobs:
       - name: Tests Users
         working-directory: ./backend/users
         run: |
-          python -m pip install --upgrade pip
           pip install pipenv
           Install psycopg2
       - name: Instalar dependencias
