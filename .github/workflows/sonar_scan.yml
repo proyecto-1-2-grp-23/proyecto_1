@@ -41,7 +41,7 @@ jobs:
         working-directory: ./backend/users
         run: pytest --cov=src --cov-report=xml:/code-coverage/coverage.xml  --cov-branch
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
       - name: cargar reporte
         uses: actions/upload-artifact@v3
         with:
