@@ -20,29 +20,29 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
 
-    # - name: Build docker images
-    #   env: 
-    #     GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-    #   run: |
-    #     gcloud auth configure-docker us-central1-docker.pkg.dev
-    #     sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" docker-compose.yml
-    #     docker-compose up --build -d
-    #   working-directory: backend/
-    # - name: Push docker images
-    #   env: 
-    #     GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-    #   run: |
-    #     gcloud auth configure-docker us-central1-docker.pkg.dev
-    #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest
-    #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest
-    #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
-    #     docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
-    #   working-directory: backend/
-    - name: Replace DB Password
-      env:
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: "sed -i 's/DB_PASSWORD/$DB_PASSWORD/' deployment/secrets.yml"
+    - name: Build docker images
+      env: 
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" docker-compose.yml
+        docker-compose up --build -d
       working-directory: backend/
+    - name: Push docker images
+      env: 
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
+      working-directory: backend/
+    # - name: Replace DB Password
+    #   env:
+    #     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    #   run: "sed -i 's/DB_PASSWORD/$DB_PASSWORD/' deployment/secrets.yml"
+      # working-directory: backend/
     - name: Deploy to GKE
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
