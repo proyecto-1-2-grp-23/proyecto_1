@@ -41,11 +41,10 @@ jobs:
         working-directory: ./backend/users
         run: pytest --cov=src --cov-report=xml  --cov-branch
       - name: cargar reporte
-        working-directory: ./backend/users
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage
-          path: htmlcov
+          path: ./backend/users/htmlcov
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
