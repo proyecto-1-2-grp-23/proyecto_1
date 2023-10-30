@@ -39,7 +39,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run unit tests
         working-directory: ./backend/users
-        run: pytest --cov=src --cov-report=xml  --cov-branch
+        run: pytest --cov=src --cov-report=xml:/htmlcov/coverage.xml  --cov-branch
       - name: cargar reporte
         uses: actions/upload-artifact@v3
         with:
