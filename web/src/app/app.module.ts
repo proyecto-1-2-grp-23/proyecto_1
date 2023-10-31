@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,8 @@ import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.co
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
 import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-equipo-trabajo/vista-equipo-trabajo.component';
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
+import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-eq
     RegistroLaboralComponent,
     VistaEquipoTrabajoComponent,
     CrearEquipoTrabajoComponent,
+    AgregarCandidatoEquipoComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-eq
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
