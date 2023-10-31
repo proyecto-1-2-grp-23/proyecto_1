@@ -1,6 +1,8 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AgregarCandidatoEquipoComponent } from './agregar-candidato-equipo/agregar-candidato-equipo.component';
 
 @Component({
   selector: 'app-crear-equipo-trabajo',
@@ -14,7 +16,7 @@ export class CrearEquipoTrabajoComponent implements OnInit {
     funcionarios: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -24,5 +26,12 @@ export class CrearEquipoTrabajoComponent implements OnInit {
 
   guardar() {
     this.router.navigate([`/equipoDeTrabajo`]);
+  }
+
+  agregarCandidato() {
+    this.dialog.open(AgregarCandidatoEquipoComponent, {
+      width: '800px', // Puedes personalizar el tamaño
+      height: '500px',
+    });
   }
 }

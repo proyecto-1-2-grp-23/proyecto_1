@@ -8,6 +8,7 @@ import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-eq
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
 import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.component';
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
+import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,11 @@ const routes: Routes = [
   {
     path: 'crearEquipoDeTrabajo',
     component: CrearEquipoTrabajoComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'crearEquipoDeTrabajo/agregarCandidato',
+    component: AgregarCandidatoEquipoComponent,
     pathMatch: 'full',
   },
 ];
