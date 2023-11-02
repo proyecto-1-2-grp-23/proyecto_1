@@ -9,6 +9,8 @@ import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-eq
 import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.component';
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
 import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
+import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,16 @@ const routes: Routes = [
   {
     path: 'crearEquipoDeTrabajo/agregarCandidato',
     component: AgregarCandidatoEquipoComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas',
+    component: EntrevistasProgramadasComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas/programarEntrevista',
+    component: ProgramarEntrevistaComponent,
     pathMatch: 'full',
   },
 ];

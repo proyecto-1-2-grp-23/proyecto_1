@@ -48,6 +48,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate([`/equipoDeTrabajo`]);
   }
 
+  verEntrevistas() {
+    this.router.navigate([`/entrevistas`]);
+  }
+
   salir() {
     this.router.navigate([`/home`]);
   }
