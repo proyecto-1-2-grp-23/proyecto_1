@@ -16,6 +16,11 @@ import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-eq
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
 import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
+import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     VistaEquipoTrabajoComponent,
     CrearEquipoTrabajoComponent,
     AgregarCandidatoEquipoComponent,
+    EntrevistasProgramadasComponent,
+    ProgramarEntrevistaComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
