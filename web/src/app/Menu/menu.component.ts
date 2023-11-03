@@ -52,6 +52,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate([`/entrevistas`]);
   }
 
+  verProyectos() {
+    this.router.navigate([`/proyectos`]);
+  }
+
   salir() {
     this.router.navigate([`/home`]);
   }
