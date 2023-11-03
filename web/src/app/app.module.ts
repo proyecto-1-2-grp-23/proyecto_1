@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,7 +45,6 @@ import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/det
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
