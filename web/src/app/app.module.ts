@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
+import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista/resultado-entrevista.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/det
     EntrevistasProgramadasComponent,
     ProgramarEntrevistaComponent,
     DetalleEntrevistaComponent,
+    ResultadoEntrevistaComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/det
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

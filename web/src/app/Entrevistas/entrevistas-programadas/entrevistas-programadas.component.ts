@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DetalleEntrevistaComponent } from '../detalle-entrevista/detalle-entrevista.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ResultadoEntrevistaComponent } from '../resultado-entrevista/resultado-entrevista.component';
 
 @Component({
   selector: 'app-entrevistas-programadas',
@@ -63,7 +64,16 @@ export class EntrevistasProgramadasComponent implements OnInit {
     this.router.navigate([`/menu/administrador`]);
   }
 
-  resultado(element: any) {}
+  resultado(element: any) {
+    const dialogRef = this.dialog.open(ResultadoEntrevistaComponent, {
+      width: '60%',
+      height: '90%',
+      data: { info: element },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.cargarEntrevistas();
+    });
+  }
 
   detalle(element: any) {
     const dialogRef = this.dialog.open(DetalleEntrevistaComponent, {
