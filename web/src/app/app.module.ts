@@ -21,6 +21,7 @@ import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     AgregarCandidatoEquipoComponent,
     EntrevistasProgramadasComponent,
     ProgramarEntrevistaComponent,
+    DetalleEntrevistaComponent,
   ],
   imports: [
     BrowserModule,

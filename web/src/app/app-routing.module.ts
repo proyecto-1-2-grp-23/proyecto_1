@@ -11,6 +11,7 @@ import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-cand
 import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
 import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
 import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
+import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,11 @@ const routes: Routes = [
   {
     path: 'entrevistas/programarEntrevista',
     component: ProgramarEntrevistaComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas/detalleEntrevista',
+    component: DetalleEntrevistaComponent,
     pathMatch: 'full',
   },
 ];
