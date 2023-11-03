@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +20,7 @@ import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
     AgregarCandidatoEquipoComponent,
     EntrevistasProgramadasComponent,
     ProgramarEntrevistaComponent,
+    DetalleEntrevistaComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,6 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,

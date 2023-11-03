@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { DetalleEntrevistaComponent } from '../detalle-entrevista/detalle-entrevista.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-entrevistas-programadas',
@@ -15,7 +17,7 @@ export class EntrevistasProgramadasComponent implements OnInit {
   displayedColumns: string[] | undefined;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -63,5 +65,14 @@ export class EntrevistasProgramadasComponent implements OnInit {
 
   resultado(element: any) {}
 
-  detalle(element: any) {}
+  detalle(element: any) {
+    const dialogRef = this.dialog.open(DetalleEntrevistaComponent, {
+      width: '60%',
+      height: '90%',
+      data: { info: element },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.cargarEntrevistas();
+    });
+  }
 }
