@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista/resultado-entrevista.component';
+import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista
     ProgramarEntrevistaComponent,
     DetalleEntrevistaComponent,
     ResultadoEntrevistaComponent,
+    ListaProyectosComponent,
   ],
   imports: [
     BrowserModule,
