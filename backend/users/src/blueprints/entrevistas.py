@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.create_entrevista import CreateEntrevista
+from ..commands.get_entrevista import GetEntrevista
 from ..models.entrevista import Entrevista
 from ..session import Session, engine
 
@@ -17,6 +18,10 @@ def create():
     user = CreateEntrevista(request.get_json()).execute()
     return jsonify(user), 201
 
+@entrevistas_blueprint.route('/entrevistas/<id>', methods=['GET'])
+def get(id):
+    route = GetEntrevista(id).execute()
+    return jsonify(route)
 
 def auth_token():
     if "Authorization" in request.headers:
