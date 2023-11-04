@@ -1,0 +1,57 @@
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.title{
+  color:rgba(33, 173, 204, 1) ;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.text{
+  color:rgba(33, 173, 204, 1);
+  font-size: 25px;
+}
+
+.commonButton{
+  background: rgba(33, 173, 204, 1);
+  color: white;
+  width: 120px;
+  border-radius: 20px;
+}
+
+.form-control{
+  border-color: rgba(33, 173, 204, 1);
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chip {
+  background-color:rgba(33, 173, 204, 1);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  color:white;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 4px;
+}
+
+.chip-remove:hover {
+  color: white;
+}
+

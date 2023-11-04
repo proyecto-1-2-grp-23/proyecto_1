@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista/resultado-entrevista.component';
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
+import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proye
     DetalleEntrevistaComponent,
     ResultadoEntrevistaComponent,
     ListaProyectosComponent,
+    CrearProyectoComponent,
   ],
   imports: [
     BrowserModule,
