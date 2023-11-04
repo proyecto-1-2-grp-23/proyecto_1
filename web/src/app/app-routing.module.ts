@@ -13,6 +13,7 @@ import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-progr
 import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
+import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,11 @@ const routes: Routes = [
   {
     path: 'proyectos',
     component: ListaProyectosComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'proyectos/crearProyecto',
+    component: CrearProyectoComponent,
     pathMatch: 'full',
   },
 ];
