@@ -29,7 +29,6 @@ class EntrevistaSchema(Schema):
     idCandidato = fields.Int()
     fecha = fields.DateTime()
     lugar = fields.Str()
-    expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
@@ -50,3 +49,4 @@ class EntrevistaJsonSchema(Schema):
     idCandidato = fields.Int()
     fecha = fields.DateTime()
     lugar = fields.Str()
+    createdAt = fields.DateTime()
