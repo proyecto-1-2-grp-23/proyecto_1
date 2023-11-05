@@ -1,6 +1,6 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">REGISTRO LABORAL</h1>
+    <h1 class="title">CREAR PROYECTO</h1>
   </div>
 
   <div class="row col-6 mt-5">
@@ -39,20 +39,6 @@
           formControlName="conocimientos"
           rows="3"
         ></textarea>
-      </div>
-
-      <div class="chips-container col-12 mb-3">
-        <span class="chip mb-3" *ngFor="let chip of chips; let i = index"
-          >{{ chip }}
-          <button class="chip-remove" (click)="eliminarChip(i)">&times;</button>
-        </span>
-        <input
-          type="text"
-          [(ngModel)]="nuevoChip"
-          (keydown.enter)="agregarChip()"
-          placeholder="Habilidades requeridas"
-          class="col-12 form-control"
-        />
       </div>
 
       <div class="col-12 mb-3">
@@ -94,7 +80,21 @@
       </div>
     </form>
 
-    <div class="mt-5 d-flex justify-content-around">
+    <div class="chips-container col-12 mb-3">
+      <span class="chip mb-3" *ngFor="let chip of chips; let i = index"
+        >{{ chip }}
+        <button class="chip-remove" (click)="eliminarChip(i)">&times;</button>
+      </span>
+      <input
+        type="text"
+        [(ngModel)]="nuevoChip"
+        (keydown.enter)="agregarChip()"
+        placeholder="Habilidades requeridas"
+        class="col-12 form-control"
+      />
+    </div>
+
+    <div class="mt-5 mb-5 d-flex justify-content-around">
       <button
         id="reigstro"
         class="commonButton btn btn-info mt-3"

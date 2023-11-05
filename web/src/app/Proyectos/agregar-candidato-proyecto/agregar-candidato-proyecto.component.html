@@ -1,0 +1,60 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">AGREGAR CANDIDATO AL PROYECTO</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <select
+          class="custom-select select"
+          formControlName="caracteristicasTecnicas"
+        >
+          <option value="" disabled selected>Características Técnicas</option>
+          <option value="1">opc 1</option>
+          <option value="2">opc 2</option>
+          <option value="3">opc 3</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select
+          class="custom-select select"
+          formControlName="caracteristicasPersonalidad"
+        >
+          <option value="" disabled selected>
+            Características Personalidad
+          </option>
+          <option value="1">opc 1</option>
+          <option value="2">opc 2</option>
+          <option value="3">opc 3</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select
+          class="custom-select select"
+          formControlName="candidatosCompatibles"
+        >
+          <option value="" disabled selected>Candidatos compatibles</option>
+          <option value="1">candidato 1</option>
+          <option value="2">candidato 2</option>
+          <option value="3">candidato 3</option>
+        </select>
+      </div>
+      <div class="mt-5 d-flex justify-content-around col-12">
+        <button
+          id="reigstro"
+          class="commonButton btn btn-info mt-3"
+          (click)="agregar()"
+        >
+          Guardar
+        </button>
+        <button
+          id="ingreso"
+          class="commonButton btn btn-info mt-3"
+          (click)="verProyectos()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

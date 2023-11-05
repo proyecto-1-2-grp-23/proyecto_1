@@ -1,30 +1,40 @@
-
-
 .content{
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   flex-direction: column;
 }
+
 
 .title{
   color:rgba(33, 173, 204, 1) ;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
-  font-size: 40px;
-  font-size: 50px;
+  font-size: 30px;
+  margin-top: 100px;
 }
 
 .text{
   color:rgba(33, 173, 204, 1);
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .commonButton{
   background: rgba(33, 173, 204, 1);
   color: white;
-  width: 100px;
+  width: 150px;
   border-radius: 20px;
 }
+
+.select{
+  width: inherit;
+  height: 40px;
+  border-radius: 5px;
+  border-color: rgba(33, 173, 204, 1) ;
+}
+
+
+.form-control{
+  border-color: rgba(33, 173, 204, 1);;
+}
+
