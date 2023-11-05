@@ -1,6 +1,6 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">REGISTRO LABORAL</h1>
+    <h1 class="title">CREAR PROYECTO</h1>
   </div>
 
   <div class="row col-6 mt-5">
@@ -9,25 +9,34 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Nombre empresa"
-          formControlName="nombreEmpresa"
-        />
-      </div>
-
-      <div class="col-12 mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Rol"
-          formControlName="rol"
+          placeholder="Nombre Proyecto"
+          formControlName="nombreProyecto"
         />
       </div>
 
       <div class="col-12 mb-3">
         <textarea
           class="form-control"
-          placeholder="Funciones"
-          formControlName="funciones"
+          placeholder="Descripción"
+          formControlName="descripcion"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Perfil requerido"
+          formControlName="perfil"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Conocimientos técnicos"
+          formControlName="conocimientos"
           rows="3"
         ></textarea>
       </div>
@@ -37,7 +46,7 @@
           <input
             class="form-control"
             formControlName="fechaInicio"
-            placeholder="Fecha de ingreso"
+            placeholder="Inicio"
             name="dp"
             [(ngModel)]="fechaInicioSeleccionada"
             ngbDatepicker
@@ -56,7 +65,7 @@
           <input
             class="form-control"
             formControlName="fechaFin"
-            placeholder="Fecha de retiro"
+            placeholder="Fin"
             name="dpp"
             [(ngModel)]="fechaFinSeleccionada"
             ngbDatepicker
@@ -71,8 +80,6 @@
       </div>
     </form>
 
-    <hr style="color: #21adcc" />
-
     <div class="chips-container col-12 mb-3">
       <span class="chip mb-3" *ngFor="let chip of chips; let i = index"
         >{{ chip }}
@@ -82,14 +89,12 @@
         type="text"
         [(ngModel)]="nuevoChip"
         (keydown.enter)="agregarChip()"
-        placeholder="Habilidades"
+        placeholder="Habilidades requeridas"
         class="col-12 form-control"
       />
     </div>
 
-    <hr style="color: #21adcc" />
-
-    <div class="mt-5 d-flex justify-content-around">
+    <div class="mt-5 mb-5 d-flex justify-content-around">
       <button
         id="reigstro"
         class="commonButton btn btn-info mt-3"
@@ -100,7 +105,7 @@
       <button
         id="ingreso"
         class="commonButton btn btn-info mt-3"
-        (click)="verMenu()"
+        (click)="verProyectos()"
       >
         Cancelar
       </button>

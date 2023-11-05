@@ -1,14 +1,14 @@
-import { Router } from '@angular/router';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-registro-laboral',
-  templateUrl: './registro-laboral.component.html',
-  styleUrls: ['./registro-laboral.component.css'],
+  selector: 'app-crear-proyecto',
+  templateUrl: './crear-proyecto.component.html',
+  styleUrls: ['./crear-proyecto.component.css'],
 })
-export class RegistroLaboralComponent implements OnInit {
+export class CrearProyectoComponent implements OnInit {
   fechaInicioSeleccionada!: NgbDateStruct;
   fechaFinSeleccionada!: NgbDateStruct;
 
@@ -16,9 +16,10 @@ export class RegistroLaboralComponent implements OnInit {
   nuevoChip: string = '';
 
   registrationForm: FormGroup = new FormGroup({
-    nombreEmpresa: new FormControl('', [Validators.required]),
-    rol: new FormControl('', [Validators.required]),
-    funciones: new FormControl('', [Validators.required]),
+    nombreProyecto: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required]),
+    perfil: new FormControl('', [Validators.required]),
+    conocimientos: new FormControl('', [Validators.required]),
     fechaInicio: new FormControl('', [Validators.required]),
     fechaFin: new FormControl('', [Validators.required]),
   });
@@ -44,11 +45,11 @@ export class RegistroLaboralComponent implements OnInit {
     this.chips.splice(index, 1);
   }
 
-  verMenu() {
-    this.router.navigate([`/menu/candidato`]);
+  verProyectos() {
+    this.router.navigate([`/proyectos`]);
   }
 
   guardar() {
-    this.router.navigate([`/menu/candidato`]);
+    this.router.navigate([`/proyectos`]);
   }
 }
