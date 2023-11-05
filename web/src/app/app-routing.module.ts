@@ -8,7 +8,7 @@ import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-eq
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
 import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.component';
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
-import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
 import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
 import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';

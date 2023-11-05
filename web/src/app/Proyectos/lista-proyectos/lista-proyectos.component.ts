@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { AgregarCandidatoProyectoComponent } from '../agregar-candidato-proyecto/agregar-candidato-proyecto.component';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -57,13 +58,13 @@ export class ListaProyectosComponent implements OnInit {
   }
 
   agregarCandidatos(element: any) {
-    /*const dialogRef = this.dialog.open(, {
+    const dialogRef = this.dialog.open(AgregarCandidatoProyectoComponent, {
       width: '60%',
       height: '90%',
       data: { info: element },
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.cargarProyectos();
-    });*/
+    });
   }
 }

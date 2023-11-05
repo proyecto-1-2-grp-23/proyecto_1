@@ -2,7 +2,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { AgregarCandidatoEquipoComponent } from './agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { AgregarCandidatoEquipoComponent } from '../agregar-candidato-equipo/agregar-candidato-equipo.component';
 
 @Component({
   selector: 'app-crear-equipo-trabajo',

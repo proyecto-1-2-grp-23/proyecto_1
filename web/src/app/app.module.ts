@@ -14,7 +14,7 @@ import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.co
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
 import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-equipo-trabajo/vista-equipo-trabajo.component';
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
-import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
 import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
@@ -25,6 +25,7 @@ import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/det
 import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista/resultado-entrevista.component';
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
 import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
+import { AgregarCandidatoProyectoComponent } from './Proyectos/agregar-candidato-proyecto/agregar-candidato-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyect
     ResultadoEntrevistaComponent,
     ListaProyectosComponent,
     CrearProyectoComponent,
+    AgregarCandidatoProyectoComponent,
   ],
   imports: [
     BrowserModule,
