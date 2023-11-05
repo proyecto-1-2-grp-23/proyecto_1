@@ -1,3 +1,4 @@
+from ..commands.list_projects import ListProjects
 from ..commands.create_project import CreateProject
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
@@ -14,6 +15,10 @@ def create():
     proyect = CreateProject(request.get_json()).execute()
     return jsonify(proyect), 201
 
+@projects_blueprint.route('/projects/listar-projects', methods=['GET'])
+def listarTodos():
+    equipo = ListProjects().execute()
+    return jsonify(equipo), 200
 
 @projects_blueprint.route('/projects/reset', methods=['POST'])
 def reset():
