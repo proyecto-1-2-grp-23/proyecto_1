@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, DateTime, Boolean, Integer, ForeignKey
 from .model import Model, Base
 
 
@@ -11,17 +11,10 @@ class Candidato(Model, Base):
     edad = Column(Integer)
     idiomas = Column(String)
     rasgosPersonalidad = Column(String)
-    idEquipo = Column(Integer)
     idUsuario = Column(Integer, ForeignKey("users.id"))
 
     def __init__(
-        self,
-        telefono,
-        nombreCompleto,
-        edad,
-        idiomas,
-        rasgosPersonalidad,
-        idUsuario=None,
+        self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario
     ):
         Model.__init__(self)
         self.telefono = telefono
@@ -29,9 +22,7 @@ class Candidato(Model, Base):
         self.nombreCompleto = nombreCompleto
         self.idiomas = idiomas
         self.rasgosPersonalidad = rasgosPersonalidad
-        if id and idUsuario is not None:
-            self.id = id
-            self.idUsuario = idUsuario
+        self.idUsuario = idUsuario
 
 
 class CandidatoSchema(Schema):
@@ -43,7 +34,6 @@ class CandidatoSchema(Schema):
     rasgosPersonalidad = fields.Str()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
-    idEquipo = fields.Int()
 
 
 class CreatedCandidatoJsonSchema(Schema):
