@@ -12,7 +12,7 @@ export class ServicioCandidatosService {
   constructor(private http: HttpClient) {}
 
   candidatoRegistroPersonal(usuario: any): Observable<any> {
-    return this.http.post<any>(`${this.backUrl}/users`, usuario);
+    return this.http.post<any>(`${this.backUrl}`, usuario);
   }
 
   candidatoSignIn(usuario: any): Observable<any> {

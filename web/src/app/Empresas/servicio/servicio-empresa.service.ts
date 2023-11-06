@@ -14,4 +14,15 @@ export class ServicioCandidatosService {
   empresaRegistro(empresa: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/empresa`, empresa);
   }
+
+  listarEquipo(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/empresa`);
+  }
+
+  crearEquipo(equipo: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/equipo/listar-equipos/`,
+      equipo
+    );
+  }
 }
