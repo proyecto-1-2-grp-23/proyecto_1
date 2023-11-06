@@ -1,0 +1,54 @@
+name: Sonar Cloud Scan
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - develop
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Limpiar entorno
+        run: |
+          pip cache purge
+          rm -rf ~/.cache/pip
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10.4"
+      - name: Tests Users
+        working-directory: ./backend/users
+        run: |
+          pip install --upgrade pip
+          pip install pipenv
+          pip install psycopg2
+      - name: Instalar dependencias
+        working-directory: ./backend/users
+        run: pip install -r requirements.txt
+      - name: Run unit tests
+        working-directory: ./backend/users
+        run: pytest --cov=src --cov-report=xml:../../code-coverage/coverage.xml  --cov-branch
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+      - name: cargar reporte
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage
+          path: code-coverage
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

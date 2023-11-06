@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/candidato_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
@@ -19,7 +20,7 @@
             android:hint="Nombre del aspirante*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextName"
+                android:id="@+id/register_nombre_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -32,7 +33,7 @@
             android:hint="Edad*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextAge"
+                android:id="@+id/register_edad_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -45,7 +46,7 @@
             android:hint="Teléfono*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/register_telefono_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone" />
@@ -58,7 +59,7 @@
             android:hint="Correo Electrónico*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/register_correo_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
@@ -71,7 +72,7 @@
             android:hint="@string/pais">
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteCountry"
+                android:id="@+id/register_pais_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:inputType="text"
@@ -85,7 +86,7 @@
             android:hint="Ciudad*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCity"
+                android:id="@+id/register_ciudad_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -98,7 +99,7 @@
             android:hint="Idiomas*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLanguages"
+                android:id="@+id/register_idiomas_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -111,7 +112,7 @@
             android:hint="Rasgos Personales*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextTraits"
+                android:id="@+id/register_rasgos_personales_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -124,7 +125,7 @@
             android:hint="Contraseña*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/register_pasw_1_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -137,16 +138,22 @@
             android:hint="Confirmar Contraseña*">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextConfirmPassword"
+                android:id="@+id/register_pasw_2_candidato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/buttonRegister"
+            android:id="@+id/buttonRegisterCandidato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar" />
+            android:text="@string/registrarse" />
+
+        <Button
+            android:id="@+id/buttonCancelRegisterCandidato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar" />
     </LinearLayout>
 </ScrollView>

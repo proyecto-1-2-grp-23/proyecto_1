@@ -1,0 +1,64 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">DETALLE ENTREVISTA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <label class="text">Funcionario asignado</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Funcionario"
+          formControlName="funcionario"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="empresa"
+          formControlName="empresa"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Candidato</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Candidato"
+          formControlName="candidato"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Fecha de la entrevista</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="fecha"
+          formControlName="fecha"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Lugar / URL</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="lugar"
+          formControlName="lugar"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-2 d-flex justify-content-around col-12">
+    <button
+      id="ingreso"
+      class="commonButton btn btn-info mt-3"
+      (click)="verEntrevistas()"
+    >
+      Volver
+    </button>
+  </div>
+</div>

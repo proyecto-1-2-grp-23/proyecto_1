@@ -7,15 +7,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ServicioCandidatosService {
-  private backUrl: string = environment.baseUrl;
+  private backUrl: string = environment.baseUrl + '/users';
 
   constructor(private http: HttpClient) {}
 
   candidatoRegistroPersonal(usuario: any): Observable<any> {
-    return this.http.post<any>(`${this.backUrl}/users`, usuario);
+    return this.http.post<any>(`${this.backUrl}`, usuario);
   }
 
   candidatoSignIn(usuario: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/singIn`, usuario);
+  }
+
+  obtenerCandidatos(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/users`);
   }
 }

@@ -19,18 +19,18 @@ spec:
             name: servicio-users
             port: 
               number: 80
+      # - pathType: Prefix
+      #   path: /tests
+      #   backend:
+      #     service:
+      #       name: servicio-tests
+      #       port: 
+      #         number: 80
       - pathType: Prefix
-        path: /tests
+        path: /projects
         backend:
           service:
-            name: servicio-tests
-            port: 
-              number: 80
-      - pathType: Prefix
-        path: /proyects
-        backend:
-          service:
-            name: servicio-proyects
+            name: servicio-projects
             port: 
               number: 80
       - pathType: Prefix

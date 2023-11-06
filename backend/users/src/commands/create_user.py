@@ -11,35 +11,36 @@ class CreateUser(BaseCommannd):
 
     def execute(self):
         # try:
-            user_data = {
-                'correo': self.data.pop('correo'),
-                'password': self.data.pop('password'),
-                'ciudad': self.data.pop('ciudad'),
-                'pais': self.data.pop('pais'),
-            }
-            posted_user = UserSchema(
-                only=('correo', 'password', 'ciudad','pais')
-            ).load(user_data)
-            user = User(**posted_user)
-            posted_candidato = CandidatoSchema(only=('telefono','nombreCompleto','edad', 'idiomas','rasgosPersonalidad')).load(self.data)         
-            candidato = Candidato(**posted_candidato, idUsuario=user.id)
-            session = Session()
+        user_data = {
+            "correo": self.data.pop("correo"),
+            "password": self.data.pop("password"),
+            "ciudad": self.data.pop("ciudad"),
+            "pais": self.data.pop("pais"),
+        }
+        posted_user = UserSchema(only=("correo", "password", "ciudad", "pais")).load(
+            user_data
+        )
+        user = User(**posted_user)
+        posted_candidato = CandidatoSchema(
+            only=("telefono", "nombreCompleto", "edad", "idiomas", "rasgosPersonalidad")
+        ).load(self.data)
+        candidato = Candidato(**posted_candidato, idUsuario=user.id)
+        session = Session()
 
-            if self.correo_exist(session, user_data['correo']):
-                session.close()
-                raise UserAlreadyExists()
-
-            session.add(user)
-            session.add(candidato)
-            session.commit()
-            new_user = CreatedUserJsonSchema().dump(user)
+        if self.correo_exist(session, user_data["correo"]):
             session.close()
+            raise UserAlreadyExists()
 
-            return new_user
-        # except TypeError:
-        #     raise IncompleteParams()
+        session.add(user)
+        session.add(candidato)
+        session.commit()
+        new_user = CreatedUserJsonSchema().dump(user)
+        session.close()
+
+        return new_user
+
+    # except TypeError:
+    #     raise IncompleteParams()
 
     def correo_exist(self, session, correo):
         return len(session.query(User).filter_by(correo=correo).all()) > 0
-    
-    

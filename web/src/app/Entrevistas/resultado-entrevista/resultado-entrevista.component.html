@@ -1,0 +1,46 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">RESULTADO ENTREVISTA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <label class="text">Estado final</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="estado"
+          formControlName="estado"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="descripción"
+          formControlName="descripcion"
+        />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="text">Observaciones técnicas</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="observaciones"
+          formControlName="observaciones"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-2 d-flex justify-content-around col-12">
+    <button
+      id="ingreso"
+      class="commonButton btn btn-info mt-3"
+      (click)="verEntrevistas()"
+    >
+      Volver
+    </button>
+  </div>
+</div>

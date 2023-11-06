@@ -4,23 +4,26 @@ from .model import Model, Base
 
 
 class Candidato(Model, Base):
-    __tablename__ = 'candidatos'
+    __tablename__ = "candidatos"
 
     telefono = Column(String)
     nombreCompleto = Column(String)
     edad = Column(Integer)
     idiomas = Column(String)
     rasgosPersonalidad = Column(String)
-    idUsuario = Column(Integer, ForeignKey('users.id'))
+    idUsuario = Column(Integer, ForeignKey("users.id"))
 
-    def __init__(self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario):
+    def __init__(
+        self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario
+    ):
         Model.__init__(self)
         self.telefono = telefono
         self.edad = edad
         self.nombreCompleto = nombreCompleto
         self.idiomas = idiomas
         self.rasgosPersonalidad = rasgosPersonalidad
-        self.idUsuario = idUsuario 
+        self.idUsuario = idUsuario
+
 
 class CandidatoSchema(Schema):
     id = fields.Int()
@@ -46,4 +49,3 @@ class CandidatoJsonSchema(Schema):
     idiomas = fields.Str()
     rasgosPersonalidad = fields.Str()
     idUsuario = fields.Int()
-    
