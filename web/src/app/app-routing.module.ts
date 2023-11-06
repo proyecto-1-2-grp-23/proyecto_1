@@ -8,6 +8,12 @@ import { VistaEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/vista-eq
 import { CrearEquipoTrabajoComponent } from './Empresas/EquipoDeTrabajo/crear-equipo-trabajo/crear-equipo-trabajo.component';
 import { LoginEmpresaComponent } from './Empresas/login-empresa/login-empresa.component';
 import { LoginCandidatoComponent } from './Candidatos/login-candidato/login-candidato.component';
+import { AgregarCandidatoEquipoComponent } from './Empresas/EquipoDeTrabajo/agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { EntrevistasProgramadasComponent } from './Entrevistas/entrevistas-programadas/entrevistas-programadas.component';
+import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista/programar-entrevista.component';
+import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
+import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
+import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
 
 const routes: Routes = [
   {
@@ -53,6 +59,36 @@ const routes: Routes = [
   {
     path: 'crearEquipoDeTrabajo',
     component: CrearEquipoTrabajoComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'crearEquipoDeTrabajo/agregarCandidato',
+    component: AgregarCandidatoEquipoComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas',
+    component: EntrevistasProgramadasComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas/programarEntrevista',
+    component: ProgramarEntrevistaComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'entrevistas/detalleEntrevista',
+    component: DetalleEntrevistaComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'proyectos',
+    component: ListaProyectosComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'proyectos/crearProyecto',
+    component: CrearProyectoComponent,
     pathMatch: 'full',
   },
 ];

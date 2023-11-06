@@ -57,14 +57,14 @@
             class="form-control"
             formControlName="fechaFin"
             placeholder="Fecha de retiro"
-            name="dp"
+            name="dpp"
             [(ngModel)]="fechaFinSeleccionada"
             ngbDatepicker
-            #dp="ngbDatepicker"
+            #dpp="ngbDatepicker"
           />
           <button
             class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="dp.toggle()"
+            (click)="dpp.toggle()"
             type="button"
           ></button>
         </div>
@@ -83,7 +83,7 @@
         [(ngModel)]="nuevoChip"
         (keydown.enter)="agregarChip()"
         placeholder="Habilidades"
-        class="col-12"
+        class="col-12 form-control"
       />
     </div>
 

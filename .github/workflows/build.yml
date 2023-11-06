@@ -38,17 +38,12 @@ jobs:
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
       working-directory: backend/
-    # - name: Replace DB Password
-    #   env:
-    #     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-    #   run: "sed -i 's/DB_PASSWORD/$DB_PASSWORD/' deployment/secrets.yml"
-      # working-directory: backend/
     - name: Deploy to GKE
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud container clusters get-credentials autopilot-cluster-2 --region us-central1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" deployment/k8s-deployment.yml
-        
+        kubectl delete all --all -n default
         kubectl apply -f deployment/
       working-directory: backend/

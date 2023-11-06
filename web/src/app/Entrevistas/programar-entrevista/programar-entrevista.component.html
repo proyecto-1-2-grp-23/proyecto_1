@@ -1,0 +1,76 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">PROGRAMAR ENTREVISTA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="funcionario">
+          <option value="" disabled selected>Seleccionar funcionario</option>
+          <option value="1">funcionario 1</option>
+          <option value="2">funcionario 2</option>
+          <option value="3">funcionario 3</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="empresa">
+          <option value="" disabled selected>Seleccionar empresa</option>
+          <option value="1">empresa 1</option>
+          <option value="2">empresa 2</option>
+          <option value="3">empresa 3</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="candidato">
+          <option value="" disabled selected>Seleccionar candidato</option>
+          <option value="1">candidato 1</option>
+          <option value="2">candidato 2</option>
+          <option value="3">candidato 3</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <div class="input-group">
+          <input
+            class="form-control"
+            formControlName="fecha"
+            placeholder="Fecha de la entrevista"
+            name="dp"
+            [(ngModel)]="fechaInicioSeleccionada"
+            ngbDatepicker
+            #dp="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="dp.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Lugar / URL"
+          formControlName="lugar"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-5 d-flex justify-content-around col-12">
+    <button
+      id="reigstro"
+      class="commonButton btn btn-info mt-3"
+      (click)="guardar()"
+    >
+      Programar entrevista
+    </button>
+    <button
+      id="ingreso"
+      class="commonButton btn btn-info mt-3"
+      (click)="cancelar()"
+    >
+      Volver
+    </button>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_user import CreateUser
+from ..commands.list_admins import ListAdmin
 from ..models.user import User, Base
 from ..session import Session, engine
 import bcrypt
@@ -45,7 +46,7 @@ def login():
 
     
 
-@users_blueprint.route("/usuario/asociar_candidato_equipo/<int:id_equipo>", methods=["POST"])
+@users_blueprint.route("/users/asociar_candidato_equipo/<int:id_equipo>", methods=["POST"])
 def asociar_candidato(id_equipo):
     asociar = CreateUser(request.get_json()).crear_candidato_equipo(id_equipo)
     return jsonify(asociar), 201
@@ -57,3 +58,9 @@ def auth_token():
     else:
         authorization = None
     return authorization
+
+
+@users_blueprint.route("/users/admins", methods=["GET"])
+def get_admins():
+    admins = ListAdmin().execute()
+    return admins,200
