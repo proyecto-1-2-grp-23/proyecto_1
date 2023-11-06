@@ -45,6 +45,6 @@ jobs:
         gcloud container clusters get-credentials autopilot-cluster-2 --region us-central1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" deployment/k8s-deployment.yml
         kubectl delete all --all -n default
-        kubectl delete ingress gatewat-ingress-8
+        kubectl delete ingress gateway-ingress-8
         kubectl apply -f deployment/
       working-directory: backend/
