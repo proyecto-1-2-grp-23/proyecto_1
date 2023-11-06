@@ -34,7 +34,6 @@ jobs:
       run: |
         gcloud auth configure-docker us-central1-docker.pkg.dev
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/tests:latest
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
       working-directory: backend/
