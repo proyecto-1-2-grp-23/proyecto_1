@@ -21,7 +21,7 @@ class CreateUser(BaseCommannd):
                 only=('correo', 'password', 'ciudad','pais')
             ).load(user_data)
             user = User(**posted_user)
-            posted_candidato = CandidatoSchema(only=('telefono','nombreCompleto','edad', 'idiomas','rasgosPersonalidad')).load(self.data)         
+            posted_candidato = CandidatoSchema(only=('telefono','nombreCompleto','edad', 'idiomas','rasgosPersonalidad','caracteristicasTecnicas')).load(self.data)         
             candidato = Candidato(**posted_candidato, idUsuario=user.id)
             session = Session()
 
@@ -50,9 +50,10 @@ class CreateUser(BaseCommannd):
                 only=('correo', 'password', 'ciudad','pais')
             ).load(user_data)
             user = User(**posted_user)
-            posted_candidato = CandidatoSchema(only=('telefono','nombreCompleto','edad', 'idiomas','rasgosPersonalidad')).load(self.data)         
+            posted_candidato = CandidatoSchema(only=('telefono','nombreCompleto','edad', 'idiomas','rasgosPersonalidad', 'caracteristicasTecnicas')).load(self.data)         
             
             candidato = Candidato(**posted_candidato)
+            print(candidato.idEquipo)
             candidato.idEquipo = id_equipo
             session = Session()
 
