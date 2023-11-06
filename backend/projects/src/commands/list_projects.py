@@ -11,8 +11,8 @@ class ListProjects(BaseCommannd):
         session = Session()
         proyectos = session.query(Project).all()
         resultado_proyectos= [[proyecto.id, proyecto.nombre, proyecto.descripcion] for proyecto in proyectos]
-        equipos_dict = [{"id": proyecto[0], "nombre": proyecto[1], "descripcion": proyecto[2]} for proyecto in resultado_proyectos]
-        return equipos_dict
+        proyectos_dict = [{"id": proyecto[0], "nombre": proyecto[1], "descripcion": proyecto[2]} for proyecto in resultado_proyectos]
+        return proyectos_dict
 
 
     #def Listar_id_empresa(self, id_empresa):
