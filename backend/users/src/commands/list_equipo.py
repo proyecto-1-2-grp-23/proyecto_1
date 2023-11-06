@@ -14,6 +14,7 @@ class ListEquipo(BaseCommannd):
         equipos = session.query(Equipo).all()
         resultado_equipos = [[equipo.id, equipo.nombre, equipo.descripcion] for equipo in equipos]
         equipos_dict = [{"id": equipo[0], "nombre": equipo[1], "descripcion": equipo[2]} for equipo in resultado_equipos]
+        session.close()
         return equipos_dict
 
 
