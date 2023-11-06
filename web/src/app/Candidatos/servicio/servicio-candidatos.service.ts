@@ -18,4 +18,8 @@ export class ServicioCandidatosService {
   candidatoSignIn(usuario: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/singIn`, usuario);
   }
+
+  obtenerCandidatos(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/users`);
+  }
 }

@@ -25,4 +25,8 @@ export class ServicioCandidatosService {
       equipo
     );
   }
+
+  listarEmpresas(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/empresas`);
+  }
 }
