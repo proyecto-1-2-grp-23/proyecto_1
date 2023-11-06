@@ -21,6 +21,8 @@ import { ProgramarEntrevistaComponent } from './Entrevistas/programar-entrevista
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/detalle-entrevista.component';
 import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista/resultado-entrevista.component';
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
@@ -58,6 +60,8 @@ import { AgregarCandidatoProyectoComponent } from './Proyectos/agregar-candidato
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
   ],
   providers: [],

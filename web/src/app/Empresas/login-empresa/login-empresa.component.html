@@ -102,6 +102,7 @@
         id="reigstro"
         class="commonButton btn btn-info mt-3"
         (click)="hacerRegistro()"
+        [disabled]="!registrationForm.valid"
       >
         Registrarme
       </button>
