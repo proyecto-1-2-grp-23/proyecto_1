@@ -8,6 +8,7 @@ from .blueprints.empresas import empresa_blueprint
 from .blueprints.equipo import equipo_blueprint
 from .blueprints.data_laboral import laboral_data_blueprint
 from .blueprints.entrevistas import entrevistas_blueprint
+from .blueprints.candidatos import candidatos_blueprint
 from .models.model import Base
 from .session import engine
 from flask import Flask, jsonify
@@ -20,7 +21,7 @@ app.register_blueprint(empresa_blueprint)
 app.register_blueprint(equipo_blueprint)
 app.register_blueprint(laboral_data_blueprint)
 app.register_blueprint(entrevistas_blueprint)
-
+app.register_blueprint(candidatos_blueprint)
 Base.metadata.create_all(engine)
 
 cors = CORS(app)
