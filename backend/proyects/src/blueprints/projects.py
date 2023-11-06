@@ -1,3 +1,5 @@
+import sys
+sys.path.append(".")
 from ..commands.list_projects import ListProjects
 from ..commands.create_project import CreateProject
 from flask import Flask, jsonify, request, Blueprint

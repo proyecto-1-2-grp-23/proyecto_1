@@ -7,11 +7,26 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ServicioCandidatosService {
-  private backUrl: string = 'http://localhost:5000'; //environment.baseUrl
+  private backUrl: string = environment.baseUrl + '/users';
 
   constructor(private http: HttpClient) {}
 
   empresaRegistro(empresa: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/empresa`, empresa);
+  }
+
+  listarEquipo(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/empresa`);
+  }
+
+  crearEquipo(equipo: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/equipo/listar-equipos/`,
+      equipo
+    );
+  }
+
+  listarEmpresas(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/empresas`);
   }
 }
