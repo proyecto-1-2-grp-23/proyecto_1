@@ -11,7 +11,7 @@ entrevistas_blueprint = Blueprint("entrevistas", __name__)
 
 @entrevistas_blueprint.route("/users/entrevistas/ping", methods=["GET"])
 def ping():
-    return "pong"
+    return "pongs"
 
 
 @entrevistas_blueprint.route("/users/entrevistas", methods=["GET"])
