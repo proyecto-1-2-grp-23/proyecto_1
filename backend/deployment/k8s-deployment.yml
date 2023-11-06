@@ -89,21 +89,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: proyects
+  name: projects
   labels:
-    app: proyects
+    app: projects
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: proyects
+      app: projects
   template:
     metadata:
       labels:
-        app: proyects
+        app: projects
     spec:
       containers:
-        - name: proyects
+        - name: projects
           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/proyects:latest
           env:
             - name: "ENV"
@@ -142,24 +142,24 @@ spec:
 apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
-  name: proyects-config
+  name: projects-config
 spec:
   healthCheck:
     checkIntervalSec: 30
     port: 3000
     type: HTTP
-    requestPath: /proyects/ping
+    requestPath: /projects/ping
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: servicio-proyects
+  name: servicio-projects
   annotations:
-    cloud.google.com/backend-config: '{"default": "proyects-config"}'
+    cloud.google.com/backend-config: '{"default": "projects-config"}'
 spec:
   type: NodePort
   selector:
-    app: proyects
+    app: projects
   ports:
     - protocol: TCP
       port: 80
