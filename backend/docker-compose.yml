@@ -34,37 +34,37 @@ services:
       retries: 5
     networks:
       - app_net
-  tests:
-    image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/tests:latest
-    build: ./tests
-    ports:
-      - "3001:3000"
-    environment:
-      DB_NAME: monitor_tests
-      DB_HOST: tests_db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      FLASK_APP: ./src/main.py
-      ENV: dev
-    depends_on:
-      tests_db:
-        condition: service_healthy
-    networks:
-      - app_net
-  tests_db:
-    image: postgres
-    environment:
-      POSTGRES_DB: monitor_tests
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 2s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app_net
+  # tests:
+  #   image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/tests:latest
+  #   build: ./tests
+  #   ports:
+  #     - "3001:3000"
+  #   environment:
+  #     DB_NAME: monitor_tests
+  #     DB_HOST: tests_db
+  #     DB_PORT: 5432
+  #     DB_USER: postgres
+  #     DB_PASSWORD: postgres
+  #     FLASK_APP: ./src/main.py
+  #     ENV: dev
+  #   depends_on:
+  #     tests_db:
+  #       condition: service_healthy
+  #   networks:
+  #     - app_net
+  # tests_db:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_DB: monitor_tests
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 2s
+  #     timeout: 5s
+  #     retries: 5
+  #   networks:
+  #     - app_net
   proyects:
     image:  us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/proyects:latest
     build: ./proyects
