@@ -17,6 +17,7 @@ export class SinginComponent implements OnInit {
 
   usuario!: candidatoSignIn;
   fieldTextType!: boolean;
+  token: string | undefined;
 
   registrationForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -62,29 +63,36 @@ export class SinginComponent implements OnInit {
   ingresar() {
     this.usuario = {
       correo: this.registrationForm.get('email')?.value,
-      password: this.registrationForm.get('password')?.value,
+      contraseña: this.registrationForm.get('password')?.value,
     };
 
     this.usuarioService.candidatoSignIn(this.usuario).subscribe(
       (data) => {
-        Swal.fire('', 'Ingreso correcto', 'success');
-        // Manejar la respuesta exitosa aquí
-        if (this.parametros.tipoUsuario == 'empresas') {
-          this.router.navigate([`/menu/empresa`]);
-        } else if (this.parametros.tipoUsuario == 'candidato') {
-          this.router.navigate([`/menu/candidato`]);
+        if (data.message == 'Usuario no existe') {
+          Swal.fire('', data.message, 'error');
         } else {
-          this.router.navigate([`/menu/administrador`]);
+          Swal.fire('', data.message, 'success');
+          // Manejar la respuesta exitosa aquí
+          this.token = data.token;
+          if (this.parametros.tipoUsuario == 'empresas') {
+            this.router.navigate([`/menu/empresa`]);
+          } else if (this.parametros.tipoUsuario == 'candidato') {
+            this.router.navigate([`/menu/candidato`]);
+          } else {
+            this.router.navigate([`/menu/administrador`]);
+          }
         }
       },
       (error: HttpErrorResponse) => {
-        Swal.fire(
-          '',
-          'Error en el registro con codigo ' + error.status,
-          'error'
-        );
-        console.error('Error:', error);
-        console.log('Código de error:', error.status); // Aquí obtienes el código de estado HTTP
+        if (error.statusText == 'UNAUTHORIZED') {
+          Swal.fire('', 'Contraseña incorrecta ', 'error');
+        } else {
+          Swal.fire(
+            '',
+            'Error en el ingreso con codigo ' + error.status,
+            'error'
+          );
+        }
       }
     );
   }

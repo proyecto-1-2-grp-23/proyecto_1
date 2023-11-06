@@ -1,13 +1,13 @@
 export class Candidato {
   id: number;
   correo: string;
-  password: string;
+  contraseña: string;
 
-  constructor(id: number, correo: string, password: string) {
+  constructor(id: number, correo: string, contraseña: string) {
     this.id = id;
     this.correo = correo;
-    this.password = password;
+    this.contraseña = contraseña;
   }
 }
 
-export type candidatoSignIn = Pick<Candidato, 'correo' | 'password'>;
+export type candidatoSignIn = Pick<Candidato, 'correo' | 'contraseña'>;
