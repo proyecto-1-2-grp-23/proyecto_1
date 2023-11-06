@@ -18,6 +18,10 @@
             android:label="Candidato Login Activity"
             android:exported="true" />
         <activity
+            android:name=".view.empresa.EmpresaLoginActivity"
+            android:label="Empresa Login Activity"
+            android:exported="true" />
+        <activity
             android:name=".PostLoginActivity"
             android:label="post loguin activity"
             android:exported="true" />

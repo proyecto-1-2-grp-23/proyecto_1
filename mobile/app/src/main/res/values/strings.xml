@@ -14,6 +14,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="candidato">Candidato</string>
     <string name="abc_jobs">ABC JOBS</string>
+    <string name="abc_jobs_empresas">ABC JOB EMPRESAS</string>
     <string name="empresa">Empresa</string>
     <string name="nombre_candidato">Nombre de candidato</string>
     <string name="nombre_empresa">Nombre de empresa</string>

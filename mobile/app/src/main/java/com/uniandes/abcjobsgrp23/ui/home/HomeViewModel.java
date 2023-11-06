@@ -1,19 +1,16 @@
 package com.uniandes.abcjobsgrp23.ui.home;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    // Atributo para almacenar el tipo de usuario
+    private final MutableLiveData<String> userType;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        userType = new MutableLiveData<>();
+        userType.setValue("");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }

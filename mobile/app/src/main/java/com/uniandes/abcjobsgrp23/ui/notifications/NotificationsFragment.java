@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.uniandes.abcjobsgrp23.databinding.FragmentNotificationsBinding;
+import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 
 public class NotificationsFragment extends Fragment {
 
@@ -25,7 +26,20 @@ public class NotificationsFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        // Obtiene el tipo de usuario
+        String  userType = UserType.getUserType();
+
+        // Muestra contenido en función del tipo de usuario
+        if (userType == UserType.CANDIDATO) {
+            textView.setText("Notifications, Candidato.");
+        } else if (userType == UserType.EMPRESA) {
+            textView.setText("Notifications, Empresa.");
+        } else {
+            textView.setText("Bienvenido a Notifications");
+        }
+
         return root;
     }
 
