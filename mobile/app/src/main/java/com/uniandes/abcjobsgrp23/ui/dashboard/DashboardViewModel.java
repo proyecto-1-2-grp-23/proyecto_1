@@ -1,19 +1,15 @@
 package com.uniandes.abcjobsgrp23.ui.dashboard;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class DashboardViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final MutableLiveData<String> userType;
 
     public DashboardViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        userType = new MutableLiveData<>();
+        userType.setValue("");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }

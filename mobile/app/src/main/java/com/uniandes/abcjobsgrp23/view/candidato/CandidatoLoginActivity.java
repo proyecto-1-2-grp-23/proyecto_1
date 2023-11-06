@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uniandes.abcjobsgrp23.PostLoginActivity;
 import com.uniandes.abcjobsgrp23.R;
 import com.uniandes.abcjobsgrp23.data.repository.UserCredentialRespository;
+import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +78,14 @@ public class CandidatoLoginActivity extends AppCompatActivity {
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
 
+        if (username.equalsIgnoreCase("candidato") && password.equalsIgnoreCase("1234")) {
+            UserType.setUserType(UserType.CANDIDATO);
+            startPostLoginActivity();
+        } else {
+            showIncorrectCredentialsMessage();
+        }
+
+        /**
         userCredentialRespository.login(username, password, new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -86,7 +95,8 @@ public class CandidatoLoginActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(jsonResponse);
                         if (jsonObject.has("token")) {
                             String authToken = jsonObject.getString("token");
-                            saveAuthToken(authToken);
+                            //saveAuthToken(authToken);
+                            UserType.setUserType(UserType.CANDIDATO);
                             startPostLoginActivity();
                         } else {
                             showErrorMessage("Error: Token no encontrado en la respuesta");
@@ -108,6 +118,7 @@ public class CandidatoLoginActivity extends AppCompatActivity {
                 showErrorMessage("Error en la red: " + t.getMessage());
             }
         });
+         **/
     }
 
     public void showErrorMessage(String message) {
