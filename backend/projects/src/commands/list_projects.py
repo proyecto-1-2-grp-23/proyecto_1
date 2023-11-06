@@ -1,21 +1,18 @@
+from ..models.project import Project
 from .base_command import BaseCommannd
-from ..models.user import User, UserSchema, CreatedUserJsonSchema
-from ..models.empresa import EmpresaSchema, Empresa
-from ..models.equipo import Equipo
 from ..session import Session
 from ..errors.errors import IncompleteParams, UserAlreadyExists
 from flask import jsonify
 
 
-class ListEquipo(BaseCommannd):
+class ListProjects(BaseCommannd):
 
     def execute(self):
         session = Session()
-        equipos = session.query(Equipo).all()
-        resultado_equipos = [[equipo.id, equipo.nombre, equipo.descripcion] for equipo in equipos]
-        equipos_dict = [{"id": equipo[0], "nombre": equipo[1], "descripcion": equipo[2]} for equipo in resultado_equipos]
-        session.close()
-        return equipos_dict
+        proyectos = session.query(Project).all()
+        resultado_proyectos= [[proyecto.id, proyecto.nombre, proyecto.descripcion] for proyecto in proyectos]
+        proyectos_dict = [{"id": proyecto[0], "nombre": proyecto[1], "descripcion": proyecto[2]} for proyecto in resultado_proyectos]
+        return proyectos_dict
 
 
     #def Listar_id_empresa(self, id_empresa):

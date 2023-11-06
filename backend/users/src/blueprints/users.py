@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_user import CreateUser
+from ..commands.list_admins import ListAdmin
 from ..models.user import User, Base
 from ..session import Session, engine
 import bcrypt
@@ -57,3 +58,9 @@ def auth_token():
     else:
         authorization = None
     return authorization
+
+
+@users_blueprint.route("/users/admins", methods=["GET"])
+def get_admins():
+    admins = ListAdmin().execute()
+    return admins,200
