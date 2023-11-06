@@ -3,7 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 loaded = load_dotenv(".env.development")
 
 from .errors.errors import ApiError
-from .blueprints.users import users_blueprint
+from .blueprints.projects import projects_blueprint
 from .models.model import Base
 from .session import engine
 from flask import Flask, jsonify
@@ -11,8 +11,7 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-app.register_blueprint(users_blueprint)
-
+app.register_blueprint(projects_blueprint)
 Base.metadata.create_all(engine)
 
 cors = CORS(app)
