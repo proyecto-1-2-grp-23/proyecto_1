@@ -2,4 +2,14 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
     </style>
+    <style name="DatePickerStyle" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/datePickerTextColor</item>
+        <item name="android:background">@color/datePickerCalendarBackground</item>
+        <item name="android:headerBackground">@color/datePickerHeaderBackground</item>
+    </style>
+
+    <style name="TimePickerStyle" parent="Widget.MaterialComponents.TimePicker">
+        <item name="android:textColor">@color/timePickerTextColor</item>
+        <item name="android:background">@color/timePickerHeaderBackground</item>
+    </style>
 </resources>

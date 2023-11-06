@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Sg\.android\avd\Pixel_7_API_30.avd" />
+            <value value="C:\Users\Sg\.android\avd\Pixel_7_API_30_2.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-10-30T03:35:17.097868400Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-11-06T08:53:10.698488600Z" />
   </component>
 </project>

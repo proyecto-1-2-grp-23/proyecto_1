@@ -23,4 +23,16 @@
     <string name="registrarse">Registrarse</string>
     <string name="cancelar">Cancelar</string>
     <string name="pais">    País*</string>
+    <string name="titulo">Título</string>
+    <string name="ver_detalles">ver detalles</string>
+    <string name="editar_detalles">editar detalles</string>
+    <string name="mostrar_fecha">Mostrar Fecha</string>
+    <string name="mostrar_hora">Mostrar Hora</string>
+    <string name="hora_seleccionada">Hora seleccionada:</string>
+    <string name="fecha_seleccionada">fecha seleccionada</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="estado_final">Estado Final</string>
+    <string name="observaciones">Observaciones</string>
+    <string name="guardar">Guardar</string>
+    <string name="resultado_entrevista">Resultado Entrevista</string>
 </resources>
