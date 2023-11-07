@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <ImageButton
+        android:id="@+id/btnAddInterview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:src="@android:drawable/ic_menu_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewRecordEntrevista"
+        app:layout_constraintVertical_bias="0.841"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -19,4 +33,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRecordEntrevista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnAddRecord"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:ignore="UnknownIdInLayout"
+        tools:layout_editor_absoluteX="-8dp"
+        tools:layout_editor_absoluteY="-359dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

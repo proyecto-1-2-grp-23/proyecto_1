@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.uniandes.abcjobsgrp23.databinding.FragmentDashboardBinding;
+import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 
 public class DashboardFragment extends Fragment {
 
@@ -25,7 +26,19 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        // Obtiene el tipo de usuario
+        String  userType = UserType.getUserType();
+
+        // Muestra contenido en función del tipo de usuario
+        if (userType == UserType.CANDIDATO) {
+            textView.setText("Dashboard, Candidato.");
+        } else if (userType == UserType.EMPRESA) {
+            textView.setText("Dashboard, Empresa.");
+        } else {
+            textView.setText("Bienvenido al Dashboard.");
+        }
         return root;
     }
 

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detalle_entrevista_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:padding="16dp"
+    tools:context=".DetalleEntrevistaCandidatoActivity">
+
+    <TextView
+        android:id="@+id/textViewDetalleTitulo"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:text="Título" />
+
+    <TextView
+        android:id="@+id/textViewDetalleDescripcion"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:text="Descripción" />
+
+    <!-- Campo Funcionario Asignado (AutoCompleteTextView) -->
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteFuncionario"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Funcionario Asignado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Campo Candidato (Spinner) -->
+    <Spinner
+        android:id="@+id/spinnerCandidato"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Selecione un Candidato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Campo Empresa (Spinner) -->
+    <Spinner
+        android:id="@+id/spinnerEmpresa"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Selecione una Empresa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewFechaSeleccionada"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:hint="@string/fecha_seleccionada"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnMostrarDatePicker"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:text="@string/mostrar_fecha" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dateContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <!-- Campo Fecha (DatePicker) -->
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:spinnersShown="true"
+            style="@style/DatePickerStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewHoraSeleccionada"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:hint="@string/hora_seleccionada"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnMostrarTimePicker"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:text="@string/mostrar_hora" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/TimeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Campo Hora (TimePicker) -->
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TimePickerStyle" />
+
+    </LinearLayout>
+
+    <!-- Campo Lugar/URL (EditText) -->
+    <EditText
+        android:id="@+id/editTextLugarUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lugar/URL" />
+
+    <Button
+        android:id="@+id/bntGuardarDetalleEntervista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar" />
+
+    <Button
+        android:id="@+id/bntCancelarDetalleEntervista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancelar" />
+
+
+</LinearLayout>

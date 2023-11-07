@@ -18,6 +18,10 @@
             android:label="Candidato Login Activity"
             android:exported="true" />
         <activity
+            android:name=".view.empresa.EmpresaLoginActivity"
+            android:label="Empresa Login Activity"
+            android:exported="true" />
+        <activity
             android:name=".PostLoginActivity"
             android:label="post loguin activity"
             android:exported="true" />
@@ -25,7 +29,14 @@
             android:name=".view.candidato.CandidatoRegisterActivity"
             android:label="Candidato Register Activity"
             android:exported="true" />
-
+        <activity
+            android:name=".view.entrevistas.DetalleEntrevistaCandidatoActivity"
+            android:label="Entrevista Candidato Activity"
+            android:exported="true" />
+        <activity
+            android:name=".view.entrevistas.ResultadoEntrevistaActivity"
+            android:label="Resultado Entrevista Activity"
+            android:exported="true" />
         <activity
             android:name=".PreLoginActivity"
             android:exported="true"
