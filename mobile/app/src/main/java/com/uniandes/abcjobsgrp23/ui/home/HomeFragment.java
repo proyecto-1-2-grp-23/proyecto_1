@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,9 +29,10 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        ImageButton btnAddInterview = root.findViewById(R.id.btnAddInterview);
 
         final TextView textView = binding.textHome;
 
@@ -55,6 +57,14 @@ public class HomeFragment extends Fragment {
             // Configura el adaptador del RecyclerView para RecordEntrevista
             RecordEntrevistaAdapter recordEntrevistaAdapter = new RecordEntrevistaAdapter(recordList);
             recyclerViewRecordEntrevista.setAdapter(recordEntrevistaAdapter);
+
+            btnAddInterview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Agregar aquí la lógica para abrir la pantalla de creación de entrevistas
+                    // Puedes navegar a una nueva actividad o fragmento para agregar una nueva entrevista.
+                }
+            });
 
         } else {
             textView.setText("Bienvenido al Home");
