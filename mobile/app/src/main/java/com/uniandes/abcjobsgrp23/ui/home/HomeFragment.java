@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniandes.abcjobsgrp23.R;
+import com.uniandes.abcjobsgrp23.data.model.Entrevista;
 import com.uniandes.abcjobsgrp23.data.model.RecordEntrevista;
 import com.uniandes.abcjobsgrp23.databinding.FragmentHomeBinding;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 import com.uniandes.abcjobsgrp23.view.entrevistas.RecordEntrevistaAdapter;
+import com.uniandes.abcjobsgrp23.viewmodel.EntrevistaViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,9 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private List<RecordEntrevista> recordList = new ArrayList<>();
+
+    private EntrevistaViewModel entrevistaViewModel;
+    private List<Entrevista> recordList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -49,14 +53,22 @@ public class HomeFragment extends Fragment {
             RecyclerView recyclerViewRecordEntrevista = root.findViewById(R.id.recyclerViewRecordEntrevista);
             recyclerViewRecordEntrevista.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-            // Agrega datos de ejemplo a la lista de RecordEntrevista
-            List<RecordEntrevista> recordList = new ArrayList<>();
-            recordList.add(new RecordEntrevista("Entrevista 1", "Descripción de la entrevista 1"));
-            recordList.add(new RecordEntrevista("Entrevista 2", "Descripción de la entrevista 2"));
-
             // Configura el adaptador del RecyclerView para RecordEntrevista
             RecordEntrevistaAdapter recordEntrevistaAdapter = new RecordEntrevistaAdapter(recordList);
             recyclerViewRecordEntrevista.setAdapter(recordEntrevistaAdapter);
+
+            // Inicializa el ViewModel
+            entrevistaViewModel = new ViewModelProvider(this).get(EntrevistaViewModel.class);
+
+            entrevistaViewModel.getAllEntrevistas().observe(getViewLifecycleOwner(), entrevistas -> {
+                // Actualiza la lista recordList con las nuevas entrevistas
+                recordList.clear();
+                recordList.addAll(entrevistas);
+                // Notifica al adaptador de que los datos han cambiado
+                recordEntrevistaAdapter.notifyDataSetChanged();
+            });
+
+
 
             btnAddInterview.setOnClickListener(new View.OnClickListener() {
                 @Override
