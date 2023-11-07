@@ -1,5 +1,6 @@
 package com.uniandes.abcjobsgrp23.view.entrevistas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.uniandes.abcjobsgrp23.R;
+import com.uniandes.abcjobsgrp23.data.model.Entrevista;
 import com.uniandes.abcjobsgrp23.data.model.RecordEntrevista;
 import java.util.List;
 public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevistaAdapter.RecordEntrevistaViewHolder> {
-    private List<RecordEntrevista> recordList;
+    private List<Entrevista> entrevistas;
 
-    public RecordEntrevistaAdapter(List<RecordEntrevista> recordList) {
-        this.recordList = recordList;
+    public RecordEntrevistaAdapter(List<Entrevista> entrevistas) {
+        this.entrevistas = entrevistas;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setEntrevistas(List<Entrevista> entrevistas) {
+        this.entrevistas = entrevistas;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -27,23 +35,23 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
 
     @Override
     public void onBindViewHolder(@NonNull RecordEntrevistaViewHolder holder, int position) {
-        RecordEntrevista record = recordList.get(position);
-        holder.titleTextView.setText(record.getTitle());
-        holder.descriptionTextView.setText(record.getDescription());
+        Entrevista record = entrevistas.get(position);
+        holder.titleTextView.setText(record.getCandidato().getNombreCompleto());
+        holder.descriptionTextView.setText(record.getEmpresa().getRazonSocial());
 
         // Manejador de eventos para el botón "Ver Detalle"
         holder.btnVerDetalle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Obtén el registro en la posición 'position'
-                RecordEntrevista selectedRecord = recordList.get(position);
+                Entrevista selectedRecord = entrevistas.get(position);
 
                 // Crea un Intent para abrir la nueva actividad
                 Intent intent = new Intent(v.getContext(), DetalleEntrevistaCandidatoActivity.class);
 
                 // Pasa los datos necesarios a través del Intent
-                intent.putExtra("titulo", selectedRecord.getTitle());
-                intent.putExtra("descripcion", selectedRecord.getDescription());
+                intent.putExtra("titulo", selectedRecord.getCandidato().getNombreCompleto());
+                intent.putExtra("descripcion", selectedRecord.getEmpresa().getRazonSocial());
                 intent.putExtra("Editar", false);
 
                 // Inicia la nueva actividad
@@ -56,7 +64,7 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             @Override
             public void onClick(View v) {
                 // Obtén el registro en la posición 'position'
-                RecordEntrevista selectedRecord = recordList.get(position);
+                Entrevista selectedRecord = entrevistas.get(position);
 
                 // Crea un Intent para abrir la nueva actividad
                 Intent intent = new Intent(v.getContext(), DetalleEntrevistaCandidatoActivity.class);
@@ -72,7 +80,7 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             @Override
             public void onClick(View v) {
                 // Obtén el registro en la posición 'position'
-                RecordEntrevista selectedRecord = recordList.get(position);
+                Entrevista selectedRecord = entrevistas.get(position);
                 // Crea un Intent para abrir la nueva actividad
                 Intent intent = new Intent(v.getContext(), ResultadoEntrevistaActivity.class);
                 // Inicia la nueva actividad
@@ -82,7 +90,7 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
     }
     @Override
     public int getItemCount() {
-        return recordList.size();
+        return entrevistas.size();
     }
 
     static class RecordEntrevistaViewHolder extends RecyclerView.ViewHolder {

@@ -1,6 +1,5 @@
 package com.uniandes.abcjobsgrp23.data.service;
 
-import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
 
 import java.util.List;

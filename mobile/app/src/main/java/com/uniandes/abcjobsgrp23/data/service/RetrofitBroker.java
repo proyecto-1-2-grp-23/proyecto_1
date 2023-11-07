@@ -1,6 +1,7 @@
 package com.uniandes.abcjobsgrp23.data.service;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
@@ -11,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import okhttp3.OkHttpClient;
+import okhttp3.*;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 
@@ -91,19 +95,37 @@ public class RetrofitBroker {
         }
     }
 
-    public static List<Entrevista> getAllEntrevistas() {
+    public static void getAllEntrevistas(Callback<List<Entrevista>> callback) {
         Call<List<Entrevista>> call = ApiClient.entrevistaApi.getAllEntrevistas();
-        try {
-            Response<List<Entrevista>> response = call.execute();
-            if (response.isSuccessful()) {
-                return response.body();
-            } else {
-                return new ArrayList<>();
+        call.enqueue(new Callback<List<Entrevista>>() {
+            @Override
+            public void onResponse(Call<List<Entrevista>> call, Response<List<Entrevista>> response) {
+
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                // Añade el interceptor personalizado para el registro
+                httpClient.addInterceptor(new LoggingInterceptor());
+
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    // Manejar la respuesta de error aquí
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
             }
-        } catch (IOException e) {
-            Log.e("Error", Objects.requireNonNull(e.getMessage()));
-            return new ArrayList<>();
-        }
+
+            @Override
+            public void onFailure(Call<List<Entrevista>> call, Throwable t) {
+                // Manejar errores de red aquí
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+
     }
     public static Entrevista getEntrevistaById(Integer entrevistaId) {
         Call<Entrevista> call = ApiClient.entrevistaApi.getEntrevistaById(entrevistaId);
