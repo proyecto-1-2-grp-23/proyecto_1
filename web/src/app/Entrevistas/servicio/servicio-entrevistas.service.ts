@@ -18,4 +18,8 @@ export class ServicioEntrevistasService {
   listarEntrevistas(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/entrevistas`);
   }
+
+  listarFuncionarios(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/admins`);
+  }
 }

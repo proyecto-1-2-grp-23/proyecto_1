@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class ServicioCandidatosService {
+export class ServicioEmpresaService {
   private backUrl: string = environment.baseUrl + '/users';
 
   constructor(private http: HttpClient) {}
@@ -27,6 +27,6 @@ export class ServicioCandidatosService {
   }
 
   listarEmpresas(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/empresas`);
+    return this.http.get<any>(`${this.backUrl}/empresa`);
   }
 }

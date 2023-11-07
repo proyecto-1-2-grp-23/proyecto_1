@@ -20,6 +20,6 @@ export class ServicioCandidatosService {
   }
 
   obtenerCandidatos(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/users`);
+    return this.http.get<any>(`${this.backUrl}/candidatos`);
   }
 }
