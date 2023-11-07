@@ -21,6 +21,16 @@ export class ResultadoEntrevistaComponent implements OnInit {
     if (data != null) {
       let informacion = data.info;
       console.log(informacion, 'info');
+
+      this.registrationForm.get('estado')?.setValue(informacion.Estado);
+
+      this.registrationForm
+        .get('descripcion')
+        ?.setValue(informacion.Descripcion);
+
+      this.registrationForm
+        .get('observaciones')
+        ?.setValue(informacion.Observaciones);
     }
   }
 
