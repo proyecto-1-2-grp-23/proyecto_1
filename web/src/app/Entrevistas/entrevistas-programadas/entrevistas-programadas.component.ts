@@ -56,8 +56,6 @@ export class EntrevistasProgramadasComponent implements OnInit {
 
   cargarEntrevistas() {
     this.entravistaService.listarEntrevistas().subscribe((res) => {
-      console.log(res);
-
       res.forEach((registro: any) => {
         const entrevista = registro.id;
         const empresa = registro.empresa.razonSocial;

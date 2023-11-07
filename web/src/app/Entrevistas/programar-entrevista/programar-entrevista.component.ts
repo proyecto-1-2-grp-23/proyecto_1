@@ -6,10 +6,7 @@ import { ServicioEntrevistasService } from '../servicio/servicio-entrevistas.ser
 import Swal from 'sweetalert2';
 import { ServicioEmpresaService } from 'src/app/Empresas/servicio/servicio-empresa.service';
 import { ServicioCandidatosService } from 'src/app/Candidatos/servicio/servicio-candidatos.service';
-import {
-  NgbDateParserFormatter,
-  NgbDateStruct,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-programar-entrevista',
@@ -44,7 +41,6 @@ export class ProgramarEntrevistaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private ngbDateParserFormatter: NgbDateParserFormatter,
     private entravistaService: ServicioEntrevistasService,
     private candidatoService: ServicioCandidatosService,
     private empresaService: ServicioEmpresaService
