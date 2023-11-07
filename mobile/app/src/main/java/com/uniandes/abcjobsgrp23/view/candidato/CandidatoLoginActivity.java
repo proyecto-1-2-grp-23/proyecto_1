@@ -30,7 +30,7 @@ public class CandidatoLoginActivity extends AppCompatActivity {
     public EditText editTextPassword;
     public Button btnLogin;
     private Button btnRegister;
-    UserCredentialRespository userCredentialRespository = new UserCredentialRespository();
+//    UserCredentialRespository userCredentialRespository = new UserCredentialRespository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

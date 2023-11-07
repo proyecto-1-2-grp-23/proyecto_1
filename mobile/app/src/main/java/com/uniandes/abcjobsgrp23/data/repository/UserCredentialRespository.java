@@ -1,23 +1,21 @@
 package com.uniandes.abcjobsgrp23.data.repository;
 
-import com.uniandes.abcjobsgrp23.data.model.UserCredential;
-import com.uniandes.abcjobsgrp23.data.service.UserCredentialServiceImpl;
+import android.app.Application;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
+import com.uniandes.abcjobsgrp23.data.model.UserCredential;
+import com.uniandes.abcjobsgrp23.data.service.RetrofitBroker;
+
+import java.util.List;
 
 public class UserCredentialRespository {
+    private Application application;
 
-    private UserCredentialServiceImpl userCredentialService;
-
-    public UserCredentialRespository() {
-        userCredentialService = new UserCredentialServiceImpl();
+    public UserCredentialRespository(Application application) {
+        this.application = application;
     }
 
-    public void login(String correo, String contraseña, Callback<ResponseBody> callback) {
-        UserCredential requestBody = new UserCredential(correo, contraseña);
-        Call<ResponseBody> call = userCredentialService.login(requestBody);
-        call.enqueue(callback);
+    public UserCredential loginUser(UserCredential userCredential) {
+        return RetrofitBroker.loginUser(userCredential);
     }
+
 }
