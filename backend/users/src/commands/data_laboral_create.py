@@ -1,11 +1,10 @@
 from .base_command import BaseCommannd
-from ..models.data_laboral import DataLaboral, DataLaboralSchema
-from ..models.empresa import EmpresaSchema, Empresa
+from ..models.data_laboral import DataLaboral, DataLaboralSchema, CreatedDataLaboralJsonSchema
 from ..session import Session
 from flask import Flask, jsonify
 
 
-class CreateEquipo(BaseCommannd):
+class CreateLaboral(BaseCommannd):
     try:
 
         def __init__(self, data):
@@ -16,11 +15,16 @@ class CreateEquipo(BaseCommannd):
                 "nombre_empresa": self.data.pop("nombre_empresa"),
                 "rol": self.data.pop("rol"),
                 "funciones": self.data.pop("funciones"),
-                "fecha_inicio": self.data.pop("fecha_inicio"),
-                "fecha_fin": self.data.pop("fecha_fin"),
-                "habilidades": self.data.pop("habilidades"),
-                "idUsuario": self.data.pop("idUsuario"),
+                "habilidades": self.data.pop("habilidades")
             }
+
+            hora_inicio = self.data.pop("fecha_inicio")
+            hora_fin = self.data.pop("fecha_fin")
+            hora = '00:00:00'
+            fecha_hora_inicio = hora_inicio + 'T' + hora
+            fecha_hora_fin = hora_fin + 'T' + hora
+            user_data_laboral["fecha_inicio"] = fecha_hora_inicio
+            user_data_laboral["fecha_fin"] = fecha_hora_fin
 
             posted_data = DataLaboralSchema(
                 only=(
@@ -29,17 +33,18 @@ class CreateEquipo(BaseCommannd):
                     "funciones",
                     "fecha_inicio",
                     "fecha_fin",
-                    "habilidades",
-                    "idUsuario",
+                    "habilidades"
                 )
             ).load(user_data_laboral)
-
+            data_laboral = DataLaboral(**posted_data)
             session = Session()
+           
 
-            session.add(posted_data)
+            session.add(data_laboral)
             session.commit()
+            new_user = CreatedDataLaboralJsonSchema().dump(data_laboral)
             session.close()
-            return posted_data
+            return new_user
 
     except Exception as error:
         # handle the exception

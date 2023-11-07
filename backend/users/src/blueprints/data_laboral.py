@@ -2,11 +2,12 @@ from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_user import CreateUser
 from ..models.user import User, Base
+from ..commands.data_laboral_create import CreateLaboral
 from ..session import Session, engine
 import bcrypt
 
 session = Session(bind=engine)
-laboral_data_blueprint = Blueprint("users/dataLaboral", __name__)
+laboral_data_blueprint = Blueprint("laboral", __name__)
 
 
 @laboral_data_blueprint.route("/users/dataLaboral/ping", methods=["GET"])
@@ -16,7 +17,7 @@ def ping():
 
 @laboral_data_blueprint.route("/users/dataLaboral", methods=["POST"])
 def create():
-    user = CreateUser(request.get_json()).execute()
+    user = CreateLaboral(request.get_json()).execute()
     return jsonify(user), 201
 
 
