@@ -9,12 +9,10 @@ from .session import engine
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-
 app = Flask(__name__)
+cors = CORS(app)
 app.register_blueprint(projects_blueprint)
 Base.metadata.create_all(engine)
-
-cors = CORS(app)
 
 
 @app.errorhandler(ApiError)
