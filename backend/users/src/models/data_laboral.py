@@ -6,6 +6,7 @@ from .model import Model, Base
 class DataLaboral(Model, Base):
     __tablename__ = "datos_laborales_candidato"
 
+    id = Column(Integer, primary_key=True)
     nombre_empresa = Column(String)
     rol = Column(String)
     funciones = Column(Integer)
@@ -14,16 +15,7 @@ class DataLaboral(Model, Base):
     habilidades = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
 
-    def __init__(
-        self,
-        nombre_empresa,
-        rol,
-        funciones,
-        fecha_inicio,
-        fecha_fin,
-        habilidades,
-        idUsuario,
-    ):
+    def __init__(self,nombre_empresa,rol,funciones,fecha_inicio,fecha_fin,habilidades,idUsuario=None):
         Model.__init__(self)
         self.nombre_empresa = nombre_empresa
         self.rol = rol
