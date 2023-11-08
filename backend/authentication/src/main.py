@@ -11,11 +11,10 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
+cors = CORS(app)
 app.register_blueprint(users_blueprint)
 
 Base.metadata.create_all(engine)
-
-cors = CORS(app)
 
 
 @app.errorhandler(ApiError)

@@ -26,13 +26,14 @@ class EquipoSchema(Schema):
     createdAt = fields.DateTime()
 
 
-class CreatedEmpresaJsonSchema(Schema):
+class CreatedEquipoJsonSchema(Schema):
     id = fields.Int()
     createdAt = fields.DateTime()
 
 
-class EmpresaJsonSchema(Schema):
+class EquipoJsonSchema(Schema):
     id = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
     idEmpresa = fields.Int()
+    createdAt = fields.DateTime()
