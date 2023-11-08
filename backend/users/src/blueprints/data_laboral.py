@@ -15,9 +15,9 @@ def ping():
     return "pong"
 
 
-@laboral_data_blueprint.route("/users/dataLaboral", methods=["POST"])
-def create():
-    user = CreateLaboral(request.get_json()).execute()
+@laboral_data_blueprint.route("/users/<int:id_usuario>/dataLaboral", methods=["POST"])
+def create(id_usuario):
+    user = CreateLaboral(request.get_json()).execute(id_usuario)
     return jsonify(user), 201
 
 

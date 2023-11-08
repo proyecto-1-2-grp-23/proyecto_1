@@ -10,14 +10,15 @@ class CreateLaboral(BaseCommannd):
         def __init__(self, data):
             self.data = data
 
-        def execute(self):
+        def execute(self, id_usuario):
             user_data_laboral = {
                 "nombre_empresa": self.data.pop("nombre_empresa"),
                 "rol": self.data.pop("rol"),
                 "funciones": self.data.pop("funciones"),
                 "habilidades": self.data.pop("habilidades")
             }
-
+            print(id_usuario)
+            
             hora_inicio = self.data.pop("fecha_inicio")
             hora_fin = self.data.pop("fecha_fin")
             hora = '00:00:00'
@@ -33,13 +34,13 @@ class CreateLaboral(BaseCommannd):
                     "funciones",
                     "fecha_inicio",
                     "fecha_fin",
-                    "habilidades"
+                    "habilidades",
+                    "idUsuario"
                 )
             ).load(user_data_laboral)
             data_laboral = DataLaboral(**posted_data)
             session = Session()
-           
-
+            data_laboral.idUsuario = id_usuario
             session.add(data_laboral)
             session.commit()
             new_user = CreatedDataLaboralJsonSchema().dump(data_laboral)
