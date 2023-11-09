@@ -14,7 +14,7 @@ class ListEquipo(BaseCommannd):
         equipos_json = []
         for equipo in equipos:
             equipo_json = EquipoJsonSchema().dump(equipo)
-            empresa: Empresa = session.get(Empresa, {"id": empresa.idEmpresa})
+            empresa: Empresa = session.get(Empresa, {"id": equipo.idEmpresa})
             empresa_json: dict = EmpresaJsonSchema().dump(empresa)
 
             equipo_json = {**equipo_json, "empresa": empresa_json}
