@@ -11,7 +11,7 @@ class Equipo(Model, Base):
     descripcion = Column(String)
     idEmpresa = Column(Integer, ForeignKey("empresas.id"))
 
-    def __init__(self, nombre, descripcion, idEmpresa):
+    def __init__(self, idEmpresa, nombre, descripcion):
         Model.__init__(self)
         self.nombre = nombre
         self.descripcion = descripcion
@@ -22,6 +22,7 @@ class EquipoSchema(Schema):
     id = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
+    idEmpresa = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 

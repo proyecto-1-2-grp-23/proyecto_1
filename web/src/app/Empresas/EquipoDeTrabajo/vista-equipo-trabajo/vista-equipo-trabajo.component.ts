@@ -100,4 +100,6 @@ export class VistaEquipoTrabajoComponent implements OnInit {
     this.dataSource = new MatTableDataSource();
     this.registros = [];
   }
+
+  verCandidatos(element: any) {}
 }
