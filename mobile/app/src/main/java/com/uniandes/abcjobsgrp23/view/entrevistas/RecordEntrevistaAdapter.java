@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.uniandes.abcjobsgrp23.R;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
-import com.uniandes.abcjobsgrp23.data.model.RecordEntrevista;
+
 import java.util.List;
 public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevistaAdapter.RecordEntrevistaViewHolder> {
     private List<Entrevista> entrevistas;
@@ -51,7 +51,11 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
 
                 // Pasa los datos necesarios a través del Intent
                 intent.putExtra("titulo", selectedRecord.getCandidato().getNombreCompleto());
-                intent.putExtra("descripcion", selectedRecord.getEmpresa().getRazonSocial());
+                intent.putExtra("nombreEmpresa", selectedRecord.getEmpresa().getRazonSocial());
+                intent.putExtra("nombreCandidato", selectedRecord.getCandidato().getNombreCompleto());
+                intent.putExtra("correoCandidato", selectedRecord.getCandidato().getCorreo());
+                intent.putExtra("fechaEntrevista", selectedRecord.getFecha());
+                intent.putExtra("lugarEntrevista", selectedRecord.getLugar());
                 intent.putExtra("Editar", false);
 
                 // Inicia la nueva actividad
@@ -75,18 +79,35 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             }
         });
 
-        // Manejador de eventos para el botón "Ver Accion"
-        holder.btnResultado.setOnClickListener(new View.OnClickListener() {
+        // Manejador de eventos para el botón "Editar"
+        holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Obtén el registro en la posición 'position'
                 Entrevista selectedRecord = entrevistas.get(position);
+
                 // Crea un Intent para abrir la nueva actividad
-                Intent intent = new Intent(v.getContext(), ResultadoEntrevistaActivity.class);
+                Intent intent = new Intent(v.getContext(), DetalleEntrevistaCandidatoActivity.class);
+                intent.putExtra("Editar", true);
+
                 // Inicia la nueva actividad
                 v.getContext().startActivity(intent);
             }
         });
+
+        // Manejador de eventos para el botón "Agregar Entrevista"
+//        holder.btnAgregar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Obtén el registro en la posición 'position'
+//                Entrevista selectedRecord = entrevistas.get(position);
+//                // Crea un Intent para abrir la nueva actividad
+//                Intent intent = new Intent(v.getContext(), ResultadoEntrevistaActivity.class);
+//                // Inicia la nueva actividad
+//                v.getContext().startActivity(intent);
+//            }
+//        });
+
     }
     @Override
     public int getItemCount() {
@@ -99,6 +120,7 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
         ImageButton btnVerDetalle;
         ImageButton  btnEditar;
         ImageButton  btnResultado;
+//        ImageButton  btnAgregar;
 
         RecordEntrevistaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +129,8 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             btnVerDetalle = itemView.findViewById(R.id.btnVerDetalle);
             btnEditar = itemView.findViewById(R.id.btnEditar);
             btnResultado = itemView.findViewById(R.id.btnVerResultado);
+//            btnAgregar = itemView.findViewById(R.id.btnAddInterview);
+
         }
     }
 

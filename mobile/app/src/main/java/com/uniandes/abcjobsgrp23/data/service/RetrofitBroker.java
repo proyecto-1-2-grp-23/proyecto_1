@@ -60,39 +60,59 @@ public class RetrofitBroker {
             return null;
         }
     }
-    public static List<Candidato> getAllUsersCandidatos() {
+    public static void getAllUsersCandidatos(Callback<List<Candidato>> callback) {
         Call<List<Candidato>> call = ApiClient.candidatoApi.getAllUsersCandidatos();
-        try {
-            Response<List<Candidato>> response = call.execute();
-            if (response.isSuccessful()) {
-                return response.body();
-            } else {
-                return new ArrayList<>();
+        call.enqueue(new Callback<List<Candidato>>() {
+            @Override
+            public void onResponse(Call<List<Candidato>> call, Response<List<Candidato>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
             }
-        } catch (IOException e) {
-            Log.e("Error", Objects.requireNonNull(e.getMessage()));
-            return new ArrayList<>();
-        }
+            @Override
+            public void onFailure(Call<List<Candidato>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
     }
 
     /**
      * Entrevista Service
      * **/
-    public static Entrevista createEntrevista(Entrevista entrevista) {
+    public static void createEntrevista(Entrevista entrevista, Callback<Entrevista> callback ) {
         Call<Entrevista> call = ApiClient.entrevistaApi.createEntrevista(entrevista);
-        try {
-            Response<Entrevista> response = call.execute();
-            if (response.isSuccessful()) {
-                Log.e("SuccessCreationEntrevista: ", response.toString());
-                return response.body();
-            } else {
-                Log.e("ErrorCreationEntrevista: ", response.toString());
-                return null;
+        call.enqueue(new Callback<Entrevista>() {
+            @Override
+            public void onResponse(Call<Entrevista> call, Response<Entrevista> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
             }
-        } catch (IOException e) {
-            Log.e("ErrorCreationEntrevista: ", Objects.requireNonNull(e.getMessage()));
-            return null;
-        }
+            @Override
+            public void onFailure(Call<Entrevista> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
     }
 
     public static void getAllEntrevistas(Callback<List<Entrevista>> callback) {
@@ -100,46 +120,51 @@ public class RetrofitBroker {
         call.enqueue(new Callback<List<Entrevista>>() {
             @Override
             public void onResponse(Call<List<Entrevista>> call, Response<List<Entrevista>> response) {
-
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-                // Añade el interceptor personalizado para el registro
                 httpClient.addInterceptor(new LoggingInterceptor());
-
                 if (response.isSuccessful()) {
                     if (callback != null) {
                         callback.onResponse(call, response);
                     }
                 } else {
-                    // Manejar la respuesta de error aquí
                     if (callback != null) {
                         callback.onFailure(call, new Exception("Error en la llamada a la API"));
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<List<Entrevista>> call, Throwable t) {
-                // Manejar errores de red aquí
                 if (callback != null) {
                     callback.onFailure(call, t);
                 }
             }
         });
-
     }
-    public static Entrevista getEntrevistaById(Integer entrevistaId) {
+
+    public static void getEntrevistaById(Integer entrevistaId, Callback<Entrevista> callback) {
         Call<Entrevista> call = ApiClient.entrevistaApi.getEntrevistaById(entrevistaId);
-        try {
-            Response<Entrevista> response = call.execute();
-            if (response.isSuccessful()) {
-                return response.body();
-            } else {
-                return null;
+        call.enqueue(new Callback<Entrevista>() {
+            @Override
+            public void onResponse(Call<Entrevista> call, Response<Entrevista> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
             }
-        } catch (IOException e) {
-            Log.e("Error", Objects.requireNonNull(e.getMessage()));
-            return null;
-        }
+            @Override
+            public void onFailure(Call<Entrevista> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
     }
 }
 

@@ -15,7 +15,7 @@ public interface CandidatoApi {
     @GET("users/candidatos")
     Call<List<Candidato>> getAllUsersCandidatos();
 
-    @POST("users/ping")
+    @POST("users")
     Call<Candidato> createCandidato(@Body Candidato candidato);
 
 }
