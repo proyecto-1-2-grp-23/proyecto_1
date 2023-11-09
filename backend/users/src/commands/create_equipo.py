@@ -1,7 +1,5 @@
 from .base_command import BaseCommannd
-from ..models.user import User, UserSchema, CreatedUserJsonSchema
 from ..models.equipo import Equipo, EquipoSchema, CreatedEquipoJsonSchema
-from ..models.empresa import EmpresaSchema, Empresa
 from ..session import Session
 from flask import Flask, jsonify
 

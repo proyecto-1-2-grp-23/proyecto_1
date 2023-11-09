@@ -16,7 +16,6 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-cors = CORS(app)
 app.register_blueprint(users_blueprint)
 app.register_blueprint(empresa_blueprint)
 app.register_blueprint(equipo_blueprint)
@@ -25,7 +24,7 @@ app.register_blueprint(entrevistas_blueprint)
 app.register_blueprint(candidatos_blueprint)
 Base.metadata.create_all(engine)
 
-
+cors = CORS(app)
 print(app.url_map)
 
 
