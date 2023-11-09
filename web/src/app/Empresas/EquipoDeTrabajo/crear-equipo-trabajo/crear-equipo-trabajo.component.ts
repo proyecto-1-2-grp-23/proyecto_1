@@ -35,9 +35,9 @@ export class CrearEquipoTrabajoComponent implements OnInit {
 
   guardar() {
     this.equipo = {
+      idEmpresa: parseInt(sessionStorage.getItem('idEmpresa')!),
       nombre: this.registrationForm.get('nombreGrupo')?.value,
       descripcion: this.registrationForm.get('descripcion')?.value,
-      idEmpresa: parseInt(sessionStorage.getItem('idEmpresa')!),
     };
 
     this.empresaService.crearEquipo(this.equipo).subscribe((res) => {

@@ -7,22 +7,22 @@ from sqlalchemy import Column, String, DateTime, Boolean, Integer, ForeignKey
 class Equipo(Model, Base):
     __tablename__ = "equipo"
     id = Column(Integer, primary_key=True)
+    idEmpresa = Column(Integer, ForeignKey("empresas.id"))
     nombre = Column(String)
     descripcion = Column(String)
-    idEmpresa = Column(Integer, ForeignKey("empresas.id"))
 
     def __init__(self, idEmpresa, nombre, descripcion):
         Model.__init__(self)
+        self.idEmpresa = idEmpresa
         self.nombre = nombre
         self.descripcion = descripcion
-        self.idEmpresa = idEmpresa
 
 
 class EquipoSchema(Schema):
     id = fields.Int()
+    idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
-    idEmpresa = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
@@ -34,7 +34,7 @@ class CreatedEquipoJsonSchema(Schema):
 
 class EquipoJsonSchema(Schema):
     id = fields.Int()
+    idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
-    idEmpresa = fields.Int()
     createdAt = fields.DateTime()
