@@ -11,13 +11,13 @@ class ListEquipo(BaseCommannd):
     def execute(self):
         session = Session()
         equipos = session.query(Equipo).all()
-        equipo_json = []
+        equipos_json = []
         for equipo in equipos:
             equipo_json = EquipoJsonSchema().dump(equipo)
             empresa: Empresa = session.get(Empresa, {"id": empresa.idEmpresa})
             empresa_json: dict = EmpresaJsonSchema().dump(empresa)
 
-            empresa_json = {**empresa_json, "empresa": empresa_json}
-            empresa_json.append(empresa_json)
+            equipo_json = {**equipo_json, "empresa": empresa_json}
+            equipos_json.append(equipo_json)
         session.close()
-        return equipo_json
+        return equipos_json
