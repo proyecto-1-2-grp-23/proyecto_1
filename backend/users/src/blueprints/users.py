@@ -23,7 +23,7 @@ def create():
 
 
 @users_blueprint.route("/users/agregar-admin", methods=["POST"])
-def create():
+def create_admin():
     user = CreateAdmin(request.get_json()).execute()
     return jsonify(user), 201
 
