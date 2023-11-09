@@ -5,6 +5,7 @@ import { ServicioEmpresaService } from '../../servicio/servicio-empresa.service'
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { AgregarCandidatoEquipoComponent } from '../agregar-candidato-equipo/agregar-candidato-equipo.component';
+import { ListaCandidatosEquipoComponent } from '../lista-candidatos-equipo/lista-candidatos-equipo.component';
 
 @Component({
   selector: 'app-vista-equipo-trabajo',
@@ -101,5 +102,11 @@ export class VistaEquipoTrabajoComponent implements OnInit {
     this.registros = [];
   }
 
-  verCandidatos(element: any) {}
+  verCandidatos(element: any) {
+    const dialogRef = this.dialog.open(ListaCandidatosEquipoComponent, {
+      width: '800px', // Puedes personalizar el tamaño
+      height: '500px',
+      data: { info: element },
+    });
+  }
 }
