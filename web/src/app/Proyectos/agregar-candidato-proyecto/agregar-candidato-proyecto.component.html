@@ -8,35 +8,32 @@
         <select
           class="custom-select select"
           formControlName="caracteristicasTecnicas"
+          (change)="onCaracteristicasTecnicasChange()"
         >
           <option value="" disabled selected>Características Técnicas</option>
-          <option value="1">opc 1</option>
-          <option value="2">opc 2</option>
-          <option value="3">opc 3</option>
+          <option *ngFor="let tecnica of tecnicas" [value]="tecnica">{{ tecnica }}</option>
         </select>
       </div>
-      <div class="col-12 mb-3">
+         <div class="col-12 mb-3">
         <select
           class="custom-select select"
           formControlName="caracteristicasPersonalidad"
+          (change)="onCaracteristicasPersonalidadChange()"
         >
           <option value="" disabled selected>
             Características Personalidad
           </option>
-          <option value="1">opc 1</option>
-          <option value="2">opc 2</option>
-          <option value="3">opc 3</option>
+          <option *ngFor="let personalidad of personalidades" [value]="personalidad">{{ personalidad }}</option>
         </select>
       </div>
       <div class="col-12 mb-3">
         <select
           class="custom-select select"
           formControlName="candidatosCompatibles"
+          (change)="obtenerValor($event)"
         >
           <option value="" disabled selected>Candidatos compatibles</option>
-          <option value="1">candidato 1</option>
-          <option value="2">candidato 2</option>
-          <option value="3">candidato 3</option>
+          <option *ngFor="let candidato of candidatos; let i = index" [value]="candidato" [id]="(i+1)">{{ candidato }}</option>
         </select>
       </div>
       <div class="mt-5 d-flex justify-content-around col-12">

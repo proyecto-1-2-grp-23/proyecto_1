@@ -1,8 +1,8 @@
+import json
 from marshmallow import Schema, fields
-from sqlalchemy import Column, String, DateTime, Boolean, Integer
+from sqlalchemy import Column, String, Integer
 from .model import Model, Base
 from datetime import datetime, timedelta
-
 
 class Project(Model, Base):
     __tablename__ = 'projects'
@@ -18,16 +18,16 @@ class Project(Model, Base):
         self.nombre = nombre
         self.descripcion = descripcion
         self.perfiles = perfiles
-        self.conocimientos_tecnicos = conocimientos_tecnicos
-        self.habilidades_blandas = habilidades_blandas
+        self.conocimientos_tecnicos = json.dumps(conocimientos_tecnicos)
+        self.habilidades_blandas = json.dumps(habilidades_blandas)
 
 class ProjectSchema(Schema):
     id = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
     perfiles = fields.Str()
-    conocimientos_tecnicos = fields.Str()
-    habilidades_blandas = fields.Str()
+    conocimientos_tecnicos = fields.List(fields.Str())
+    habilidades_blandas = fields.List(fields.Str())
 
 
 class CreatedProjectJsonSchema(Schema):
