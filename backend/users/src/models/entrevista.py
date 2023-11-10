@@ -12,14 +12,16 @@ class Entrevista(Model, Base):
     idCandidato = Column(Integer, ForeignKey("candidatos.id"))
     fecha = Column(DateTime)
     lugar = Column(String)
+    resultado = Column(String)
 
-    def __init__(self, idFuncionario, idEmpresa, idCandidato, fecha, lugar):
+    def __init__(self, idFuncionario, idEmpresa, idCandidato, fecha, lugar, resultado):
         Model.__init__(self)
         self.idFuncionario = idFuncionario
         self.idEmpresa = idEmpresa
         self.idCandidato = idCandidato
         self.fecha = fecha
         self.lugar = lugar
+        self.resultado = resultado
 
 
 class EntrevistaSchema(Schema):
@@ -29,6 +31,7 @@ class EntrevistaSchema(Schema):
     idCandidato = fields.Int()
     fecha = fields.DateTime()
     lugar = fields.Str()
+    resultado = fields.Str()
     createdAt = fields.DateTime()
 
 
@@ -39,6 +42,7 @@ class CreatedEntrevistaJsonSchema(Schema):
     idCandidato = fields.Int()
     fecha = fields.DateTime()
     lugar = fields.Str()
+    resultado = fields.Str()
     createdAt = fields.DateTime()
 
 
@@ -49,4 +53,5 @@ class EntrevistaJsonSchema(Schema):
     idCandidato = fields.Int()
     fecha = fields.DateTime()
     lugar = fields.Str()
+    resultado = fields.Str()
     createdAt = fields.DateTime()
