@@ -9,7 +9,9 @@ from ..models.entrevista import (
 )
 from ..session import Session
 from flask import Flask, jsonify
+import random
 
+resultados: list = ['APROBADO','RECHAZADO','EN ESPERA']
 
 class CreateEntrevista(BaseCommannd):
     def __init__(self, data):
@@ -17,9 +19,9 @@ class CreateEntrevista(BaseCommannd):
 
     def execute(self):
         body: dict = self.data
-
+        body['resultado'] = random.choice(resultados)
         schema = EntrevistaSchema(
-            only=("idFuncionario", "idEmpresa", "idCandidato", "fecha", "lugar")
+            only=("idFuncionario", "idEmpresa", "idCandidato", "fecha", "lugar",'resultado')
         ).load(body)
         obj = Entrevista(**schema)
         session = Session()
