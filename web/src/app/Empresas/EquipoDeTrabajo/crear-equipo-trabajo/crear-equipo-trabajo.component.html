@@ -25,9 +25,12 @@
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="funcionarios">
           <option value="" disabled selected>Seleccionar funcionarios</option>
-          <option value="1">Empleado 1</option>
-          <option value="2">Empleado 2</option>
-          <option value="3">Empleado 3</option>
+          <option
+            *ngFor="let funcionario of funcionarios"
+            [value]="funcionario.Id"
+          >
+            {{ funcionario.Nombre }}
+          </option>
         </select>
       </div>
 
