@@ -75,6 +75,7 @@ export class SinginComponent implements OnInit {
           // Manejar la respuesta exitosa aquí
           this.token = data.token;
           if (this.parametros.tipoUsuario == 'empresas') {
+            sessionStorage.setItem('idEmpresa', data.id);
             this.router.navigate([`/menu/empresa`]);
           } else if (this.parametros.tipoUsuario == 'candidato') {
             this.router.navigate([`/menu/candidato`]);

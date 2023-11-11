@@ -27,6 +27,7 @@ Base.metadata.create_all(engine)
 cors = CORS(app)
 print(app.url_map)
 
+
 @app.errorhandler(ApiError)
 def handle_exception(err):
     response = {"msg": err.description}
