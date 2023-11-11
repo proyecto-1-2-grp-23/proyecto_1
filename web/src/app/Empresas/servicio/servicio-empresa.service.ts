@@ -26,4 +26,8 @@ export class ServicioEmpresaService {
   crearEquipo(equipo: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/equipo/crear-equipos`, equipo);
   }
+
+  listarFuncionarios(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/funcionarios`);
+  }
 }

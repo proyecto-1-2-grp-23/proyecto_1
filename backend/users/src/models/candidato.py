@@ -35,13 +35,15 @@ class CandidatoSchema(Schema):
     nombreCompleto = fields.Str()
     edad = fields.Int()
     idiomas = fields.Str()
-    rasgosPersonalidad = fields.List(fields.Str())
+    rasgosPersonalidad = fields.Str()
+    idUsuario = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
 class CreatedCandidatoJsonSchema(Schema):
     id = fields.Int()
+    idUsuario = fields.Int()
     createdAt = fields.DateTime()
 
 

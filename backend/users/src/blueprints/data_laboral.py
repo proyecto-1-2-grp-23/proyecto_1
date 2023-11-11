@@ -1,4 +1,4 @@
-from ..commands.list_data_laboral import ListLaboral
+from ..commands.list_data_laboral import ListDataLaboral
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_user import CreateUser
@@ -16,14 +16,14 @@ def ping():
     return "pong"
 
 
-@laboral_data_blueprint.route("/users/<int:id_candidato>/dataLaboral", methods=["POST"])
-def create(id_candidato):
-    user = CreateLaboral(request.get_json()).execute(id_candidato)
+@laboral_data_blueprint.route("/users/dataLaboral", methods=["POST"])
+def create():
+    user = CreateLaboral(request.get_json()).execute()
     return jsonify(user), 201
 
 @laboral_data_blueprint.route("/users/dataLaboral", methods=["GET"])
 def get_datalaboral():
-    equipo = ListLaboral().execute()
+    equipo = ListDataLaboral().execute()
     return jsonify(equipo), 200
 
 @laboral_data_blueprint.route("/users/dataLaboral/reset", methods=["POST"])

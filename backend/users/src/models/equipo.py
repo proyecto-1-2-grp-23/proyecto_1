@@ -10,12 +10,14 @@ class Equipo(Model, Base):
     idEmpresa = Column(Integer, ForeignKey("empresas.id"))
     nombre = Column(String)
     descripcion = Column(String)
+    idFuncionario = Column(Integer, ForeignKey("funcionario_empresas.id"))
 
-    def __init__(self, idEmpresa, nombre, descripcion):
+    def __init__(self, idEmpresa, nombre, descripcion, idFuncionario):
         Model.__init__(self)
         self.idEmpresa = idEmpresa
         self.nombre = nombre
         self.descripcion = descripcion
+        self.idFuncionario = idFuncionario
 
 
 class EquipoSchema(Schema):
@@ -23,6 +25,7 @@ class EquipoSchema(Schema):
     idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
+    idFuncionario = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
@@ -37,4 +40,5 @@ class EquipoJsonSchema(Schema):
     idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
+    idFuncionario = fields.Int()
     createdAt = fields.DateTime()

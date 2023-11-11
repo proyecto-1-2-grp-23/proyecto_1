@@ -19,7 +19,16 @@ class DataLaboral(Model, Base):
     idCandidato = Column(Integer, ForeignKey("candidatos.id"), unique=True)
     candidato = relationship("Candidato", back_populates="datalaboral", uselist=False)
 
-    def __init__(self,nombre_empresa,rol,funciones,fecha_inicio,fecha_fin,habilidades,idUsuario=None):
+    def __init__(
+        self,
+        nombre_empresa,
+        rol,
+        funciones,
+        fecha_inicio,
+        fecha_fin,
+        habilidades,
+        idUsuario,
+    ):
         Model.__init__(self)
         self.nombre_empresa = nombre_empresa
         self.rol = rol
@@ -41,7 +50,6 @@ class DataLaboralSchema(Schema):
     fecha_fin = fields.DateTime()
     habilidades = fields.List(fields.Str())
     idUsuario = fields.Int()
-    expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
@@ -59,3 +67,4 @@ class DataLaboralJsonSchema(Schema):
     fecha_fin = fields.DateTime()
     habilidades = fields.Str()
     idUsuario = fields.Int()
+    createdAt = fields.DateTime()
