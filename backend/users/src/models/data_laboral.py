@@ -1,7 +1,8 @@
+import json
 from marshmallow import Schema, fields
 from sqlalchemy import Column, String, DateTime, Integer, ForeignKey
 from .model import Model, Base
-
+from sqlalchemy.orm import relationship
 
 class DataLaboral(Model, Base):
     __tablename__ = "datos_laborales_candidato"
@@ -14,6 +15,7 @@ class DataLaboral(Model, Base):
     fecha_fin = Column(DateTime)
     habilidades = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
+    
 
     def __init__(
         self,

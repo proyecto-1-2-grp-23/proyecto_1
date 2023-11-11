@@ -1,11 +1,12 @@
+import json
 from marshmallow import Schema, fields
-from sqlalchemy import Column, String, DateTime, Boolean, Integer
+from sqlalchemy import Column, String, Integer
 from .model import Model, Base
 from datetime import datetime, timedelta
 
-
 class Project(Model, Base):
     __tablename__ = 'projects'
+    
     id = Column(Integer, primary_key=True)
     nombre = Column(String)
     descripcion = Column(String)

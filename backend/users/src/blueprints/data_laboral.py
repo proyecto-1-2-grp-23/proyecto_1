@@ -1,3 +1,4 @@
+from ..commands.list_data_laboral import ListDataLaboral
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_user import CreateUser
@@ -20,6 +21,10 @@ def create():
     user = CreateLaboral(request.get_json()).execute()
     return jsonify(user), 201
 
+@laboral_data_blueprint.route("/users/dataLaboral", methods=["GET"])
+def get_datalaboral():
+    equipo = ListDataLaboral().execute()
+    return jsonify(equipo), 200
 
 @laboral_data_blueprint.route("/users/dataLaboral/reset", methods=["POST"])
 def reset():

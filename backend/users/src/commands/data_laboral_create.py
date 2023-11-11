@@ -25,7 +25,6 @@ class CreateLaboral(BaseCommannd):
                 "fecha_fin": self.data.pop("fecha_fin"),
             }
 
-            print(user_data_laboral)
 
             posted_data = DataLaboralSchema(
                 only=(
