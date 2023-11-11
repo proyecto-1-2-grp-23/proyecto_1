@@ -5,7 +5,6 @@ import bcrypt
 from datetime import datetime, timedelta
 from uuid import uuid4
 
-
 class User(Model, Base):
     __tablename__ = 'users'
 
