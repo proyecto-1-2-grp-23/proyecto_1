@@ -14,8 +14,6 @@ class Candidato(Model, Base):
     idiomas = Column(String)
     rasgosPersonalidad = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
-    datalaboral = relationship("DataLaboral", back_populates="candidato", uselist=False)
-
 
     def __init__(
         self, telefono, nombreCompleto, edad, idiomas, rasgosPersonalidad, idUsuario
@@ -25,7 +23,7 @@ class Candidato(Model, Base):
         self.edad = edad
         self.nombreCompleto = nombreCompleto
         self.idiomas = idiomas
-        self.rasgosPersonalidad = json.dumps(rasgosPersonalidad)
+        self.rasgosPersonalidad = rasgosPersonalidad
         self.idUsuario = idUsuario
 
 
@@ -53,14 +51,5 @@ class CandidatoJsonSchema(Schema):
     nombreCompleto = fields.Str()
     edad = fields.Int()
     idiomas = fields.Str()
-    rasgosPersonalidad = fields.List(fields.Str())
-    idUsuario = fields.Int()
-class ListarCandidatoJsonSchema(Schema):
-    id = fields.Int()
-    telefono = fields.Str()
-    nombreCompleto = fields.Str()
-    edad = fields.Int()
-    idiomas = fields.Str()
     rasgosPersonalidad = fields.Str()
     idUsuario = fields.Int()
-

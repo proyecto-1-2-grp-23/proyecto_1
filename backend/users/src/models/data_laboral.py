@@ -16,8 +16,6 @@ class DataLaboral(Model, Base):
     habilidades = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
     
-    idCandidato = Column(Integer, ForeignKey("candidatos.id"), unique=True)
-    candidato = relationship("Candidato", back_populates="datalaboral", uselist=False)
 
     def __init__(
         self,
@@ -35,10 +33,8 @@ class DataLaboral(Model, Base):
         self.funciones = funciones
         self.fecha_inicio = fecha_inicio
         self.fecha_fin = fecha_fin
-        self.habilidades = json.dumps(habilidades)
-        if id and idUsuario is not None:
-            self.id = id
-            self.idUsuario = idUsuario
+        self.habilidades = habilidades
+        self.idUsuario = idUsuario
 
 
 class DataLaboralSchema(Schema):
@@ -48,7 +44,7 @@ class DataLaboralSchema(Schema):
     funciones = fields.Str()
     fecha_inicio = fields.DateTime()
     fecha_fin = fields.DateTime()
-    habilidades = fields.List(fields.Str())
+    habilidades = fields.Str()
     idUsuario = fields.Int()
     createdAt = fields.DateTime()
 

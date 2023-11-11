@@ -14,16 +14,9 @@ class CreateProject(BaseCommannd):
                 "descripcion": self.data.pop("descripcion"),
                 "perfiles": self.data.pop("perfiles"),
                 "conocimientos_tecnicos": self.data.pop("conocimientos_tecnicos"),
+                "habilidades_blandas": self.data.pop("habilidades_blandas")
             }
-            habilidades_blandas = self.data.pop("habilidades_blandas")
 
-
-
-            if(type(habilidades_blandas) == str):
-                project_data['habilidades_blandas'] = [habilidades_blandas]
-            else:
-                project_data['habilidades_blandas'] = habilidades_blandas
-            
             posted_data = ProjectSchema(
                 only=(
                     "nombre",
@@ -34,10 +27,8 @@ class CreateProject(BaseCommannd):
                 )
             ).load(project_data)
             
-            
-            project = Project(**posted_data)
-            
-            
+
+            project = Project(**project_data)
             session = Session()
             session.add(project)
             session.commit()

@@ -1,6 +1,6 @@
 from .base_command import BaseCommannd
 from ..models.user import User, UserSchema, CreatedUserJsonSchema
-from ..models.candidato import CandidatoSchema, Candidato, CreatedCandidatoJsonSchema
+from ..models.candidato import CandidatoSchema, Candidato
 from ..session import Session
 from ..errors.errors import IncompleteParams, UserAlreadyExists
 
