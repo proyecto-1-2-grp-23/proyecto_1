@@ -21,13 +21,20 @@ export class CrearEquipoTrabajoComponent implements OnInit {
 
   equipo!: equipoCrear;
 
+  funcionarios: {
+    Id: any;
+    Nombre: any;
+  }[] = [];
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private empresaService: ServicioEmpresaService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.llenarFuncionarios();
+  }
 
   verLista() {
     this.router.navigate([`/equipoDeTrabajo`]);
@@ -38,6 +45,7 @@ export class CrearEquipoTrabajoComponent implements OnInit {
       idEmpresa: parseInt(sessionStorage.getItem('idEmpresa')!),
       nombre: this.registrationForm.get('nombreGrupo')?.value,
       descripcion: this.registrationForm.get('descripcion')?.value,
+      idFuncionario: parseInt(this.registrationForm.get('funcionarios')?.value),
     };
 
     this.empresaService.crearEquipo(this.equipo).subscribe((res) => {
@@ -48,6 +56,21 @@ export class CrearEquipoTrabajoComponent implements OnInit {
       } else {
         Swal.fire('', 'Error en la creación del equipo', 'error');
       }
+    });
+  }
+
+  llenarFuncionarios() {
+    this.empresaService.listarFuncionarios().subscribe((res) => {
+      console.log(res);
+      res.forEach((registro: any) => {
+        const nombre = registro.nombre_funcionario;
+        const id = registro.id;
+        const nuevoRegistro = {
+          Id: id,
+          Nombre: nombre,
+        };
+        this.funcionarios.push(nuevoRegistro);
+      });
     });
   }
 }

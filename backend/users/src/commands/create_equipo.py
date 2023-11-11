@@ -11,7 +11,9 @@ class CreateEquipo(BaseCommannd):
     def execute(self):
         body: dict = self.data
 
-        schema = EquipoSchema(only=("idEmpresa", "nombre", "descripcion")).load(body)
+        schema = EquipoSchema(
+            only=("idEmpresa", "nombre", "descripcion", "idFuncionario")
+        ).load(body)
         obj = Equipo(**schema)
         session = Session()
         session.add(obj)

@@ -79,6 +79,7 @@ export class SinginComponent implements OnInit {
             this.router.navigate([`/menu/empresa`]);
           } else if (this.parametros.tipoUsuario == 'candidato') {
             this.router.navigate([`/menu/candidato`]);
+            sessionStorage.setItem('idCandidato', data.id);
           } else {
             this.router.navigate([`/menu/administrador`]);
           }
