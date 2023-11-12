@@ -26,3 +26,10 @@ class EquipoCandidatoSchema(Schema):
 class CreatedEquipoCandidatoJsonSchema(Schema):
     id = fields.Int()
     createdAt = fields.DateTime()
+
+
+class EquipoCandidatoJsonSchema(Schema):
+    id = fields.Int()
+    idEquipo = fields.Integer()
+    idCandidato = fields.Integer()
+    createdAt = fields.DateTime()
