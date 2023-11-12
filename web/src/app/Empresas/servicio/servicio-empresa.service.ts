@@ -15,18 +15,32 @@ export class ServicioEmpresaService {
     return this.http.post<any>(`${this.backUrl}/empresa`, empresa);
   }
 
-  listarEquipo(): Observable<any> {
+  listarEmpresas(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/empresa`);
+  }
+
+  listarEquipo(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/equipo/listar-equipos`);
   }
 
   crearEquipo(equipo: any): Observable<any> {
+    return this.http.post<any>(`${this.backUrl}/equipo/crear-equipos`, equipo);
+  }
+
+  listarFuncionarios(idEmpresa: number): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/funcionarios/` + idEmpresa);
+  }
+
+  agregarCandidatoEquipo(candidatoEquipo: any): Observable<any> {
     return this.http.post<any>(
-      `${this.backUrl}/equipo/listar-equipos/`,
-      equipo
+      `${this.backUrl}/equipo/equipo-candidato`,
+      candidatoEquipo
     );
   }
 
-  listarEmpresas(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/empresa`);
+  listarCandidatosEquipo(idEquipo: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/equipo/listar-candidatos/` + idEquipo
+    );
   }
 }

@@ -31,3 +31,28 @@
   overflow: auto;
   max-height: 300px;
 }
+
+.mat-table{
+  width: inherit;
+
+}
+
+.icon{
+  color: rgba(33, 173, 204, 1);
+}
+
+.mat-header-cell {
+  text-align: center !important;
+  font-weight: bold;
+  color: rgb(23, 114, 134);
+  font-size: 15px;
+
+}
+
+.mat-cell{
+  text-align: center !important;
+}
+
+.label{
+  color:rgba(33, 173, 204, 1);
+}

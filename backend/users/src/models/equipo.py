@@ -7,32 +7,38 @@ from sqlalchemy import Column, String, DateTime, Boolean, Integer, ForeignKey
 class Equipo(Model, Base):
     __tablename__ = "equipo"
     id = Column(Integer, primary_key=True)
+    idEmpresa = Column(Integer, ForeignKey("empresas.id"))
     nombre = Column(String)
     descripcion = Column(String)
-    idEmpresa = Column(Integer, ForeignKey("empresas.id"))
+    idFuncionario = Column(Integer, ForeignKey("funcionario_empresas.id"))
 
-    def __init__(self, nombre, descripcion, idEmpresa):
+    def __init__(self, idEmpresa, nombre, descripcion, idFuncionario):
         Model.__init__(self)
+        self.idEmpresa = idEmpresa
         self.nombre = nombre
         self.descripcion = descripcion
-        self.idEmpresa = idEmpresa
+        self.idFuncionario = idFuncionario
 
 
 class EquipoSchema(Schema):
     id = fields.Int()
+    idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
+    idFuncionario = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
-class CreatedEmpresaJsonSchema(Schema):
+class CreatedEquipoJsonSchema(Schema):
     id = fields.Int()
     createdAt = fields.DateTime()
 
 
-class EmpresaJsonSchema(Schema):
+class EquipoJsonSchema(Schema):
     id = fields.Int()
+    idEmpresa = fields.Int()
     nombre = fields.Str()
     descripcion = fields.Str()
-    idEmpresa = fields.Int()
+    idFuncionario = fields.Int()
+    createdAt = fields.DateTime()

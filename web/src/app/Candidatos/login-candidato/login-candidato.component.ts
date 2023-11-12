@@ -15,6 +15,9 @@ export class LoginCandidatoComponent implements OnInit {
   repeatFieldTextType!: boolean;
   candidato!: candidatoRegistroPersonal;
 
+  chips: string[] = [];
+  nuevoChip: string = '';
+
   registrationForm: FormGroup = new FormGroup({
     correo: new FormControl('', [Validators.required, Validators.email]),
     nombre: new FormControl('', [Validators.required]),
@@ -23,7 +26,7 @@ export class LoginCandidatoComponent implements OnInit {
     pais: new FormControl('', [Validators.required]),
     ciudad: new FormControl('', [Validators.required]),
     idiomas: new FormControl('', [Validators.required]),
-    rasgos: new FormControl('', [Validators.required]),
+    rasgos: new FormControl(''),
     repContraseña: new FormControl('', [Validators.required]),
     contraseña: new FormControl('', [Validators.required]),
   });
@@ -34,6 +37,18 @@ export class LoginCandidatoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  agregarChip() {
+    console.log(this.nuevoChip, 'enter');
+    if (this.nuevoChip.trim() !== '') {
+      this.chips.push(this.nuevoChip);
+      this.nuevoChip = ''; // Limpia el input
+    }
+  }
+
+  eliminarChip(index: number) {
+    this.chips.splice(index, 1);
+  }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
@@ -60,7 +75,7 @@ export class LoginCandidatoComponent implements OnInit {
         pais: this.registrationForm.get('pais')?.value,
         ciudad: this.registrationForm.get('ciudad')?.value,
         idiomas: this.registrationForm.get('idiomas')?.value,
-        rasgosPersonalidad: this.registrationForm.get('rasgos')?.value,
+        rasgosPersonalidad: this.chips.join(', '),
         password: this.registrationForm.get('contraseña')?.value,
       };
 

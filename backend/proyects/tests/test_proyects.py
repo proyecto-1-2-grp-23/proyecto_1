@@ -15,8 +15,8 @@ data = {
     "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
     "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
     "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-    "conocimientos_tecnicos":"TML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-    "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
+    "conocimientos_tecnicos":["Python", "SQL", "Docker", "Angular"],
+    "habilidades_blandas":["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
 
 }
 
@@ -31,8 +31,8 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
             "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
             "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-            "conocimientos_tecnicos":"TML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-            "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
+            "conocimientos_tecnicos":["Python", "SQL", "Docker", "Angular"],
+            "habilidades_blandas":["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
             }
         
     def test_obtener_proyecto(self):
@@ -66,8 +66,8 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
             "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
             "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-            "conocimientos_tecnicos":"TML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-            "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
+            "conocimientos_tecnicos": ["Python", "SQL", "Docker", "Angular"],
+            "habilidades_blandas": ["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
             }
         # Datos de ejemplo para la prueba
         with app.app_context():
@@ -86,9 +86,9 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
             "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
             "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-            "conocimientos_tecnicos":"TML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-            "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
-            }
+            "conocimientos_tecnicos":["Python", "SQL", "Docker", "Angular"],
+            "habilidades_blandas":["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
+        }
         # Verificar si el usuario ya existe en la base de datos
         with app.app_context():
             proyecto_existente = self.session.query(Project).filter_by(nombre=data['nombre']).first()
@@ -111,8 +111,8 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
             "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
             "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-            "conocimientos_tecnicos":"HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-            "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
+            "conocimientos_tecnicos":["Python", "SQL", "Docker", "Angular"],
+            "habilidades_blandas":["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
             }
         # Verificar si el usuario ya existe en la base de datos
         with app.app_context():
@@ -136,8 +136,8 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Desarrollo de una Aplicación de Comercio Electrónico",
             "descripcion": "Crear una aplicación de comercio electrónico para una tienda de ropa en línea.",
             "perfiles": "Desarrollador web, diseñador de UX/UI, gerente de proyecto.",
-            "conocimientos_tecnicos":"HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, diseño de bases de datos, Git.",
-            "habilidades_blandas":"Trabajo en equipo, comunicación efectiva, gestión del tiempo, resolución de problemas."
+            "conocimientos_tecnicos": ["Python", "SQL", "Docker", "Angular"],
+            "habilidades_blandas": ["Trabajo en equipo", "comunicacion efectiva", "gestion del tiempo","resolucion de problemas"]
             }
         # Verificar si el usuario ya existe en la base de datos
         with app.app_context():

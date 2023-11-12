@@ -1,11 +1,13 @@
+import json
 from marshmallow import Schema, fields
 from sqlalchemy import Column, String, DateTime, Boolean, Integer, ForeignKey
 from .model import Model, Base
-
+from sqlalchemy.orm import relationship
 
 class Candidato(Model, Base):
     __tablename__ = "candidatos"
-
+    
+    id = Column(Integer, primary_key=True)
     telefono = Column(String)
     nombreCompleto = Column(String)
     edad = Column(Integer)
@@ -32,12 +34,14 @@ class CandidatoSchema(Schema):
     edad = fields.Int()
     idiomas = fields.Str()
     rasgosPersonalidad = fields.Str()
+    idUsuario = fields.Int()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
 class CreatedCandidatoJsonSchema(Schema):
     id = fields.Int()
+    idUsuario = fields.Int()
     createdAt = fields.DateTime()
 
 

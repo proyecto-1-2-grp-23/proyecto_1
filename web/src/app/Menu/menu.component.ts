@@ -58,5 +58,7 @@ export class MenuComponent implements OnInit {
 
   salir() {
     this.router.navigate([`/home`]);
+    sessionStorage.removeItem('idEmpresa');
+    sessionStorage.removeItem('idCandidato');
   }
 }

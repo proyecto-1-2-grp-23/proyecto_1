@@ -21,10 +21,7 @@ class CreateEmpresa(BaseCommannd):
             user_data
         )
         user = User(**posted_user)
-        posted_empresa = EmpresaSchema(
-            only=("razonSocial", "tipoEmpresa", "verticalesNegocio")
-        ).load(self.data)
-        empresa = Empresa(**posted_empresa, idUsuario=user.id)
+
         session = Session()
 
         if self.correo_exist(session, user_data["correo"]):
@@ -32,6 +29,29 @@ class CreateEmpresa(BaseCommannd):
             raise UserAlreadyExists()
 
         session.add(user)
+        session.commit()
+        new_user = CreatedUserJsonSchema().dump(user)
+        session.close()
+
+        empresa_data = {
+            "razonSocial": self.data.pop("razonSocial"),
+            "tipoEmpresa": self.data.pop("tipoEmpresa"),
+            "verticalesNegocio": self.data.pop("verticalesNegocio"),
+            "idUsuario": new_user["id"],
+        }
+
+        posted_empresa = EmpresaSchema(
+            only=(
+                "razonSocial",
+                "tipoEmpresa",
+                "verticalesNegocio",
+                "idUsuario",
+            )
+        ).load(empresa_data)
+        empresa = Empresa(**posted_empresa)
+
+        session = Session()
+
         session.add(empresa)
         session.commit()
         new_user = CreatedUserJsonSchema().dump(user)

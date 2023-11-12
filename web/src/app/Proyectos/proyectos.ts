@@ -31,6 +31,7 @@ export class Candidato {
 
 export type proyectoCrear = Pick<
   Candidato,
+  | 'id'
   | 'nombre'
   | 'descripcion'
   | 'perfiles'

@@ -25,35 +25,16 @@
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="funcionarios">
           <option value="" disabled selected>Seleccionar funcionarios</option>
-          <option value="1">Empleado 1</option>
-          <option value="2">Empleado 2</option>
-          <option value="3">Empleado 3</option>
+          <option
+            *ngFor="let funcionario of funcionarios"
+            [value]="funcionario.Id"
+          >
+            {{ funcionario.Nombre }}
+          </option>
         </select>
       </div>
 
-      <div class="text">Candidatos del equipo</div>
       <hr style="color: #21adcc" />
-      <div class="col-12 list">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Candidato 1</li>
-          <li class="list-group-item">Candidato 2</li>
-          <li class="list-group-item">Candidato 3</li>
-          <li class="list-group-item">Candidato 4</li>
-          <li class="list-group-item">Candidato 5</li>
-          <li class="list-group-item">Candidato 6</li>
-        </ul>
-      </div>
-      <hr style="color: #21adcc" />
-
-      <div class="mt-5 d-flex justify-content-end col-12">
-        <button
-          id="reigstro"
-          class="commonButton btn btn-info mt-3"
-          (click)="agregarCandidato()"
-        >
-          Agregar Candidato
-        </button>
-      </div>
 
       <div class="mt-5 mb-5 d-flex justify-content-around col-12">
         <button
