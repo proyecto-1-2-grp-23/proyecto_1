@@ -85,6 +85,7 @@ export class AgregarCandidatoEquipoComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         if (error.status == 412) {
+          console.log(this.idEquipo, 'info');
           Swal.fire('', 'Candidato ya existe en el equipo ', 'error');
         } else {
           Swal.fire(

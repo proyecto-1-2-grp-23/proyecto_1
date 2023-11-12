@@ -95,7 +95,6 @@ export class ListaProyectosComponent implements OnInit {
   }
 
   agregarCandidatos(element: any) {
-    console.log(element.id)
     localStorage.setItem('agregarCandidatosFunction', element.id);
     const dialogRef = this.dialog.open(AgregarCandidatoProyectoComponent, {
       width: '60%',

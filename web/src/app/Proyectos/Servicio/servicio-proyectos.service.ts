@@ -23,13 +23,16 @@ export class ServicioProyectosService {
     return this.http.get<any>(`${this.backUrl}/${id}/listar-projects`);
   }
 
-  getDataWithQueryParams(queryParam1: string, queryParam2: string): Observable<any> {
-    // Build the query parameters using HttpParams.
-    const params = new HttpParams()
-      .set('personalidad', queryParam1)
-      .set('habilidades', queryParam2);
-
-    // Make the GET request with query parameters.
-    return this.http.get<any>(`${this.backUrl}/tecnicas_blandas`, { params });
+  listarProyectosDataLaboral(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/dataLaboral`);
   }
+
+  obtenerProyectosCandidatos(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/candidatos`);
+  }
+  obtenerProyectosCandidatoPorId(id: any): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/candidatos/` + id);
+  }
+
+
 }

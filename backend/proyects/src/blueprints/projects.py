@@ -1,10 +1,15 @@
 import sys
-sys.path.append(".")
 
+
+
+
+sys.path.append(".")
+from ..commands.list_proyects_candidato_by_id import ListProyectsCandidatoById
 from ..commands.list_projects_data_laboral import ListProyectsDataLaboral
 from ..commands.list_proyects_candidatos import ListProyectCandidato
 from ..commands.list_projects import ListProjects
 from ..commands.create_project import CreateProject
+from ..commands.create_proyecto_candidato import CreateProjectCandidato
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 
@@ -29,6 +34,16 @@ def listarTodos():
 def list():
     candidatos = ListProyectCandidato().execute()
     return jsonify(candidatos), 200
+
+@projects_blueprint.route("/proyects/candidatos/<int:id>", methods=["GET"])
+def listById(id):
+    candidatos = ListProyectsCandidatoById(id).execute()
+    return jsonify(candidatos), 200
+
+@projects_blueprint.route("/proyects/proyect-candidato", methods=["POST"])
+def createEquipoCandidato():
+    equipo = CreateProjectCandidato(request.get_json()).execute()
+    return jsonify(equipo), 201
 
 @projects_blueprint.route('/projects/dataLaboral', methods=['GET'])
 def listDataLaboral():
