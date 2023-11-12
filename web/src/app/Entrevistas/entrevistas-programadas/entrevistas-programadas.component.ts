@@ -63,9 +63,10 @@ export class EntrevistasProgramadasComponent implements OnInit {
         const funcionario = registro.funcionario.correo;
         const fecha = registro.fecha;
         const lugar = registro.lugar;
-        const estado = '';
-        const descripcion = '';
-        const observaciones = '';
+        const estado = registro.resultado;
+        const descripcion =
+          'Entrevista realizada para ' + registro.empresa.razonSocial;
+        const observaciones = registro.observaciones;
         const nuevoRegistro = {
           Entrevista: entrevista,
           Empresa: empresa,
@@ -104,12 +105,12 @@ export class EntrevistasProgramadasComponent implements OnInit {
   }
 
   resultado(element: any) {
-    if (element.Estado == '') {
+    if (element.resultado == '') {
       Swal.fire('', 'No hay resultado registrado', 'info');
     } else {
       const dialogRef = this.dialog.open(ResultadoEntrevistaComponent, {
         width: '60%',
-        height: '90%',
+        height: '50%',
         data: { info: element },
       });
       dialogRef.afterClosed().subscribe((result) => {
