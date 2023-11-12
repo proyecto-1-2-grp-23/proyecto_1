@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands.create_equipo import CreateEquipo
 from ..commands.list_equipo import ListEquipo
+from ..commands.create_equipo_candidato import CreateEquipoCandidato
 
 
 equipo_blueprint = Blueprint("equipo", __name__)
@@ -22,6 +23,12 @@ def create():
 def listarTodos():
     equipo = ListEquipo().execute()
     return jsonify(equipo), 200
+
+
+@equipo_blueprint.route("/users/equipo/equipo-candidato", methods=["POST"])
+def createEquipoCandidato():
+    equipo = CreateEquipoCandidato(request.get_json()).execute()
+    return jsonify(equipo), 201
 
 
 @equipo_blueprint.route("/users/equipo/reset", methods=["POST"])

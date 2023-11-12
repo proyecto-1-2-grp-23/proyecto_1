@@ -30,4 +30,11 @@ export class ServicioEmpresaService {
   listarFuncionarios(idEmpresa: number): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/funcionarios/` + idEmpresa);
   }
+
+  agregarCandidatoEquipo(candidatoEquipo: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/equipo/equipo-candidato`,
+      candidatoEquipo
+    );
+  }
 }
