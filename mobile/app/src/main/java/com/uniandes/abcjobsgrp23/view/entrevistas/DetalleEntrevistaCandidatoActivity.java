@@ -14,12 +14,24 @@ import android.widget.TimePicker;
 import android.widget.DatePicker;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.uniandes.abcjobsgrp23.PostLoginActivity;
 import com.uniandes.abcjobsgrp23.R;
+import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
+import com.uniandes.abcjobsgrp23.viewmodel.CandidatoViewModel;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
 
@@ -30,10 +42,16 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
     boolean isEditable = true;
     private TextView textViewFechaSeleccionada;
     private TextView textViewHoraSeleccionada;
+
+    private CandidatoViewModel candidatoViewModel;
+    private List<Candidato> candidatosList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalle_entrevista_candidato);
+
+
 
         textViewFechaSeleccionada = findViewById(R.id.textViewFechaSeleccionada);
         textViewHoraSeleccionada = findViewById(R.id.textViewHoraSeleccionada);
@@ -106,9 +124,21 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
         // Recupera los datos pasados desde la actividad anterior
         Bundle extras = getIntent().getExtras();
 
+        List<String> empresas = new ArrayList<>();
+        List<String> candidatos = new ArrayList<>();
+
+        // Encuentra los elementos del diseño
+        AutoCompleteTextView autoCompleteFuncionario = findViewById(R.id.autoCompleteFuncionario);
+        Spinner spinnerCandidato = findViewById(R.id.spinnerCandidato);
+        Spinner spinnerEmpresa = findViewById(R.id.spinnerEmpresa);
+        DatePicker datePicker = findViewById(R.id.datePicker);
+        TimePicker timePicker = findViewById(R.id.timePicker);
+        EditText editTextLugarUrl = findViewById(R.id.editTextLugarUrl);
+
         if (extras != null) {
-            String titulo = extras.getString("titulo");
-            String descripcion = extras.getString("descripcion");
+            String titulo = extras.getString("correoCandidato");
+            String descripcion = extras.getString("nombreEmpresa");
+            String fechaEntrevista = extras.getString("fechaEntrevista");
             isEditable = extras.getBoolean("Editar", true);
 
             if (!isEditable) {
@@ -118,6 +148,40 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
                 timeContainer.setVisibility(View.GONE);
                 btnGuardar.setVisibility(View.VISIBLE);
                 btnCancelar.setVisibility(View.VISIBLE);
+
+                candidatos.add(extras.getString("nombreCandidato"));
+                empresas.add(extras.getString("nombreEmpresa"));
+
+
+                // Dividir la cadena utilizando '-' y 'T'
+                String[] partesFecha = fechaEntrevista.split("[-T]");
+
+                // Obtener los valores de año, mes y día
+                int year = Integer.parseInt(partesFecha[0]);
+                int month = Integer.parseInt(partesFecha[1]) - 1; // Restar 1 porque en DatePicker, enero es 0
+                int day = Integer.parseInt(partesFecha[2]);
+
+                // Actualizar el DatePicker
+                datePicker.updateDate(year, month, day);
+                timePicker.setHour(12);
+                timePicker.setMinute(0);
+
+                editTextLugarUrl.setText(extras.getString("lugarEntrevista"));
+            }else {
+
+                // Establecer fecha y hora de prueba
+                datePicker.updateDate(2023, 10, 29);
+                timePicker.setHour(12);
+                timePicker.setMinute(0);
+
+                candidatos.add("David Morales Aguilar");
+                candidatos.add("Luis Felipe Cruz");
+
+                empresas.add("Globant");
+                empresas.add("ScotiaBank");
+                // Establecer lugar/URL de prueba
+                editTextLugarUrl.setText("https://example.com");
+
             }
 
             // Encuentra los TextViews en tu diseño para mostrar los datos
@@ -129,13 +193,7 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
             textViewDescripcion.setText(descripcion);
         }
 
-        // Encuentra los elementos del diseño
-        AutoCompleteTextView autoCompleteFuncionario = findViewById(R.id.autoCompleteFuncionario);
-        Spinner spinnerCandidato = findViewById(R.id.spinnerCandidato);
-        Spinner spinnerEmpresa = findViewById(R.id.spinnerEmpresa);
-        DatePicker datePicker = findViewById(R.id.datePicker);
-        TimePicker timePicker = findViewById(R.id.timePicker);
-        EditText editTextLugarUrl = findViewById(R.id.editTextLugarUrl);
+
 
         // Bloquea o desbloquea los campos según el valor de isEditable
         autoCompleteFuncionario.setEnabled(isEditable);
@@ -154,28 +212,18 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
         ArrayAdapter<String> funcionarioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, funcionarios);
         autoCompleteFuncionario.setAdapter(funcionarioAdapter);
 
-        List<String> candidatos = new ArrayList<>();
-        candidatos.add("Candidato 1");
-        candidatos.add("Candidato 2");
-        candidatos.add("Candidato 3");
+        // Inicializa el ViewModel
+//        candidatoViewModel = new ViewModelProvider(this).get(CandidatoViewModel.class);
 
         ArrayAdapter<String> candidatoAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, candidatos);
         spinnerCandidato.setAdapter(candidatoAdapter);
 
-        List<String> empresas = new ArrayList<>();
-        empresas.add("Empresa 1");
-        empresas.add("Empresa 2");
-        empresas.add("Empresa 3");
 
         ArrayAdapter<String> empresaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, empresas);
         spinnerEmpresa.setAdapter(empresaAdapter);
 
-        // Establecer fecha y hora de prueba
-        datePicker.updateDate(2023, 10, 29);
-        timePicker.setHour(12);
-        timePicker.setMinute(0);
 
-        // Establecer lugar/URL de prueba
-        editTextLugarUrl.setText("https://example.com");
+
+
     }
 }
