@@ -22,4 +22,20 @@ export class ServicioCandidatosService {
   obtenerCandidatos(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/candidatos`);
   }
+
+  obtenerCandidatoPorId(id: any): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/candidatos/` + id);
+  }
+
+  obtenerCandidatosHabTec(tecnica: any): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/candidatos/caracteristicas-tecnicas/` + tecnica
+    );
+  }
+
+  obtenerCandidatosHabPer(personal: any): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/candidatos/caracteristicas-personalidad/` + personal
+    );
+  }
 }

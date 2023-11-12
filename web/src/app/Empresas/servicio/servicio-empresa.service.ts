@@ -27,7 +27,20 @@ export class ServicioEmpresaService {
     return this.http.post<any>(`${this.backUrl}/equipo/crear-equipos`, equipo);
   }
 
-  listarFuncionarios(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/funcionarios`);
+  listarFuncionarios(idEmpresa: number): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/funcionarios/` + idEmpresa);
+  }
+
+  agregarCandidatoEquipo(candidatoEquipo: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/equipo/equipo-candidato`,
+      candidatoEquipo
+    );
+  }
+
+  listarCandidatosEquipo(idEquipo: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/equipo/listar-candidatos/` + idEquipo
+    );
   }
 }
