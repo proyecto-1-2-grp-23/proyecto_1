@@ -79,8 +79,21 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             }
         });
 
-        // Manejador de eventos para el botón "Editar"
-        holder.btnEditar.setOnClickListener(new View.OnClickListener() {
+        // Manejador de eventos para el botón "Agregar Resultado"
+        holder.btnResultado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtén el registro en la posición 'position'
+                Entrevista selectedRecord = entrevistas.get(position);
+                // Crea un Intent para abrir la nueva actividad
+                Intent intent = new Intent(v.getContext(), ResultadoEntrevistaActivity.class);
+                // Inicia la nueva actividad
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        // Manejador de eventos para el botón "Agregar Entrevista"
+        holder.btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Obtén el registro en la posición 'position'
@@ -95,19 +108,6 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
             }
         });
 
-        // Manejador de eventos para el botón "Agregar Entrevista"
-//        holder.btnAgregar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Obtén el registro en la posición 'position'
-//                Entrevista selectedRecord = entrevistas.get(position);
-//                // Crea un Intent para abrir la nueva actividad
-//                Intent intent = new Intent(v.getContext(), ResultadoEntrevistaActivity.class);
-//                // Inicia la nueva actividad
-//                v.getContext().startActivity(intent);
-//            }
-//        });
-
     }
     @Override
     public int getItemCount() {
@@ -120,7 +120,7 @@ public class RecordEntrevistaAdapter extends RecyclerView.Adapter<RecordEntrevis
         ImageButton btnVerDetalle;
         ImageButton  btnEditar;
         ImageButton  btnResultado;
-//        ImageButton  btnAgregar;
+        ImageButton  btnAgregar;
 
         RecordEntrevistaViewHolder(@NonNull View itemView) {
             super(itemView);
