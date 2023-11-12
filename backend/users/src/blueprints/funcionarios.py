@@ -21,9 +21,9 @@ def create():
     return jsonify(user), 201
 
 
-@funcionarios_blueprint.route("/users/funcionarios", methods=["GET"])
-def list():
-    user = ListFuncionarios().execute()
+@funcionarios_blueprint.route("/users/funcionarios/<int:idEmpresa>", methods=["GET"])
+def list(idEmpresa):
+    user = ListFuncionarios(idEmpresa).execute()
     return jsonify(user), 201
 
 

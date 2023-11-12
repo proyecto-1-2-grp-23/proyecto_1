@@ -26,7 +26,7 @@ export class LoginCandidatoComponent implements OnInit {
     pais: new FormControl('', [Validators.required]),
     ciudad: new FormControl('', [Validators.required]),
     idiomas: new FormControl('', [Validators.required]),
-    rasgos: new FormControl('', [Validators.required]),
+    rasgos: new FormControl(''),
     repContraseña: new FormControl('', [Validators.required]),
     contraseña: new FormControl('', [Validators.required]),
   });

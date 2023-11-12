@@ -60,17 +60,19 @@ export class CrearEquipoTrabajoComponent implements OnInit {
   }
 
   llenarFuncionarios() {
-    this.empresaService.listarFuncionarios().subscribe((res) => {
-      console.log(res);
-      res.forEach((registro: any) => {
-        const nombre = registro.nombre_funcionario;
-        const id = registro.id;
-        const nuevoRegistro = {
-          Id: id,
-          Nombre: nombre,
-        };
-        this.funcionarios.push(nuevoRegistro);
+    this.empresaService
+      .listarFuncionarios(parseInt(sessionStorage.getItem('idEmpresa')!))
+      .subscribe((res) => {
+        console.log(res);
+        res.forEach((registro: any) => {
+          const nombre = registro.nombre_funcionario;
+          const id = registro.id;
+          const nuevoRegistro = {
+            Id: id,
+            Nombre: nombre,
+          };
+          this.funcionarios.push(nuevoRegistro);
+        });
       });
-    });
   }
 }
