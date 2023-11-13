@@ -41,6 +41,10 @@
             android:label="Resultado Entrevista Activity"
             android:exported="true" />
         <activity
+            android:name=".view.pruebaTecnica.DetalleTecnicalInterviewActivity"
+            android:label="Detalle Tecnical Interview Activity"
+            android:exported="true" />
+        <activity
             android:name=".PreLoginActivity"
             android:exported="true"
             android:label="@string/app_name" >

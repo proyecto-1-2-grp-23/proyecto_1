@@ -213,7 +213,7 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
         autoCompleteFuncionario.setAdapter(funcionarioAdapter);
 
         // Inicializa el ViewModel
-//        candidatoViewModel = new ViewModelProvider(this).get(CandidatoViewModel.class);
+        //candidatoViewModel = new ViewModelProvider(this).get(CandidatoViewModel.class);
 
         ArrayAdapter<String> candidatoAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, candidatos);
         spinnerCandidato.setAdapter(candidatoAdapter);
