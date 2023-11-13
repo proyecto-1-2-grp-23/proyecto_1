@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<ListView
+    android:id="@+id/listViewPreguntas"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/btnAgregarPregunta"
+    android:divider="@android:color/darker_gray"
+    android:dividerHeight="1dp" />
+
+<Button
+    android:id="@+id/btnAgregarPregunta"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:text="Agregar Pregunta" />
+
+<LinearLayout
+    android:id="@+id/layoutCamposAdicionales"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/btnAgregarPregunta"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="gone">
+
+    <EditText
+        android:id="@+id/editTextPregunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nueva Pregunta" />
+
+    <EditText
+        android:id="@+id/editTextRespuesta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Respuesta" />
+
+</LinearLayout>
+</RelativeLayout>

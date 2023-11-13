@@ -15,21 +15,18 @@ export class ServicioProyectosService {
     return this.http.post<any>(`${this.backUrl}`, entrevista);
   }
 
-  listarProyectos(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/listar-projects`);
+  listarProyectos(idEmpresa: any): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/listar-projects/` + idEmpresa);
   }
 
   listarProyectosById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/${id}/listar-projects`);
+    return this.http.get<any>(`${this.backUrl}/listar-project/` + id);
   }
 
-  getDataWithQueryParams(queryParam1: string, queryParam2: string): Observable<any> {
-    // Build the query parameters using HttpParams.
-    const params = new HttpParams()
-      .set('personalidad', queryParam1)
-      .set('habilidades', queryParam2);
-
-    // Make the GET request with query parameters.
-    return this.http.get<any>(`${this.backUrl}/tecnicas_blandas`, { params });
+  agregarCandidatoProyecto(candidatoProyecto: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/proyecto-candidato`,
+      candidatoProyecto
+    );
   }
 }
