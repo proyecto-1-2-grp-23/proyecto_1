@@ -1,5 +1,6 @@
 export class Candidato {
   id: number;
+  idEmpresa: number;
   nombre: string;
   descripcion: string;
   perfiles: string;
@@ -10,6 +11,7 @@ export class Candidato {
 
   constructor(
     id: number,
+    idEmpresa: number,
     nombre: string,
     descripcion: string,
     perfiles: string,
@@ -19,6 +21,7 @@ export class Candidato {
     habilidades_blandas: string
   ) {
     this.id = id;
+    this.idEmpresa = idEmpresa;
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.perfiles = perfiles;
@@ -31,7 +34,7 @@ export class Candidato {
 
 export type proyectoCrear = Pick<
   Candidato,
-  | 'id'
+  | 'idEmpresa'
   | 'nombre'
   | 'descripcion'
   | 'perfiles'

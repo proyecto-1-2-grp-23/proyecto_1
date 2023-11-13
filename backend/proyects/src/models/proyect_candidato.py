@@ -24,3 +24,9 @@ class ProyectCandidatoSchema(Schema):
 class CreatedProyectCandidatoJsonSchema(Schema):
     id = fields.Int()
     createdAt = fields.DateTime()
+
+class ProyectCandidatoJsonSchema(Schema):
+    id = fields.Int()
+    idProyecto = fields.Integer()
+    idCandidato = fields.Integer()
+    createdAt = fields.DateTime()
