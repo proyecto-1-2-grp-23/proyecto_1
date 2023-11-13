@@ -15,24 +15,18 @@ export class ServicioProyectosService {
     return this.http.post<any>(`${this.backUrl}`, entrevista);
   }
 
-  listarProyectos(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/listar-projects`);
+  listarProyectos(idEmpresa: any): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/listar-projects/` + idEmpresa);
   }
 
   listarProyectosById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/${id}/listar-projects`);
+    return this.http.get<any>(`${this.backUrl}/listar-project/` + id);
   }
 
-  listarProyectosDataLaboral(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/dataLaboral`);
+  agregarCandidatoProyecto(candidatoProyecto: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.backUrl}/proyecto-candidato`,
+      candidatoProyecto
+    );
   }
-
-  obtenerProyectosCandidatos(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/candidatos`);
-  }
-  obtenerProyectosCandidatoPorId(id: any): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/candidatos/` + id);
-  }
-
-
 }

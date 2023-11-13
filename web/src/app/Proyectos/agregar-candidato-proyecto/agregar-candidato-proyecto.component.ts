@@ -1,7 +1,11 @@
+import { proyectoCandidatoCrear } from './../proyectoCandidato';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ServicioProyectosService } from '../Servicio/servicio-proyectos.service';
+import { ServicioCandidatosService } from 'src/app/Candidatos/servicio/servicio-candidatos.service';
+import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-agregar-candidato-proyecto',
@@ -14,7 +18,10 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
     caracteristicasPersonalidad: new FormControl('', [Validators.required]),
     caracteristicasTecnicas: new FormControl('', [Validators.required]),
   });
+
   idProyect: any;
+  proyectoCandidato!: proyectoCandidatoCrear;
+
   caracteristicasTecnicas: {
     Nombre: any;
   }[] = [];
@@ -31,31 +38,55 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     public dialogRef: MatDialogRef<AgregarCandidatoProyectoComponent>,
-    private proyectocandidatoService: ServicioProyectosService,
-    private proyectodataLaboralService: ServicioProyectosService,
+    private candidatoService: ServicioCandidatosService,
+    private proyectoService: ServicioProyectosService
   ) {
     if (data != null) {
       let informacion = data.info;
-      this.idProyect = informacion.Proyecto;
+      console.log(informacion, 'info');
+      this.idProyect = informacion.id;
     }
   }
 
   ngOnInit(): void {
     this.llenarCaracteristicasTecnicas();
     this.llenarCaracteristicasPersonalidad();
-    this.obtenerCandidato()
   }
 
-
   agregar() {
+    this.proyectoCandidato = {
+      idProyecto: this.idProyect,
+      idCandidato: parseInt(
+        this.registrationForm.get('candidatosCompatibles')?.value
+      ),
+    };
 
-    console.log(
-      this.registrationForm.get('candidatosCompatibles')?.value,
-      'candidato'
-    );
-
-    console.log(this.idProyect, 'info Proyect');
-    this.dialogRef.close();
+    this.proyectoService
+      .agregarCandidatoProyecto(this.proyectoCandidato)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          if (res.id > 0) {
+            Swal.fire('', 'Candidato Asociado', 'success');
+            this.dialogRef.close();
+          } else {
+            Swal.fire('', 'Error en la asociación del candidato', 'error');
+          }
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status == 412) {
+            console.log(this.idProyect, 'info');
+            Swal.fire('', 'Candidato ya existe en el proyecto ', 'error');
+          } else {
+            Swal.fire(
+              '',
+              'Error en la asociación del candidato' + error.status,
+              'error'
+            );
+          }
+          this.dialogRef.close();
+        }
+      );
   }
 
   verProyectos() {
@@ -63,29 +94,30 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
   }
 
   llenarCaracteristicasTecnicas() {
-    this.proyectodataLaboralService.listarProyectosDataLaboral().subscribe((res) =>{
-      console.log(res)
-      res.forEach((registro: any) => {
-        const nombre = registro.habilidades;
-        const valores: string[] = nombre.split(',');
-        for (let valor of valores) {
-          const nuevoRegistro = {
-            Nombre: valor,
-          };
-          const registroExistente = this.caracteristicasTecnicas.find(
-            (registro) => registro.Nombre === nuevoRegistro.Nombre
-          );
-          if (!registroExistente) {
-            this.caracteristicasTecnicas.push(nuevoRegistro);
+    this.proyectoService
+      .listarProyectosById(this.idProyect)
+      .subscribe((res) => {
+        console.log(res);
+        res.forEach((registro: any) => {
+          const nombre = registro.habilidades_blandas;
+          const valores: string[] = nombre.split(',');
+          for (let valor of valores) {
+            const nuevoRegistro = {
+              Nombre: valor,
+            };
+            const registroExistente = this.caracteristicasTecnicas.find(
+              (registro) => registro.Nombre === nuevoRegistro.Nombre
+            );
+            if (!registroExistente) {
+              this.caracteristicasTecnicas.push(nuevoRegistro);
+            }
           }
-        }
+        });
       });
-
-    });
   }
 
   llenarCaracteristicasPersonalidad() {
-    this.proyectocandidatoService.obtenerProyectosCandidatos().subscribe((res) =>{
+    this.candidatoService.obtenerCandidatos().subscribe((res) => {
       res.forEach((registro: any) => {
         const nombre = registro.rasgosPersonalidad;
         const valores: string[] = nombre.split(',');
@@ -102,12 +134,34 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
           }
         }
       });
-
     });
   }
 
-  obtenerCandidato() {
-    this.proyectocandidatoService.obtenerProyectosCandidatos().subscribe((res) => {
+  buscarCandidatos() {
+    this.candidatos = [];
+    this.candidatoService
+      .obtenerCandidatosHabTec(
+        this.registrationForm.get('caracteristicasTecnicas')?.value
+      )
+      .subscribe((res) => {
+        res.forEach((registro: any) => {
+          this.consultarCandidato(registro.idUsuario);
+        });
+      });
+
+    this.candidatoService
+      .obtenerCandidatosHabPer(
+        this.registrationForm.get('caracteristicasPersonalidad')?.value
+      )
+      .subscribe((res) => {
+        res.forEach((registro: any) => {
+          this.consultarCandidato(registro.idUsuario);
+        });
+      });
+  }
+
+  consultarCandidato(id: any) {
+    this.candidatoService.obtenerCandidatoPorId(id).subscribe((res) => {
       res.forEach((registro: any) => {
         const nombre = registro.nombreCompleto;
         const id = registro.idUsuario;
@@ -116,7 +170,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
           Id: id,
         };
         const registroExistente = this.candidatos.find(
-          (registro) => registro.Nombre === nuevoRegistro.Nombre
+          (registro) => registro.Id === nuevoRegistro.Id
         );
         if (!registroExistente) {
           // Si no está repetido, agregar el nuevo registro
@@ -125,5 +179,4 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
       });
     });
   }
-
 }

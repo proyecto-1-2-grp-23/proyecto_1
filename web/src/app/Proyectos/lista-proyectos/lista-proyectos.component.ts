@@ -48,42 +48,44 @@ export class ListaProyectosComponent implements OnInit {
   }
 
   cargarProyectos() {
-    this.proyectoService.listarProyectos().subscribe((res) => {
-      res.forEach((registro: any) => {
-        const id = registro.id;
-        const nombre = registro.nombre;
-        const descripcion = registro.descripcion;
-        const perfiles = registro.perfiles;
-        const conocimientos = registro.conocimientos_tecnicos;
-        const habilidades = registro.habilidades_blandas;
-        const inicio = registro.startDate;
-        const fin = registro.finishDate;
-        const nuevoRegistro = {
-          id: id,
-          Nombre: nombre,
-          Descripcion: descripcion,
-          Perfiles: perfiles,
-          Conocimientos: conocimientos,
-          Habilidades: habilidades,
-          FechaInicio: inicio,
-          FechaFin: fin,
-        };
-        this.registros.push(nuevoRegistro);
+    this.proyectoService
+      .listarProyectos(parseInt(sessionStorage.getItem('idEmpresa')!))
+      .subscribe((res) => {
+        res.forEach((registro: any) => {
+          const id = registro.id;
+          const nombre = registro.nombre;
+          const descripcion = registro.descripcion;
+          const perfiles = registro.perfiles;
+          const conocimientos = registro.conocimientos_tecnicos;
+          const habilidades = registro.habilidades_blandas;
+          const inicio = registro.startDate;
+          const fin = registro.finishDate;
+          const nuevoRegistro = {
+            id: id,
+            Nombre: nombre,
+            Descripcion: descripcion,
+            Perfiles: perfiles,
+            Conocimientos: conocimientos,
+            Habilidades: habilidades,
+            FechaInicio: inicio,
+            FechaFin: fin,
+          };
+          this.registros.push(nuevoRegistro);
+        });
+
+        this.dataTableProyectos = {};
+
+        this.registros.forEach((item, index) => {
+          this.dataTableProyectos[index] = item;
+        });
+
+        const miArreglo = Object.keys(this.dataTableProyectos).map(
+          (key) => this.dataTableProyectos[key]
+        );
+
+        this.dataSource = new MatTableDataSource(miArreglo);
+        this.dataSource.paginator = this.paginator;
       });
-
-      this.dataTableProyectos = {};
-
-      this.registros.forEach((item, index) => {
-        this.dataTableProyectos[index] = item;
-      });
-
-      const miArreglo = Object.keys(this.dataTableProyectos).map(
-        (key) => this.dataTableProyectos[key]
-      );
-
-      this.dataSource = new MatTableDataSource(miArreglo);
-      this.dataSource.paginator = this.paginator;
-    });
   }
 
   crearProyecto() {
@@ -95,7 +97,7 @@ export class ListaProyectosComponent implements OnInit {
   }
 
   agregarCandidatos(element: any) {
-    localStorage.setItem('agregarCandidatosFunction', element.id);
+    console.log(element, 'elemento');
     const dialogRef = this.dialog.open(AgregarCandidatoProyectoComponent, {
       width: '60%',
       height: '90%',
@@ -106,15 +108,13 @@ export class ListaProyectosComponent implements OnInit {
       this.cargarProyectos();
     });
   }
-  projectsbyId(){
-
-    const projectId = this.dataTableProyectos[0].id
+  projectsbyId() {
+    const projectId = this.dataTableProyectos[0].id;
     this.proyectoService.listarProyectosById(projectId).subscribe((res) => {
       console.log(res[0]);
       console.log(res[0]);
-
     });
-}
+  }
 
   limpiarTabla() {
     this.dataSource = new MatTableDataSource();
