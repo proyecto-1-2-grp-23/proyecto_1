@@ -35,4 +35,5 @@ public class DetalleTecnicalInterviewActivity extends AppCompatActivity {
             // Por ejemplo, puedes mostrar campos de edición y botones de guardado.
         }
     }
+
 }
