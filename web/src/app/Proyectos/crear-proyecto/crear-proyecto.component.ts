@@ -32,9 +32,9 @@ export class CrearProyectoComponent implements OnInit {
     private calendar: NgbCalendar,
     private router: Router,
     private proyectoService: ServicioProyectosService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   abrirDatepicker() {
     // Inicializa la fecha con el valor actual
@@ -59,11 +59,11 @@ export class CrearProyectoComponent implements OnInit {
 
   guardar() {
     this.proyecto = {
-      id: 0,
+      idEmpresa: parseInt(sessionStorage.getItem('idEmpresa')!),
       nombre: this.registrationForm.get('nombreProyecto')?.value,
       descripcion: this.registrationForm.get('descripcion')?.value,
       perfiles: this.registrationForm.get('perfil')?.value,
-      conocimientos_tecnicos: this.registrationForm.get('conocimientos')?.value.split(/\s+/),
+      conocimientos_tecnicos: this.registrationForm.get('conocimientos')?.value,
       habilidades_blandas: this.chips.join(', '),
       startDate: new Date(
         this.fechaInicioSeleccionada.year,
@@ -77,10 +77,8 @@ export class CrearProyectoComponent implements OnInit {
       ),
     };
 
-    console.log(this.proyecto.habilidades_blandas)
-    console.log(this.proyecto.habilidades_blandas)
-
-    this.proyectoService.crearProyectos(this.proyecto).subscribe((res) => {//
+    this.proyectoService.crearProyectos(this.proyecto).subscribe((res) => {
+      //
       console.log(res);
       if (res.id > 0) {
         Swal.fire('', 'Proyecto creado', 'success');
