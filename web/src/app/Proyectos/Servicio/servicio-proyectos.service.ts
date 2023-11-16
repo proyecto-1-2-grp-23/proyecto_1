@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ServicioProyectosService {
-  private backUrl: string = environment.baseUrl + '/projects';
+  private backUrl: string = ' http://127.0.0.1:5000' + '/projects';
 
   constructor(private http: HttpClient) {}
 

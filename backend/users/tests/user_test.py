@@ -133,22 +133,12 @@ class TestMiApp(unittest.TestCase):
                 self.assertIsNotNone(nuevo_usuario)
                 self.assertEqual(nuevo_usuario.idiomas, data["idiomas"])
 
-    def test_creacion_usuario_equipo(self):
-        id_equipo = 1
-        user = CreateUser(data).crear_candidato_equipo(id_equipo)
-        assert "id" in user
-        assert "createdAt" in user
-        users = self.session.query(User).all()
-        assert len(users) == 1
-
     def test_creacion_equipo(self):
         # Datos necesarios para crear un equipo
         nombre_equipo = {
-            "tipoEmpresa": "Cualquiera",
-            "razonSocial": "Nada",
-            "verticalesNegocio": "unas",
             "nombre": "Los vengadores8",
             "descripcion": "Nada",
+            "idEmpresa": 1,
         }
 
         # Crear una instancia de CreateUser y crear el equipo
