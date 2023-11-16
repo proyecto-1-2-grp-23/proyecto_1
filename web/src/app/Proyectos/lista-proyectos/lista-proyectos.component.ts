@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AgregarCandidatoProyectoComponent } from '../agregar-candidato-proyecto/agregar-candidato-proyecto.component';
 import { ServicioProyectosService } from '../Servicio/servicio-proyectos.service';
 import { DetalleProyectoComponent } from '../detalle-proyecto/detalle-proyecto.component';
+import { ModificarProyectoComponent } from '../modificar-proyecto/modificar-proyecto.component';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -125,7 +126,19 @@ export class ListaProyectosComponent implements OnInit {
     const dialogRef = this.dialog.open(DetalleProyectoComponent, {
       width: '60%',
       height: '90%',
-      data: { info: element, type: 'view' },
+      data: { info: element },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.limpiarTabla();
+      this.cargarProyectos();
+    });
+  }
+
+  modificarProyecto(element: any) {
+    const dialogRef = this.dialog.open(ModificarProyectoComponent, {
+      width: '60%',
+      height: '90%',
+      data: { info: element },
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.limpiarTabla();
