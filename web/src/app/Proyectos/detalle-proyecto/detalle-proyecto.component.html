@@ -1,0 +1,91 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">DETALLE PROYECTO</h1>
+  </div>
+
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre Proyecto"
+          formControlName="nombreProyecto"
+        />
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Descripción"
+          formControlName="descripcion"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Perfil requerido"
+          formControlName="perfil"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Conocimientos técnicos"
+          formControlName="conocimientos"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mb-3">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Fecha Inicio"
+            formControlName="fechaInicio"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 mb-3">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Fecha Fin"
+            formControlName="fechaFin"
+          />
+        </div>
+      </div>
+    </form>
+
+    <div class="text mb-3">Habilidades</div>
+    <div class="chips-container col-12 mb-3">
+      <span class="chip mb-3" *ngFor="let chip of chips; let i = index"
+        >{{ chip }}
+      </span>
+    </div>
+
+    <div class="mt-3 mb-5 d-flex justify-content-around">
+      <button
+        id="reigstro"
+        class="commonButton btn btn-info mt-3"
+        (click)="verEmpleados()"
+      >
+        Ver Empleados
+      </button>
+      <button
+        id="cerrar"
+        class="commonButton btn btn-info mt-3"
+        (click)="verProyectos()"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
