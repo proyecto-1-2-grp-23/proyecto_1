@@ -139,6 +139,7 @@ class TestMiApp(unittest.TestCase):
             "nombre": "Los vengadores8",
             "descripcion": "Nada",
             "idEmpresa": 1,
+            "idFuncionario": 1,
         }
 
         # Crear una instancia de CreateUser y crear el equipo

@@ -5,7 +5,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ListarCandidatosProyectoComponent } from '../listar-candidatos-proyecto/listar-candidatos-proyecto.component';
 
 @Component({
   selector: 'app-detalle-proyecto',
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class DetalleProyectoComponent implements OnInit {
   chips: string[] = [];
+  idProyecto: any;
 
   registrationForm: FormGroup = new FormGroup({
     nombreProyecto: new FormControl('', [Validators.required]),
@@ -26,11 +27,13 @@ export class DetalleProyectoComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
+    private dialogOpen: MatDialog,
     private dialog: MatDialogRef<DetalleProyectoComponent>
   ) {
     if (data != null) {
       let informacion = data.info;
       console.log(informacion, 'info');
+      this.idProyecto = informacion.id;
 
       this.registrationForm.get('nombreProyecto')?.setValue(informacion.Nombre);
       this.registrationForm
@@ -55,5 +58,13 @@ export class DetalleProyectoComponent implements OnInit {
     this.dialog.close();
   }
 
-  verEmpleados() {}
+  verEmpleados() {
+    this.dialog.close();
+    const dialogRef = this.dialogOpen.open(ListarCandidatosProyectoComponent, {
+      width: '60%',
+      height: '90%',
+      data: { Id: this.idProyecto },
+    });
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
 }

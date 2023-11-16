@@ -29,4 +29,8 @@ export class ServicioProyectosService {
       candidatoProyecto
     );
   }
+
+  listarCandidatosProyecto(id: number): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/listar-candidatos/` + id);
+  }
 }
