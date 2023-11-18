@@ -13,36 +13,21 @@ class Pregunta(Model, Base):
     dificultad = Column(Integer)
     descripcion = Column(String)
 
-    def __init__(self,idEmpresa,nombre,descripcion,perfiles,conocimientos_tecnicos,
-        habilidades_blandas,
-        startDate,
-        finishDate,
-    ):
+    def __init__(self,idProyecto,dificultad,descripcion):
         Model.__init__(self)
-        self.idEmpresa = idEmpresa
-        self.nombre = nombre
+        self.idProyecto = idProyecto
+        self.dificultad = dificultad
         self.descripcion = descripcion
-        self.perfiles = perfiles
-        self.conocimientos_tecnicos = conocimientos_tecnicos
-        self.habilidades_blandas = habilidades_blandas
-        self.startDate = startDate
-        self.finishDate = finishDate
 
-
-class ProjectSchema(Schema):
+class PreguntaSchema(Schema):
     id = fields.Int()
-    idEmpresa = fields.Int()
-    nombre = fields.Str()
+    idProyecto = fields.Int()
+    dificultad = fields.Int()
     descripcion = fields.Str()
-    perfiles = fields.Str()
-    conocimientos_tecnicos = fields.Str()
-    habilidades_blandas = fields.Str()
-    startDate = fields.DateTime()
-    finishDate = fields.DateTime()
     expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
-class CreatedProjectJsonSchema(Schema):
+class CreatedPreguntaJsonSchema(Schema):
     id = fields.Int()
     createdAt = fields.DateTime()
