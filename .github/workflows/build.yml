@@ -36,6 +36,7 @@ jobs:
           docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/users:latest
           docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/proyects:latest
           docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/auth:latest
+          docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/backend/pruebas:latest
         working-directory: backend/
       - name: Deploy to GKE
         env:
