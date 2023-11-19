@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 
 class Envio(Model, Base):
-    __tablename__ = "respuestas_enviadas"
+    __tablename__ = "envios"
 
     id = Column(Integer, primary_key=True)
     idProyecto = Column(Integer)

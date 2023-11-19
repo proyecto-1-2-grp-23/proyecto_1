@@ -1,5 +1,7 @@
 import sys
 
+
+
 sys.path.append(".")
 from ..commands.list_projects import ListProjects
 from ..commands.create_project import CreateProject
@@ -7,6 +9,7 @@ from ..commands.update_proyect import UpdateProject
 from ..commands.create_proyecto_candidato import CreateProjectCandidato
 from ..commands.list_proyects_empresa import ListProjectsEmpresa
 from ..commands.list_project import ListProject
+from ..commands.get_proyecto_candidato import ListProjectsCandidato
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 
@@ -28,7 +31,7 @@ def update(id):
     proyect = UpdateProject(request.get_json(), id).execute()
     return jsonify(proyect), 200
 
-@projects_blueprint.route('/projects/listar-projects', methods=['GET'])
+
 
 @projects_blueprint.route("/projects/listar-projects", methods=["GET"])
 def listarTodos():
@@ -41,6 +44,11 @@ def listarPorEmpresa(idEmpresa):
     proyecto = ListProjectsEmpresa(idEmpresa).execute()
     return jsonify(proyecto), 200
 
+
+@projects_blueprint.route('/projects/listar-projects/candidato/<int:idCandidato>', methods=['GET'])
+def listarPorCandidato(idCandidato):
+    candidato = ListProjectsCandidato(idCandidato).execute()
+    return jsonify(candidato), 200
 
 @projects_blueprint.route("/projects/listar-project/<int:idProyecto>", methods=["GET"])
 def listarProyecto(idProyecto):

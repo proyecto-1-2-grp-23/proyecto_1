@@ -1,10 +1,11 @@
 import sys
-
 sys.path.append(".")
-
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 from ..commands import CreatePregunta, ListPreguntas, ListPreguntasPorProyecto
+from ..commands.create_envio_respuestas import CreatePreguntaPorCandidato
+
+
 
 pruebas_blueprint = Blueprint("pruebas", __name__)
 
@@ -30,6 +31,12 @@ def list_preguntas():
 def list_preguntas_por_proyecto(id):
     preguntas = ListPreguntasPorProyecto(id).execute()
     return jsonify(preguntas), 200
+
+@pruebas_blueprint.route("/pruebas/respuesta-enviada/<int:idCandidato>", methods=["POST"])
+def create_respuesta_por_candidato(idCandidato):
+    print(idCandidato)
+    envios = CreatePreguntaPorCandidato(request.get_json(),idCandidato).execute()
+    return jsonify(envios), 200
 
 
 def auth_token():
