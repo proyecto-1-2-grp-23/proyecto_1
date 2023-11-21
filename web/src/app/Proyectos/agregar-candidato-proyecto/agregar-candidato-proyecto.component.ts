@@ -179,4 +179,6 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
       });
     });
   }
+
+  buscarRecomendado() {}
 }

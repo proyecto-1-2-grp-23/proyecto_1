@@ -35,6 +35,7 @@ import { ModificarProyectoComponent } from './Proyectos/modificar-proyecto/modif
 import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-preguntas.component';
 import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
 import { RegistrarResultadoComponent } from './PruebaTecnica/registrar-resultado/registrar-resultado.component';
+import { VerResultadoComponent } from './PruebaTecnica/ver-resultado/ver-resultado.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { RegistrarResultadoComponent } from './PruebaTecnica/registrar-resultado
     CrearPreguntasComponent,
     PresentarPruebaComponent,
     RegistrarResultadoComponent,
+    VerResultadoComponent,
   ],
   imports: [
     BrowserModule,
