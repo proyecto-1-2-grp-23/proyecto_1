@@ -13,11 +13,12 @@ class RespuestaEnviada(Model, Base):
     idEnvio = Column(Integer)
     correcta = Column(Boolean)
 
-    def __init__(self, idRespuesta, idEnvio, correcta):
+    def __init__(self, idRespuesta, idEnvio, correcta=None):
         Model.__init__(self)
         self.idRespuesta = idRespuesta
         self.idEnvio = idEnvio
-        self.correcta = correcta
+        if correcta is not None:
+            self.correcta = correcta
 
 
 class RespuestaEnviadaSchema(Schema):

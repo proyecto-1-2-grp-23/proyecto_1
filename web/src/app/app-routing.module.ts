@@ -15,6 +15,7 @@ import { DetalleEntrevistaComponent } from './Entrevistas/detalle-entrevista/det
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
 import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
 import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-preguntas.component';
+import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
 
 const routes: Routes = [
   {
@@ -95,6 +96,11 @@ const routes: Routes = [
   {
     path: 'pruebaTecnica/preguntas',
     component: CrearPreguntasComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'pruebaTecnica',
+    component: PresentarPruebaComponent,
     pathMatch: 'full',
   },
 ];
