@@ -33,6 +33,7 @@ import { DetalleProyectoComponent } from './Proyectos/detalle-proyecto/detalle-p
 import { ListarCandidatosProyectoComponent } from './Proyectos/listar-candidatos-proyecto/listar-candidatos-proyecto.component';
 import { ModificarProyectoComponent } from './Proyectos/modificar-proyecto/modificar-proyecto.component';
 import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-preguntas.component';
+import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-p
     ListarCandidatosProyectoComponent,
     ModificarProyectoComponent,
     CrearPreguntasComponent,
+    PresentarPruebaComponent,
   ],
   imports: [
     BrowserModule,

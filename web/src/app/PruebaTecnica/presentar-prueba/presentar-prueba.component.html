@@ -1,0 +1,47 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">PRUEBA TÉCNICA</h1>
+  </div>
+  <div class="col-12 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-5">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pregunta"
+          formControlName="pregunta"
+          [readOnly]="true"
+          [(ngModel)]="pregunta"
+        />
+      </div>
+      <div
+        *ngFor="let item of respuestas; let i = index"
+        class="form-check mt-3"
+      >
+        <div>
+          <input
+            class="form-check-input radio"
+            type="radio"
+            [id]="'item' + i"
+            [value]="item"
+            (change)="toggleSelection(item)"
+            [checked]="selectedString?.value === item"
+          />
+
+          <label class="form-check-label" [for]="'item' + i">{{
+            item.Nombre
+          }}</label>
+        </div>
+      </div>
+    </form>
+    <div class="d-flex flex-row-reverse" *ngIf="selectedString!.value != ''">
+      <button
+        id="reigstro"
+        class="commonButton btn btn-info mt-3"
+        (click)="siguiente()"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+</div>
