@@ -7,12 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ServicioProyectosService {
-  private backUrl: string = ' http://127.0.0.1:5000' + '/projects';
+  private backUrl: string = environment.baseUrl + '/projects';
 
   constructor(private http: HttpClient) {}
 
-  crearProyectos(entrevista: any): Observable<any> {
-    return this.http.post<any>(`${this.backUrl}`, entrevista);
+  crearProyectos(proyecto: any): Observable<any> {
+    return this.http.post<any>(`${this.backUrl}`, proyecto);
   }
 
   listarProyectos(idEmpresa: any): Observable<any> {
@@ -32,5 +32,9 @@ export class ServicioProyectosService {
 
   listarCandidatosProyecto(id: number): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/listar-candidatos/` + id);
+  }
+
+  modificarProyectos(proyecto: any): Observable<any> {
+    return this.http.put<any>(`${this.backUrl}`, proyecto);
   }
 }
