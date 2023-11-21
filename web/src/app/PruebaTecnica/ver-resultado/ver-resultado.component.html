@@ -1,0 +1,161 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">REGISTRAR RESULTADO PRUEBA TECNICA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="empresas">
+          <option value="" disabled selected>Empresas</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.Nombre">
+            {{ empresa.Nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="proyectos">
+          <option value="" disabled selected>Proyectos</option>
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Nombre">
+            {{ proyecto.Nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="candidatos">
+          <option value="" disabled selected>Candidatos</option>
+          <option
+            *ngFor="let candidato of candidatos"
+            [value]="candidato.Nombre"
+          >
+            {{ candidato.Nombre }}
+          </option>
+        </select>
+      </div>
+      <hr />
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pregunta 1"
+            formControlName="pregunta1"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Respuesta 1"
+            formControlName="respuesta1"
+            [readOnly]="true"
+          />
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pregunta 2"
+            formControlName="pregunta2"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Respuesta 2"
+            formControlName="respuesta2"
+            [readOnly]="true"
+          />
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pregunta 3"
+            formControlName="pregunta3"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Respuesta 3"
+            formControlName="respuesta3"
+            [readOnly]="true"
+          />
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pregunta 4"
+            formControlName="pregunta4"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Respuesta 4"
+            formControlName="respuesta4"
+            [readOnly]="true"
+          />
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pregunta 5"
+            formControlName="pregunta5"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Respuesta 5"
+            formControlName="respuesta5"
+            [readOnly]="true"
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Observaciones"
+          formControlName="observaciones"
+          rows="3"
+        ></textarea>
+      </div>
+    </form>
+    <div class="mt-5 mb-5 d-flex justify-content-around">
+      <button
+        id="ingreso"
+        class="commonButton btn btn-info mt-3"
+        (click)="verMenu()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
