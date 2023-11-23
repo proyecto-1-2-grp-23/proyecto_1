@@ -60,8 +60,6 @@ def registrar_resultados_de_envio(idEnvio):
     "/pruebas/proyectos/<int:idProyecto>/candidatos/<int:idCandidato>", methods=["GET"]
 )
 def obtener_resultados_por_proyecto_por_candidato(idProyecto, idCandidato):
-    print(idProyecto)
-    print(idCandidato)
     envio = ObtenerResultados(idProyecto, idCandidato).execute()
     if not envio:
         return {}, 404

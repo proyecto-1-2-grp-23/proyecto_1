@@ -21,10 +21,6 @@ class ObtenerResultados(BaseCommannd):
             )
             .first()
         )
-
-        import pdb
-
-        pdb.set_trace()
         if not envio:
             return None
 
