@@ -8,6 +8,7 @@ from ..commands import (
     ListPreguntas,
     ListPreguntasPorProyecto,
     RegistrarResultados,
+    ObtenerResultados,
 )
 from ..commands.create_envio_respuestas import CreatePreguntaPorCandidato
 
@@ -50,6 +51,16 @@ def create_respuesta_por_candidato(idCandidato):
 @pruebas_blueprint.route("/pruebas/registrar-resultado/<int:idEnvio>", methods=["PUT"])
 def registrar_resultados_de_envio(idEnvio):
     envio = RegistrarResultados(request.get_json(), idEnvio).execute()
+    if not envio:
+        return {}, 404
+    return jsonify(envio), 200
+
+
+@pruebas_blueprint.route(
+    "/pruebas/proyectos/<int:idProyecto>/candidatos/<int:idCandidato>", methods=["GET"]
+)
+def obtener_resultados_por_proyecto_por_candidato(idProyecto, idCandidato):
+    envio = ObtenerResultados(idProyecto, idCandidato).execute()
     if not envio:
         return {}, 404
     return jsonify(envio), 200
