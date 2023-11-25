@@ -31,6 +31,9 @@ import { AgregarCandidatoProyectoComponent } from './Proyectos/agregar-candidato
 import { ListaCandidatosEquipoComponent } from './Empresas/EquipoDeTrabajo/lista-candidatos-equipo/lista-candidatos-equipo.component';
 import { DetalleProyectoComponent } from './Proyectos/detalle-proyecto/detalle-proyecto.component';
 import { ListarCandidatosProyectoComponent } from './Proyectos/listar-candidatos-proyecto/listar-candidatos-proyecto.component';
+import { ModificarProyectoComponent } from './Proyectos/modificar-proyecto/modificar-proyecto.component';
+import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-preguntas.component';
+import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { ListarCandidatosProyectoComponent } from './Proyectos/listar-candidatos
     ListaCandidatosEquipoComponent,
     DetalleProyectoComponent,
     ListarCandidatosProyectoComponent,
+    ModificarProyectoComponent,
+    CrearPreguntasComponent,
+    PresentarPruebaComponent,
   ],
   imports: [
     BrowserModule,

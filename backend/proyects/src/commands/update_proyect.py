@@ -1,32 +1,34 @@
 import json
+from datetime import datetime
+
 from .base_command import BaseCommannd
 from ..models.project import Project, ProjectSchema, CreatedProjectJsonSchema
 from ..session import Session
 from flask import jsonify
 class UpdateProject(BaseCommannd):
-    try:
         def __init__(self, data, id):
             self.data = data
             self.id = id
 
         def execute(self):
-            required_fields = ["nombre", "descripcion", "perfiles", "conocimientos_tecnicos", "habilidades_blandas"]
-            if all(field in self.data for field in required_fields):
-                session = Session()
-                project = (session.query(Project).filter(Project.id == self.id).first())
+            session = Session()
+            try:
+                project = session.query(Project).filter(Project.id == self.id).first()
                 if project:
-                    for key, value in (self.data).items():
-                        setattr(project, key, value)
-                        session.commit()
-                        session.close()
+                    for key, value in self.data.items():
+                        if key in ["startDate", "finishDate"] and isinstance(value, str):
+                            value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S")
+                        if hasattr(project, key):
+                            setattr(project, key, value)
+                    session.commit()
+                    session.close()
                     return ({"message": "Proyecto actualizado correctamente"})
                 else:
                     return {"message": "Proyecto no encontrado"}
-            else:
-                return {"error": "Faltan campos obligatorios"}
                     
-    except Exception as error:
-        # handle the exception
-        print(
-            "An exception occurred:", error
-        )  # An exception occurred: division by zero
+            except Exception as e:
+                session.rollback()
+                return {"message": f"Error al actualizar el proyecto: {str(e)}"}
+
+            finally:
+                session.close()
