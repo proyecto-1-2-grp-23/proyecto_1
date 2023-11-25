@@ -3,8 +3,10 @@ package com.uniandes.abcjobsgrp23.data.model;
 import java.util.Objects;
 
 public class Entrevista {
+
     private Empresa empresa;
     private Candidato candidato;
+    private Funcionario funcionario;
     private String fecha;
     private String lugar;
     private Integer idCandidato;
@@ -32,6 +34,18 @@ public class Entrevista {
         this.lugar = lugar;
     }
 
+    // Constructor para consultar entrevistas
+    public Entrevista(Empresa empresa, Candidato candidato, Funcionario funcionario, String fecha,
+                      Integer idCandidato, Integer idEmpresa, Integer idFuncionario, String lugar) {
+        this.empresa = empresa;
+        this.candidato = candidato;
+        this.funcionario = funcionario;
+        this.fecha = fecha;
+        this.idCandidato = idCandidato;
+        this.idEmpresa = idEmpresa;
+        this.idFuncionario = idFuncionario;
+        this.lugar = lugar;
+    }
     public Integer getIdFuncionario() {
         return idFuncionario;
     }
@@ -54,6 +68,14 @@ public class Entrevista {
 
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
     public String getFecha() {
@@ -95,11 +117,13 @@ public class Entrevista {
         Entrevista entrevista = (Entrevista) o;
         return Objects.equals(empresa, entrevista.empresa) &&
                 Objects.equals(candidato, entrevista.candidato) &&
+                Objects.equals(funcionario, entrevista.funcionario) &&
                 Objects.equals(fecha, entrevista.fecha) &&
                 Objects.equals(lugar, entrevista.lugar);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(empresa, candidato, fecha, lugar);
+        return Objects.hash(empresa, candidato, funcionario, fecha, lugar);
     }
 }

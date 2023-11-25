@@ -21,12 +21,12 @@ public class DetalleTecnicalInterviewActivity extends AppCompatActivity {
 
         // Configura las vistas con los datos
         TextView titleTextView = findViewById(R.id.textViewTitulo);
-        TextView proyectoTextView = findViewById(R.id.textViewProyecto);
+//        TextView proyectoTextView = findViewById(R.id.textViewProyecto);
         TextView candidatoTextView = findViewById(R.id.textViewCandidato);
         TextView correoTextView = findViewById(R.id.textViewCorreo);
 
         titleTextView.setText(titulo);
-        proyectoTextView.setText(nombreProyecto);
+//        proyectoTextView.setText(nombreProyecto);
         candidatoTextView.setText(nombreCandidato);
         correoTextView.setText(correoCandidato);
 

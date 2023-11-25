@@ -1,5 +1,6 @@
 package com.uniandes.abcjobsgrp23.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.uniandes.abcjobsgrp23.R;
 import com.uniandes.abcjobsgrp23.data.model.TecnicalInterview;
 import com.uniandes.abcjobsgrp23.databinding.FragmentDashboardBinding;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
+import com.uniandes.abcjobsgrp23.view.pruebaTecnica.CrearTecnicalInterviewActivity;
 import com.uniandes.abcjobsgrp23.view.pruebaTecnica.RecordTecnicalInterviewAdapter;
 import com.uniandes.abcjobsgrp23.viewmodel.TecnicalInterviewViewModel;
 
@@ -72,6 +74,7 @@ public class DashboardFragment extends Fragment {
                 public void onClick(View v) {
                     // Agregar aquí la lógica para abrir la pantalla de creación de entrevistas
                     // Puedes navegar a una nueva actividad o fragmento para agregar una nueva entrevista.
+
                 }
             });
 
