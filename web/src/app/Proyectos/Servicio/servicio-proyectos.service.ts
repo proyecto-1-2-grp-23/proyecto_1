@@ -11,8 +11,8 @@ export class ServicioProyectosService {
 
   constructor(private http: HttpClient) {}
 
-  crearProyectos(entrevista: any): Observable<any> {
-    return this.http.post<any>(`${this.backUrl}`, entrevista);
+  crearProyectos(proyecto: any): Observable<any> {
+    return this.http.post<any>(`${this.backUrl}`, proyecto);
   }
 
   listarProyectos(idEmpresa: any): Observable<any> {
@@ -28,5 +28,13 @@ export class ServicioProyectosService {
       `${this.backUrl}/proyecto-candidato`,
       candidatoProyecto
     );
+  }
+
+  listarCandidatosProyecto(id: number): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/listar-candidatos/` + id);
+  }
+
+  modificarProyectos(proyecto: any): Observable<any> {
+    return this.http.put<any>(`${this.backUrl}`, proyecto);
   }
 }

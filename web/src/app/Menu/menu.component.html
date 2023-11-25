@@ -50,6 +50,42 @@
           Entrevistas
         </button>
       </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'administrador'">
+        <button
+          id="preguntas"
+          class="commonButton btn btn-info mt-3"
+          (click)="verPreguntasTecnicas()"
+        >
+          Preguntas Técnicas
+        </button>
+      </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'candidato'">
+        <button
+          id="preguntas"
+          class="commonButton btn btn-info mt-3"
+          (click)="verPrueba()"
+        >
+          Prueba Técnica
+        </button>
+      </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
+        <button
+          id="preguntas"
+          class="commonButton btn btn-info mt-3"
+          (click)="verRegistrarResultadoPrueba()"
+        >
+          Resultado prueba técnica
+        </button>
+      </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'administrador'">
+        <button
+          id="preguntas"
+          class="commonButton btn btn-info mt-3"
+          (click)="verResultadoPrueba()"
+        >
+          Resultado prueba técnica
+        </button>
+      </div>
     </div>
   </div>
 </div>

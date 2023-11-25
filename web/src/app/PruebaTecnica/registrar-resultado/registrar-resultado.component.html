@@ -1,0 +1,165 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">REGISTRAR RESULTADO PRUEBA TECNICA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="proyectos">
+          <option value="" disabled selected>Proyectos</option>
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Nombre">
+            {{ proyecto.Nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="candidatos">
+          <option value="" disabled selected>Candidatos</option>
+          <option
+            *ngFor="let candidato of candidatos"
+            [value]="candidato.Nombre"
+          >
+            {{ candidato.Nombre }}
+          </option>
+        </select>
+      </div>
+      <hr />
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <select class="custom-select preguntas" formControlName="pregunta1">
+            <option value="" disabled selected>Pregunta 1</option>
+            <option
+              *ngFor="let pregunta of preguntas"
+              [value]="pregunta.Nombre"
+            >
+              {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <select class="custom-select preguntas" formControlName="respuesta1">
+            <option value="" disabled selected>Respuestas</option>
+            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
+              {{ respuesta }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <select class="custom-select preguntas" formControlName="pregunta2">
+            <option value="" disabled selected>Pregunta 2</option>
+            <option
+              *ngFor="let pregunta of preguntas"
+              [value]="pregunta.Nombre"
+            >
+              {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <select class="custom-select preguntas" formControlName="respuesta2">
+            <option value="" disabled selected>Respuestas</option>
+            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
+              {{ respuesta }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <select class="custom-select preguntas" formControlName="pregunta3">
+            <option value="" disabled selected>Pregunta 3</option>
+            <option
+              *ngFor="let pregunta of preguntas"
+              [value]="pregunta.Nombre"
+            >
+              {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <select class="custom-select preguntas" formControlName="respuesta3">
+            <option value="" disabled selected>Respuestas</option>
+            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
+              {{ respuesta }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <select class="custom-select preguntas" formControlName="pregunta4">
+            <option value="" disabled selected>Pregunta 4</option>
+            <option
+              *ngFor="let pregunta of preguntas"
+              [value]="pregunta.Nombre"
+            >
+              {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <select class="custom-select preguntas" formControlName="respuesta4">
+            <option value="" disabled selected>Respuestas</option>
+            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
+              {{ respuesta }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="mb-3 col-8">
+          <select class="custom-select preguntas" formControlName="pregunta5">
+            <option value="" disabled selected>Pregunta 5</option>
+            <option
+              *ngFor="let pregunta of preguntas"
+              [value]="pregunta.Nombre"
+            >
+              {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4 respuesta">
+          <select class="custom-select preguntas" formControlName="respuesta5">
+            <option value="" disabled selected>Respuestas</option>
+            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
+              {{ respuesta }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Observaciones"
+          formControlName="observaciones"
+          rows="3"
+        ></textarea>
+      </div>
+    </form>
+    <div class="mt-5 mb-5 d-flex justify-content-around">
+      <button
+        id="reigstro"
+        class="commonButton btn btn-info mt-3"
+        (click)="guardar()"
+      >
+        Guardar
+      </button>
+      <button
+        id="ingreso"
+        class="commonButton btn btn-info mt-3"
+        (click)="verMenu()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
