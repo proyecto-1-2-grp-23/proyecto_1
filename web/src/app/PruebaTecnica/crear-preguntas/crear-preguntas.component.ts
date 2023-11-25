@@ -13,6 +13,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Respuesta, pruebaCrear } from '../pruebas';
+import { ServicioPruebasService } from '../Servicio/servicio-pruebas.service';
 
 @Component({
   selector: 'app-crear-preguntas',
@@ -20,6 +22,9 @@ import {
   styleUrls: ['./crear-preguntas.component.css'],
 })
 export class CrearPreguntasComponent implements OnInit, AfterViewInit {
+
+  respuestas_pruebas: Respuesta[] = [];
+  pruebas!: pruebaCrear;
   @ViewChild('referenceDiv') referenceDiv: ElementRef | undefined;
 
   registrationForm: FormGroup = new FormGroup({
@@ -48,10 +53,15 @@ export class CrearPreguntasComponent implements OnInit, AfterViewInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private pruebasService: ServicioPruebasService
   ) {}
 
   ngOnInit(): void {
+    this.proyectos = [
+      { Nombre: '1' },
+      { Nombre: '2' }
+    ]
     this.niveles = [{ Nivel: '1' }, { Nivel: '2' }, { Nivel: '3' }];
 
     this.preguntas = [
@@ -125,5 +135,24 @@ export class CrearPreguntasComponent implements OnInit, AfterViewInit {
     this.selectedString!.setValue('');
   }
 
-  guardar() {}
+  guardar() {
+    this.respuestas_pruebas = this.respuestas.map(respuesta => {
+      return { descripcion: respuesta };
+    });
+    this.pruebas = {
+
+      idProyecto: this.registrationForm.get('proyectos')?.value,
+      dificultad: this.registrationForm.get('nivel')?.value,
+      descripcion: this.registrationForm.get('pregunta')?.value,
+      respuestas: this.respuestas_pruebas
+    }
+
+    this.pruebasService.crearProyectos(this.pruebas).subscribe((res:any) => {
+      //
+      console.log(res);
+
+    });
+
+  };
+
 }
