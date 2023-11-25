@@ -1,48 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".view.pruebaTecnica.DetalleTecnicalInterviewActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detalle_tecnical_interview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.pruebaTecnica.DetalleTecnicalInterviewActivity">
 
-<TextView
-    android:id="@+id/textViewTitulo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Título"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="16dp"
-    android:textSize="24sp" />
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
 
-<TextView
-    android:id="@+id/textViewProyecto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Proyecto"
-    android:layout_below="@id/textViewTitulo"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="16dp"
-    android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textViewCandidato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Candidato"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124" />
 
-<TextView
-    android:id="@+id/textViewCandidato"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Candidato"
-    android:layout_below="@id/textViewProyecto"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="16dp"
-    android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textViewCorreo"
+        android:layout_width="171dp"
+        android:layout_height="27dp"
+        android:text="Correo"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
 
-<TextView
-    android:id="@+id/textViewCorreo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Correo"
-    android:layout_below="@id/textViewCandidato"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="16dp"
-    android:textSize="18sp" />
+    <Spinner
+        android:id="@+id/spinnerCandidatos"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.189" />
 
-</RelativeLayout>
+    <Spinner
+        android:id="@+id/spinnerProyectos"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCandidatos"
+        app:layout_constraintVertical_bias="0.023"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="34dp" />
+
+    <RecyclerView
+        android:id="@+id/recyclerViewPreguntas"
+        android:layout_width="325dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="325dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="@string/observaciones" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCrearTecnicalInterview"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <Button
+        android:id="@+id/btnCancelarTecnicalInterview"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
