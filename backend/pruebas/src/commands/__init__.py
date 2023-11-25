@@ -1,3 +1,5 @@
 from .create_pregunta import CreatePregunta
 from .list_preguntas import ListPreguntas
 from .list_preguntas_por_proyecto import ListPreguntasPorProyecto
+from .registrar_resultados import RegistrarResultados
+from .obtener_resultados import ObtenerResultados
