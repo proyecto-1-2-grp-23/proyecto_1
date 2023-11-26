@@ -9,6 +9,7 @@ from ..commands.create_proyecto_candidato import CreateProjectCandidato
 from ..commands.list_proyects_empresa import ListProjectsEmpresa
 from ..commands.list_project import ListProject
 from ..commands.get_proyecto_candidato import ListCandidatosProyecto
+from ..commands.list_proyects_candidato import ListProjectsCandidato
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
 
@@ -56,6 +57,14 @@ def listarCandidatosProyecto(idProyecto):
 def listarProyecto(idProyecto):
     proyecto = ListProject(idProyecto).execute()
     return jsonify(proyecto), 200
+
+
+@projects_blueprint.route(
+    "/projects/listar-projects/candidato/<int:idCandidato>", methods=["GET"]
+)
+def listarProyectosDeCandidato(idCandidato):
+    proyectos = ListProjectsCandidato(idCandidato).execute()
+    return jsonify(proyectos), 200
 
 
 @projects_blueprint.route("/projects/proyecto-candidato", methods=["POST"])

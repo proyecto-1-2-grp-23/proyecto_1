@@ -39,12 +39,9 @@ def list_preguntas_por_proyecto(id):
     return jsonify(preguntas), 200
 
 
-@pruebas_blueprint.route(
-    "/pruebas/respuesta-enviada/<int:idCandidato>", methods=["POST"]
-)
-def create_respuesta_por_candidato(idCandidato):
-    print(idCandidato)
-    envios = CreatePreguntaPorCandidato(request.get_json(), idCandidato).execute()
+@pruebas_blueprint.route("/pruebas/respuesta-enviada", methods=["POST"])
+def create_respuesta_por_candidato():
+    envios = CreatePreguntaPorCandidato(request.get_json()).execute()
     return jsonify(envios), 200
 
 

@@ -38,4 +38,10 @@ export class ServicioProyectosService {
     console.log(proyecto, 'proy');
     return this.http.put<any>(`${this.backUrl}/` + proyecto.id, proyecto);
   }
+
+  listarProyectosDeCandidato(idCandidato: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/listar-projects/candidato/` + idCandidato
+    );
+  }
 }

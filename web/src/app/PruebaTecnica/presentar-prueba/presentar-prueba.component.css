@@ -30,6 +30,12 @@
 }
 
 
+.select{
+  width: inherit;
+  height: 40px;
+  border-radius: 5px;
+  border-color: rgba(33, 173, 204, 1) ;
+}
 
 .radio{
   border-color: rgba(33, 173, 204, 1);

@@ -18,4 +18,14 @@ export class ServicioPruebaTecnicaService {
   listarPreguntas(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/preguntas`);
   }
+
+  listarPreguntasProyecto(idProyecto: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/preguntas/proyectos/` + idProyecto
+    );
+  }
+
+  crearEnvio(envio: any): Observable<any> {
+    return this.http.post<any>(`${this.backUrl}/respuesta-enviada`, envio);
+  }
 }
