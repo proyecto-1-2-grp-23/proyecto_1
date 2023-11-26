@@ -20,7 +20,7 @@ class ListCandidatosProyecto(BaseCommannd):
         for registro in proyectos:
             candidatoPr_json = ProyectCandidatoJsonSchema().dump(registro)
 
-            url_usuarios = "http://127.0.0.1:5001/users/candidatos/" + str(
+            url_usuarios = "http://34.110.178.56/users/candidatos/" + str(
                 registro.idCandidato
             )
             response = requests.get(url_usuarios)
