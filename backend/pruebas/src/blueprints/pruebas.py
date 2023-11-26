@@ -66,6 +66,12 @@ def obtener_resultados_por_proyecto_por_candidato(idProyecto, idCandidato):
     return jsonify(envio), 200
 
 
+@pruebas_blueprint.route("/pruebas/reset", methods=["POST"])
+def reset():
+    Reset().execute()
+    return jsonify({"status": "OK"})
+
+
 def auth_token():
     if "Authorization" in request.headers:
         authorization = request.headers["Authorization"]
