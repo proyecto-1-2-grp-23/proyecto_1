@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
+import com.uniandes.abcjobsgrp23.data.model.Pregunta;
+import com.uniandes.abcjobsgrp23.data.model.Proyecto;
 import com.uniandes.abcjobsgrp23.data.model.UserCredential;
 
 import java.io.IOException;
@@ -60,6 +62,7 @@ public class RetrofitBroker {
             return null;
         }
     }
+
     public static void getAllUsersCandidatos(Callback<List<Candidato>> callback) {
         Call<List<Candidato>> call = ApiClient.candidatoApi.getAllUsersCandidatos();
         call.enqueue(new Callback<List<Candidato>>() {
@@ -160,6 +163,64 @@ public class RetrofitBroker {
             }
             @Override
             public void onFailure(Call<Entrevista> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    /**
+     * Proyecto Service
+     * **/
+    public static void getAllProyectos(Callback<List<Proyecto>> callback) {
+        Call<List<Proyecto>> call = ApiClient.proyectoApi.getAllProyectos();
+        call.enqueue(new Callback<List<Proyecto>>() {
+            @Override
+            public void onResponse(Call<List<Proyecto>> call, Response<List<Proyecto>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Proyecto>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    /**
+     * Proyecto Service
+     * **/
+    public static void getAllPreguntas(Callback<List<Pregunta>> callback) {
+        Call<List<Pregunta>> call = ApiClient.preguntaApi.getAllPreguntas();
+        call.enqueue(new Callback<List<Pregunta>>() {
+            @Override
+            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
                 if (callback != null) {
                     callback.onFailure(call, t);
                 }

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">abcJobsgrp23</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_home">Seccion entrevistas</string>
+    <string name="title_dashboard">Seccion prueba tecnica</string>
+    <string name="title_notifications">Seccion prueba desempeño</string>
+    <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -35,4 +35,7 @@
     <string name="observaciones">Observaciones</string>
     <string name="guardar">Guardar</string>
     <string name="resultado_entrevista">Resultado Entrevista</string>
+    <string name="entrevista">Entrevista</string>
+    <string name="p_tecnica">P.Tecnica</string>
+    <string name="p_desempe_o">P.Desempeño</string>
 </resources>
