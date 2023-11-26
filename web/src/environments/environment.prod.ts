@@ -1,6 +1,10 @@
-const baseUrl: string = 'http://34.110.178.56';
+const baseUrlUsuarios: string = 'http://34.110.178.56';
+const baseUrlProyectos: string = 'http://34.110.178.56';
+const baseUrlPruebas: string = 'http://34.110.178.56';
 
 export const environment = {
   production: true,
-  baseUrl,
+  baseUrlUsuarios,
+  baseUrlProyectos,
+  baseUrlPruebas,
 };

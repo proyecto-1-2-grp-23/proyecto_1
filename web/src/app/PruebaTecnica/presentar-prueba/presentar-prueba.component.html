@@ -4,44 +4,64 @@
   </div>
   <div class="col-12 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
-      <div class="col-12 mb-5">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Pregunta"
-          formControlName="pregunta"
-          [readOnly]="true"
-          [(ngModel)]="pregunta"
-        />
-      </div>
-      <div
-        *ngFor="let item of respuestas; let i = index"
-        class="form-check mt-3"
+      <label class="text"
+        >Seleccione el proyecto para presentar la prueba</label
       >
-        <div>
+      <div class="col-12 mb-3">
+        <select
+          class="custom-select select"
+          formControlName="proyectos"
+          (change)="onClickProyecto()"
+        >
+          <option value="" disabled selected>Proyectos</option>
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Id">
+            {{ proyecto.Nombre }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="proyectoSeleccionado > 0">
+        <label class="text">Pregunta {{ numeroPregunta }}</label>
+        <div class="col-12 mb-5">
           <input
-            class="form-check-input radio"
-            type="radio"
-            [id]="'item' + i"
-            [value]="item"
-            (change)="toggleSelection(item)"
-            [checked]="selectedString?.value === item"
+            type="text"
+            class="form-control"
+            placeholder="Pregunta"
+            formControlName="pregunta"
+            [readOnly]="true"
           />
+        </div>
+        <div
+          *ngFor="let item of respuestas; let i = index"
+          class="form-check mt-3"
+        >
+          <div>
+            <input
+              class="form-check-input radio"
+              type="radio"
+              [id]="'item.Nombre' + i"
+              [value]="item.Nombre"
+              (change)="toggleSelection(item.Nombre)"
+              [checked]="selectedString?.value === item.Nombre"
+            />
 
-          <label class="form-check-label" [for]="'item' + i">{{
-            item.Nombre
-          }}</label>
+            <label class="form-check-label" [for]="'item.Nombre' + i">{{
+              item.Nombre
+            }}</label>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-row-reverse"
+          *ngIf="selectedString!.value != ''"
+        >
+          <button
+            id="reigstro"
+            class="commonButton btn btn-info mt-3"
+            (click)="siguiente()"
+          >
+            {{ labelBoton }}
+          </button>
         </div>
       </div>
     </form>
-    <div class="d-flex flex-row-reverse" *ngIf="selectedString!.value != ''">
-      <button
-        id="reigstro"
-        class="commonButton btn btn-info mt-3"
-        (click)="siguiente()"
-      >
-        Siguiente
-      </button>
-    </div>
   </div>
 </div>

@@ -10,12 +10,21 @@
     >
       <form [formGroup]="registrationForm" class="mx-auto">
         <div class="col-12 mb-3">
+          <select
+            class="custom-select select"
+            formControlName="empresa"
+            (change)="cargarProyectos()"
+          >
+            <option value="" disabled selected>Empresas</option>
+            <option *ngFor="let empresa of empresas" [value]="empresa.Id">
+              {{ empresa.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 mb-3">
           <select class="custom-select select" formControlName="proyectos">
             <option value="" disabled selected>Proyectos</option>
-            <option
-              *ngFor="let proyecto of proyectos"
-              [value]="proyecto.Nombre"
-            >
+            <option *ngFor="let proyecto of proyectos" [value]="proyecto.Id">
               {{ proyecto.Nombre }}
             </option>
           </select>
@@ -63,13 +72,13 @@
               class="form-check-input radio"
               type="radio"
               [id]="'item' + i"
-              [value]="item"
-              (change)="toggleSelection(item)"
-              [checked]="selectedString?.value === item"
+              [value]="item.descripcion"
+              (change)="toggleSelection(item.descripcion)"
+              [checked]="selectedString?.value === item.descripcion"
             />
 
             <label class="form-check-label" [for]="'item' + i">{{
-              item
+              item.descripcion
             }}</label>
           </div>
 
@@ -100,5 +109,14 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div class="mt-5 mb-5 d-flex justify-content-around">
+    <button
+      id="ingreso"
+      class="commonButton btn btn-info mt-3"
+      (click)="verMenu()"
+    >
+      Cancelar
+    </button>
   </div>
 </div>

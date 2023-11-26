@@ -144,6 +144,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
         this.registrationForm.get('caracteristicasTecnicas')?.value
       )
       .subscribe((res) => {
+        console.log(res, 'res');
         res.forEach((registro: any) => {
           this.consultarCandidato(registro.idUsuario);
         });
