@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ServicioProyectosService {
-  private backUrl: string = environment.baseUrl + '/projects';
+  private backUrl: string = environment.baseUrlProyectos + '/projects';
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +35,7 @@ export class ServicioProyectosService {
   }
 
   modificarProyectos(proyecto: any): Observable<any> {
-    return this.http.put<any>(`${this.backUrl}`, proyecto);
+    console.log(proyecto, 'proy');
+    return this.http.put<any>(`${this.backUrl}/` + proyecto.id, proyecto);
   }
 }
