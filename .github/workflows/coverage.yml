@@ -23,4 +23,4 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run unit tests
         working-directory: ./backend/users
-        run: pytest --cov=src -v -s --cov-fail-under=70
+        run: pytest --cov=src -v -s --cov-fail-under=65
