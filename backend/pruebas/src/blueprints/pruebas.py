@@ -1,5 +1,6 @@
 import sys
 
+
 sys.path.append(".")
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.reset import Reset
@@ -11,8 +12,7 @@ from ..commands import (
     ObtenerResultados,
 )
 from ..commands.create_envio_respuestas import CreatePreguntaPorCandidato
-
-
+from ..commands.create_desempeno_habilidad import CreateDesempeño
 pruebas_blueprint = Blueprint("pruebas", __name__)
 
 
@@ -61,6 +61,12 @@ def obtener_resultados_por_proyecto_por_candidato(idProyecto, idCandidato):
     if not envio:
         return {}, 404
     return jsonify(envio), 200
+
+
+@pruebas_blueprint.route("/pruebas/evaluacion_desempeño", methods=["POST"])
+def crear_evaluacion_desempeño():
+    evaluacion = CreateDesempeño(request.get_json()).execute()
+    return jsonify(evaluacion), 201
 
 
 @pruebas_blueprint.route("/pruebas/reset", methods=["POST"])

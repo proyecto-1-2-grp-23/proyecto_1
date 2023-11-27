@@ -26,6 +26,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./crear-preguntas.component.css'],
 })
 export class CrearPreguntasComponent implements OnInit, AfterViewInit {
+
   @ViewChild('referenceDiv') referenceDiv: ElementRef | undefined;
 
   registrationForm: FormGroup = new FormGroup({
