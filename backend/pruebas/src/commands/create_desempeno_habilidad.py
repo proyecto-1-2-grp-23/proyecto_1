@@ -1,6 +1,6 @@
 from .base_command import BaseCommannd
 
-from ..models.desempeño import Desempeño, DesempeñoSchema, CreatedDesempeñoJsonSchema
+from ..models.desempeno import Desempeño, DesempeñoSchema, CreatedDesempeñoJsonSchema
 from ..models.habilidad import Habilidad, HabilidadSchema, CreatedHabilidadJsonSchema
 from ..session import Session
 
