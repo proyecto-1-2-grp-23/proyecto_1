@@ -50,6 +50,8 @@ export class DetalleProyectoComponent implements OnInit {
 
       this.chips = informacion.Habilidades.split(',');
     }
+
+    this.registrationForm.disable();
   }
 
   ngOnInit(): void {}

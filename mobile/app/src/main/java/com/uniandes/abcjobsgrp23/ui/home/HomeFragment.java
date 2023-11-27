@@ -1,5 +1,6 @@
 package com.uniandes.abcjobsgrp23.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.uniandes.abcjobsgrp23.data.model.RecordEntrevista;
 import com.uniandes.abcjobsgrp23.databinding.FragmentHomeBinding;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 import com.uniandes.abcjobsgrp23.view.entrevistas.RecordEntrevistaAdapter;
+import com.uniandes.abcjobsgrp23.view.pruebaTecnica.CrearTecnicalInterviewActivity;
 import com.uniandes.abcjobsgrp23.viewmodel.EntrevistaViewModel;
 
 import java.util.ArrayList;
@@ -75,6 +77,7 @@ public class HomeFragment extends Fragment {
                 public void onClick(View v) {
                     // Agregar aquí la lógica para abrir la pantalla de creación de entrevistas
                     // Puedes navegar a una nueva actividad o fragmento para agregar una nueva entrevista.
+
                 }
             });
 

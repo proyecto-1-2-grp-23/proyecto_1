@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <ImageButton
-        android:id="@+id/btnAddTecnicalInterview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:src="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recyclerViewRecordTecnicalInterview"
-        app:layout_constraintVertical_bias="0.841"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -45,5 +31,24 @@
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="-77dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddTecnicalInterview"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:scrollbarThumbHorizontal="@android:drawable/ic_menu_add"
+        android:scrollbarThumbVertical="@android:drawable/ic_menu_add"
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="#6200ED"
+        app:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewRecordTecnicalInterview"
+        app:layout_constraintVertical_bias="0.817"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

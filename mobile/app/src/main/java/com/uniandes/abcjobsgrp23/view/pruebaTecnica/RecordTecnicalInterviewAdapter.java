@@ -61,6 +61,30 @@ public class RecordTecnicalInterviewAdapter extends RecyclerView.Adapter<RecordT
                 v.getContext().startActivity(intent);
             }
         });
+
+        // Manejador de eventos para el botón "Editar detalle"
+        holder.btnResultado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtén el registro en la posición 'position'
+                TecnicalInterview selectedRecord = tecnicalInterviews.get(position);
+
+                // Crea un Intent para abrir la nueva actividad
+                Intent intent = new Intent(v.getContext(), CrearTecnicalInterviewActivity.class);
+
+                // Pasa los datos necesarios a través del Intent
+                intent.putExtra("titulo", selectedRecord.getCandidato().getNombreCompleto());
+                intent.putExtra("nombreProyecto", selectedRecord.getProyecto().getNombre());
+                intent.putExtra("nombreCandidato", selectedRecord.getCandidato().getNombreCompleto());
+                intent.putExtra("correoCandidato", selectedRecord.getCandidato().getCorreo());
+                intent.putExtra("Editar", false);
+
+                // Inicia la nueva actividad
+                v.getContext().startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

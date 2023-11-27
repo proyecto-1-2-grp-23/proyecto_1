@@ -33,7 +33,8 @@ export class ListarCandidatosProyectoComponent implements OnInit {
       .listarCandidatosProyecto(this.idProyecto)
       .subscribe((res) => {
         res.forEach((registro: any) => {
-          const nombre = registro.candidato.nombreCompleto;
+          console.log(registro, 'regisro');
+          const nombre = registro.candidato[0].nombreCompleto;
           const nuevoRegistro = {
             Nombre: nombre,
           };
