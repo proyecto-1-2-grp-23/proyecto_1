@@ -18,6 +18,7 @@ import com.uniandes.abcjobsgrp23.R;
 import com.uniandes.abcjobsgrp23.data.model.TecnicalInterview;
 import com.uniandes.abcjobsgrp23.databinding.FragmentDashboardBinding;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
+import com.uniandes.abcjobsgrp23.view.pruebaDesempeno.CrearPruebaDesempenoActivity;
 import com.uniandes.abcjobsgrp23.view.pruebaTecnica.CrearTecnicalInterviewActivity;
 import com.uniandes.abcjobsgrp23.view.pruebaTecnica.RecordTecnicalInterviewAdapter;
 import com.uniandes.abcjobsgrp23.viewmodel.TecnicalInterviewViewModel;
@@ -46,9 +47,9 @@ public class DashboardFragment extends Fragment {
 
         // Muestra contenido en función del tipo de usuario
         if (userType == UserType.CANDIDATO) {
-            textView.setText("Dashboard, Candidato.");
+            textView.setText("P.Tecnica, Candidato.");
         } else if (userType == UserType.EMPRESA) {
-            textView.setText("Dashboard, Empresa.");
+            textView.setText("P.Tecnica, Empresa.");
 
             // Inicializa y configura el RecyclerView para RecordEntrevista
             RecyclerView recyclerViewRecordTecnicalInterview = root.findViewById(R.id.recyclerViewRecordTecnicalInterview);
@@ -72,8 +73,9 @@ public class DashboardFragment extends Fragment {
             btnTecnicalInterview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Agregar aquí la lógica para abrir la pantalla de creación de entrevistas
-                    // Puedes navegar a una nueva actividad o fragmento para agregar una nueva entrevista.
+                    Intent intent = new Intent(v.getContext(), CrearTecnicalInterviewActivity.class);
+                    // Inicia la nueva actividad
+                    v.getContext().startActivity(intent);
 
                 }
             });
