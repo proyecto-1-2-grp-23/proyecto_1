@@ -236,8 +236,7 @@ public class RetrofitBroker {
      * Pruebas Desempeño
      * **/
     public static void enviarPruebaDesempeno(int candidatoId, int idPrueba, int idEmpresa, String nombreHabilidad, int puntaje, Callback<ApiResponse> callback) {
-        HabilidadPuntaje habilidadPuntaje = new HabilidadPuntaje(nombreHabilidad, puntaje);
-        ResultadosDesempeno resultadosDesempeno = new ResultadosDesempeno( idPrueba,  candidatoId,  idEmpresa, habilidadPuntaje);
+        ResultadosDesempeno resultadosDesempeno = new ResultadosDesempeno( idPrueba,  candidatoId,  idEmpresa, nombreHabilidad, puntaje);
 
         Call<ApiResponse> call = ApiClient.pruebaDesempenoApi.enviarPruebaDesempeno(resultadosDesempeno);
         call.enqueue(new Callback<ApiResponse>() {

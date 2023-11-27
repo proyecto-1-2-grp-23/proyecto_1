@@ -15,32 +15,38 @@ public class ApiClient {
 
     // Crea instancias diferentes de Retrofit para cada servicio
     private static final Retrofit retrofitUserCredential = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_USER_CREDENTIAL)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     private static final Retrofit retrofitCandidato = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_CANDIDATO)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     private static final Retrofit retrofitEntrevista = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_ENTREVISTA)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     private static final Retrofit retrofitProyecto = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_PROYECTO)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     private static final Retrofit retrofitPregunta = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_PREGUNTA)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     private static final Retrofit retrofitPruebaDesempeno = new Retrofit.Builder()
-            .baseUrl(BASE_URL_INGRESS)
+            .baseUrl(BASE_URL_PRUEBA_DESEMPENO)
+//            .baseUrl(BASE_URL_INGRESS)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

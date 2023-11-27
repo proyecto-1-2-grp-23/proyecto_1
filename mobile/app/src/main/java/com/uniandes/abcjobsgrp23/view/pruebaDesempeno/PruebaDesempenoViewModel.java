@@ -11,6 +11,7 @@ import com.uniandes.abcjobsgrp23.data.model.ResultadosDesempeno;
 import com.uniandes.abcjobsgrp23.data.service.RetrofitBroker;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +26,8 @@ public class PruebaDesempenoViewModel extends ViewModel {
 
     public void guardarPruebaDesempeno(int candidatoId, ResultadosDesempeno resultadosDesempeno) {
         List<HabilidadPuntaje> habilidades = resultadosDesempeno.getHabilidades();
+        int totalHabilidades = habilidades.size();
+        AtomicInteger habilidadesCompletadas = new AtomicInteger(0);
 
         for (HabilidadPuntaje habilidad : habilidades) {
             RetrofitBroker.enviarPruebaDesempeno(
@@ -37,15 +40,36 @@ public class PruebaDesempenoViewModel extends ViewModel {
                         @Override
                         public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                             if (response.isSuccessful()) {
-                                pruebaDesempenoGuardada.postValue(true);
+                                // Incrementar el contador de habilidades completadas
+                                habilidadesCompletadas.incrementAndGet();
                             } else {
-                                pruebaDesempenoGuardada.postValue(false);
+                                // Tratar el fallo de la petición
+                            }
+
+                            // Verificar si se han completado todas las habilidades
+                            if (habilidadesCompletadas.get() == totalHabilidades) {
+                                // Notificar el resultado solo cuando todas las habilidades estén completadas
+                                if (habilidadesCompletadas.get() == totalHabilidades) {
+                                    if (response.isSuccessful()) {
+                                        pruebaDesempenoGuardada.postValue(true);
+                                    } else {
+                                        pruebaDesempenoGuardada.postValue(false);
+                                    }
+                                }
                             }
                         }
 
                         @Override
                         public void onFailure(Call<ApiResponse> call, Throwable t) {
-                            pruebaDesempenoGuardada.postValue(false);
+                            // Tratar el fallo de la petición
+                            // Incrementar el contador de habilidades completadas
+                            habilidadesCompletadas.incrementAndGet();
+
+                            // Verificar si se han completado todas las habilidades
+                            if (habilidadesCompletadas.get() == totalHabilidades) {
+                                // Notificar el resultado solo cuando todas las habilidades estén completadas
+                                pruebaDesempenoGuardada.postValue(false);
+                            }
                         }
                     }
             );
