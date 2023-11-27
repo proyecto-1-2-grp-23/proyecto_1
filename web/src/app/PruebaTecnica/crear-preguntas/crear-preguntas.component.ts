@@ -23,8 +23,6 @@ import { ServicioPruebasService } from '../Servicio/servicio-pruebas.service';
 })
 export class CrearPreguntasComponent implements OnInit, AfterViewInit {
 
-  respuestas_pruebas: Respuesta[] = [];
-  pruebas!: pruebaCrear;
   @ViewChild('referenceDiv') referenceDiv: ElementRef | undefined;
 
   registrationForm: FormGroup = new FormGroup({
@@ -136,23 +134,6 @@ export class CrearPreguntasComponent implements OnInit, AfterViewInit {
   }
 
   guardar() {
-    this.respuestas_pruebas = this.respuestas.map(respuesta => {
-      return { descripcion: respuesta };
-    });
-    this.pruebas = {
-
-      idProyecto: this.registrationForm.get('proyectos')?.value,
-      dificultad: this.registrationForm.get('nivel')?.value,
-      descripcion: this.registrationForm.get('pregunta')?.value,
-      respuestas: this.respuestas_pruebas
-    }
-
-    this.pruebasService.crearProyectos(this.pruebas).subscribe((res:any) => {
-      //
-      console.log(res);
-
-    });
-
   };
 
 }
