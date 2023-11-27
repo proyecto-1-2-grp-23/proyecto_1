@@ -5,9 +5,13 @@
   <div class="row col-6 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
       <div class="col-12 mb-3">
-        <select class="custom-select select" formControlName="proyectos">
+        <select
+          class="custom-select select"
+          formControlName="proyectos"
+          (change)="cargarDatosPRoyecto()"
+        >
           <option value="" disabled selected>Proyectos</option>
-          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Nombre">
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Id">
             {{ proyecto.Nombre }}
           </option>
         </select>
@@ -15,120 +19,192 @@
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="candidatos">
           <option value="" disabled selected>Candidatos</option>
-          <option
-            *ngFor="let candidato of candidatos"
-            [value]="candidato.Nombre"
-          >
+          <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
             {{ candidato.Nombre }}
           </option>
         </select>
       </div>
       <hr />
       <div class="d-flex">
-        <div class="mb-3 col-8">
-          <select class="custom-select preguntas" formControlName="pregunta1">
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="pregunta1"
+            (change)="llenarOpciones(1)"
+          >
             <option value="" disabled selected>Pregunta 1</option>
-            <option
-              *ngFor="let pregunta of preguntas"
-              [value]="pregunta.Nombre"
-            >
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.Id">
               {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="listRespuesta1"
+          >
+            <option value="" disabled selected>Opciones</option>
+            <option *ngFor="let opciones of opciones1" [value]="opciones.Id">
+              {{ opciones.Nombre }}
             </option>
           </select>
         </div>
         <div class="mb-3 col-4 respuesta">
           <select class="custom-select preguntas" formControlName="respuesta1">
             <option value="" disabled selected>Respuestas</option>
-            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
-              {{ respuesta }}
+            <option
+              *ngFor="let respuesta of respuestas"
+              [value]="respuesta.esCorrecta"
+            >
+              {{ respuesta.valor }}
             </option>
           </select>
         </div>
       </div>
 
       <div class="d-flex">
-        <div class="mb-3 col-8">
-          <select class="custom-select preguntas" formControlName="pregunta2">
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="pregunta2"
+            (change)="llenarOpciones(2)"
+          >
             <option value="" disabled selected>Pregunta 2</option>
-            <option
-              *ngFor="let pregunta of preguntas"
-              [value]="pregunta.Nombre"
-            >
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.Id">
               {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="listRespuesta2"
+          >
+            <option value="" disabled selected>Opciones</option>
+            <option *ngFor="let opciones of opciones2" [value]="opciones.Id">
+              {{ opciones.Nombre }}
             </option>
           </select>
         </div>
         <div class="mb-3 col-4 respuesta">
           <select class="custom-select preguntas" formControlName="respuesta2">
             <option value="" disabled selected>Respuestas</option>
-            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
-              {{ respuesta }}
+            <option
+              *ngFor="let respuesta of respuestas"
+              [value]="respuesta.esCorrecta"
+            >
+              {{ respuesta.valor }}
             </option>
           </select>
         </div>
       </div>
 
       <div class="d-flex">
-        <div class="mb-3 col-8">
-          <select class="custom-select preguntas" formControlName="pregunta3">
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="pregunta3"
+            (change)="llenarOpciones(3)"
+          >
             <option value="" disabled selected>Pregunta 3</option>
-            <option
-              *ngFor="let pregunta of preguntas"
-              [value]="pregunta.Nombre"
-            >
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.Id">
               {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="listRespuesta3"
+          >
+            <option value="" disabled selected>Opciones</option>
+            <option *ngFor="let opciones of opciones3" [value]="opciones.Id">
+              {{ opciones.Nombre }}
             </option>
           </select>
         </div>
         <div class="mb-3 col-4 respuesta">
           <select class="custom-select preguntas" formControlName="respuesta3">
             <option value="" disabled selected>Respuestas</option>
-            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
-              {{ respuesta }}
+            <option
+              *ngFor="let respuesta of respuestas"
+              [value]="respuesta.esCorrecta"
+            >
+              {{ respuesta.valor }}
             </option>
           </select>
         </div>
       </div>
 
       <div class="d-flex">
-        <div class="mb-3 col-8">
-          <select class="custom-select preguntas" formControlName="pregunta4">
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="pregunta4"
+            (change)="llenarOpciones(4)"
+          >
             <option value="" disabled selected>Pregunta 4</option>
-            <option
-              *ngFor="let pregunta of preguntas"
-              [value]="pregunta.Nombre"
-            >
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.Id">
               {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="listRespuesta4"
+          >
+            <option value="" disabled selected>Opciones</option>
+            <option *ngFor="let opciones of opciones4" [value]="opciones.Id">
+              {{ opciones.Nombre }}
             </option>
           </select>
         </div>
         <div class="mb-3 col-4 respuesta">
           <select class="custom-select preguntas" formControlName="respuesta4">
             <option value="" disabled selected>Respuestas</option>
-            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
-              {{ respuesta }}
+            <option
+              *ngFor="let respuesta of respuestas"
+              [value]="respuesta.esCorrecta"
+            >
+              {{ respuesta.valor }}
             </option>
           </select>
         </div>
       </div>
 
       <div class="d-flex">
-        <div class="mb-3 col-8">
-          <select class="custom-select preguntas" formControlName="pregunta5">
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="pregunta5"
+            (change)="llenarOpciones(5)"
+          >
             <option value="" disabled selected>Pregunta 5</option>
-            <option
-              *ngFor="let pregunta of preguntas"
-              [value]="pregunta.Nombre"
-            >
+            <option *ngFor="let pregunta of preguntas" [value]="pregunta.Id">
               {{ pregunta.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="custom-select preguntas"
+            formControlName="listRespuesta5"
+          >
+            <option value="" disabled selected>Opciones</option>
+            <option *ngFor="let opciones of opciones5" [value]="opciones.Id">
+              {{ opciones.Nombre }}
             </option>
           </select>
         </div>
         <div class="mb-3 col-4 respuesta">
           <select class="custom-select preguntas" formControlName="respuesta5">
             <option value="" disabled selected>Respuestas</option>
-            <option *ngFor="let respuesta of respuestas" [value]="respuesta">
-              {{ respuesta }}
+            <option
+              *ngFor="let respuesta of respuestas"
+              [value]="respuesta.esCorrecta"
+            >
+              {{ respuesta.valor }}
             </option>
           </select>
         </div>
@@ -149,7 +225,8 @@
       <button
         id="reigstro"
         class="commonButton btn btn-info mt-3"
-        (click)="guardar()"
+        (click)="guardarRespuesta()"
+        [disabled]="!registrationForm.valid"
       >
         Guardar
       </button>
