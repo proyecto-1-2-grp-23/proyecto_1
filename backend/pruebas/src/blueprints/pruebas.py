@@ -12,7 +12,7 @@ from ..commands import (
     ObtenerResultados,
 )
 from ..commands.create_envio_respuestas import CreatePreguntaPorCandidato
-from ..commands.create_desempeño_habilidad import CreateDesempeño
+from ..commands.create_desempeno_habilidad import CreateDesempeño
 pruebas_blueprint = Blueprint("pruebas", __name__)
 
 
