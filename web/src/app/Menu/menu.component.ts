@@ -72,6 +72,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate([`/pruebaTecnica/verResultado`]);
   }
 
+  verPruebaDesempeno() {
+    this.router.navigate([`/pruebaDesempeño`]);
+  }
+
   salir() {
     this.router.navigate([`/home`]);
     sessionStorage.removeItem('idEmpresa');

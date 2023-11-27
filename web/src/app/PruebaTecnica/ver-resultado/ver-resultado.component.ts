@@ -40,8 +40,7 @@ export class VerResultadoComponent implements OnInit {
   constructor(
     private router: Router,
     private proyectoService: ServicioProyectosService,
-    private preguntaTecnicaService: ServicioPruebaTecnicaService,
-    private empresaService: ServicioEmpresaService
+    private preguntaTecnicaService: ServicioPruebaTecnicaService
   ) {}
 
   ngOnInit(): void {

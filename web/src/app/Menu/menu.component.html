@@ -86,6 +86,15 @@
           Resultado prueba técnica
         </button>
       </div>
+      <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
+        <button
+          id="desempeño"
+          class="commonButton btn btn-info mt-3"
+          (click)="verPruebaDesempeno()"
+        >
+          Prueba de desempeño
+        </button>
+      </div>
     </div>
   </div>
 </div>
