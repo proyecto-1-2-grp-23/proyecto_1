@@ -1,4 +1,4 @@
-export class Candidato {
+export class Proyecto {
   id: number;
   idEmpresa: number;
   nombre: string;
@@ -33,7 +33,20 @@ export class Candidato {
 }
 
 export type proyectoCrear = Pick<
-  Candidato,
+  Proyecto,
+  | 'idEmpresa'
+  | 'nombre'
+  | 'descripcion'
+  | 'perfiles'
+  | 'conocimientos_tecnicos'
+  | 'habilidades_blandas'
+  | 'startDate'
+  | 'finishDate'
+>;
+
+export type proyectoModificar = Pick<
+  Proyecto,
+  | 'id'
   | 'idEmpresa'
   | 'nombre'
   | 'descripcion'

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ServicioEmpresaService {
-  private backUrl: string = environment.baseUrl + '/users';
+  private backUrl: string = environment.baseUrlUsuarios + '/users';
 
   constructor(private http: HttpClient) {}
 

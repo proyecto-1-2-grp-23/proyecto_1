@@ -9,8 +9,11 @@ class CreatePregunta(BaseCommannd):
         self.data = data
 
     def execute(self):
+        session = Session()
         body: dict = self.data.copy()
         respuestas = body.pop("respuestas")
+        print("RPESUETSAS")
+        print(respuestas)
 
         posted_data = PreguntaSchema(
             only=(
@@ -21,15 +24,22 @@ class CreatePregunta(BaseCommannd):
         ).load(body)
 
         pregunta = Pregunta(**posted_data)
-        session = Session()
+
         session.add(pregunta)
         session.commit()
+        new_pregunta = CreatedPreguntaJsonSchema().dump(pregunta)
+        session.close()
+
+        session = Session()
         for respuesta in respuestas:
-            posted_data = RespuestaSchema(only=("descripcion",)).load(respuesta)
+            posted_data = RespuestaSchema(only=(["descripcion", "esCorrecta"])).load(
+                respuesta
+            )
+            print("DATATATATA")
+            print(posted_data)
             respuesta_db = Respuesta(**posted_data, idPregunta=pregunta.id)
             session.add(respuesta_db)
         session.commit()
-        new_pregunta = CreatedPreguntaJsonSchema().dump(pregunta)
         session.close()
 
         return new_pregunta

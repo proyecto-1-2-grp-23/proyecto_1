@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detalle_evaluacion_desempeno"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinnerCandidatosDS"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="524dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCandidatos"
+        app:layout_constraintVertical_bias="0.03"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="33dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="111dp"
+        android:layout_height="60dp"
+        android:text="Prueba de desempeño"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <LinearLayout
+        android:id="@+id/containerSkills"
+        android:layout_width="312dp"
+        android:layout_height="102dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375">
+
+        <!-- Lista dinámica de habilidades técnicas -->
+        <include layout="@layout/item_habilidad_tecnica" />
+
+        <!-- Botón para agregar más habilidades técnicas -->
+        <Button
+            android:id="@+id/btnAddSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Habilidad" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCrearPruebaDesempeno"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:text="@string/guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77" />
+
+    <Button
+        android:id="@+id/btnCancelarPruebaDesempeno"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:text="@string/cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.844" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

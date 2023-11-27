@@ -2,7 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { proyectoCrear } from '../proyectos';
+import { proyectoModificar } from '../proyectos';
 import { ServicioProyectosService } from '../Servicio/servicio-proyectos.service';
 import Swal from 'sweetalert2';
 
@@ -24,7 +24,7 @@ export class ModificarProyectoComponent implements OnInit {
   fechaInicioSeleccionada!: NgbDateStruct;
   fechaFinSeleccionada!: NgbDateStruct;
 
-  proyecto!: proyectoCrear;
+  proyecto!: proyectoModificar;
   chips: string[] = [];
   nuevoChip: string = '';
   idProyecto: any;
@@ -83,6 +83,7 @@ export class ModificarProyectoComponent implements OnInit {
 
   guardar() {
     this.proyecto = {
+      id: this.idProyecto,
       idEmpresa: parseInt(sessionStorage.getItem('idEmpresa')!),
       nombre: this.registrationForm.get('nombreProyecto')?.value,
       descripcion: this.registrationForm.get('descripcion')?.value,
@@ -101,10 +102,10 @@ export class ModificarProyectoComponent implements OnInit {
       ),
     };
 
-    this.proyectoService.crearProyectos(this.proyecto).subscribe((res) => {
+    this.proyectoService.modificarProyectos(this.proyecto).subscribe((res) => {
       //
       console.log(res);
-      if (res.id > 0) {
+      if (res.code == 'ok') {
         Swal.fire('', 'Proyecto Modificado', 'success');
         this.dialogRef.close();
       } else {

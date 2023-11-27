@@ -3,16 +3,46 @@ package com.uniandes.abcjobsgrp23.data.service;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
-    private static final String BASE_URL = "http://10.0.2.2:5000/";
 
-    private static Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(BASE_URL)
+    // Define las URLs base para cada servicio
+    private static final String BASE_URL_USER_CREDENTIAL = "http://10.0.2.2:3000/"; // http://127.0.0.1:3000/users/login
+    private static final String BASE_URL_CANDIDATO = "http://10.0.2.2:3000/"; // http://127.0.0.1:3000/users/candidatos
+    private static final String BASE_URL_ENTREVISTA = "http://10.0.2.2:3000/"; // http://127.0.0.1:3000/users/entrevistas
+    private static final String BASE_URL_PROYECTO = "http://10.0.2.2:3002/"; // http://127.0.0.1:3002/projects/listar-projects
+    private static final String BASE_URL_PREGUNTA = "http://10.0.2.2:3001/"; // http://127.0.0.1:3001/pruebas/preguntas
+
+    // Crea instancias diferentes de Retrofit para cada servicio
+    private static final Retrofit retrofitUserCredential = new Retrofit.Builder()
+            .baseUrl(BASE_URL_USER_CREDENTIAL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    public static UserCredentialApi userCredential = retrofit.create(UserCredentialApi.class);
-    public static CandidatoApi candidatoApi = retrofit.create(CandidatoApi.class);
-    public static EntrevistaApi entrevistaApi = retrofit.create(EntrevistaApi.class);
+    private static final Retrofit retrofitCandidato = new Retrofit.Builder()
+            .baseUrl(BASE_URL_CANDIDATO)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    private static final Retrofit retrofitEntrevista = new Retrofit.Builder()
+            .baseUrl(BASE_URL_ENTREVISTA)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    private static final Retrofit retrofitProyecto = new Retrofit.Builder()
+            .baseUrl(BASE_URL_PROYECTO)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    private static final Retrofit retrofitPregunta = new Retrofit.Builder()
+            .baseUrl(BASE_URL_PREGUNTA)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    // Crea instancias diferentes de los servicios utilizando las instancias de Retrofit respectivas
+    public static UserCredentialApi userCredential = retrofitUserCredential.create(UserCredentialApi.class);
+    public static CandidatoApi candidatoApi = retrofitCandidato.create(CandidatoApi.class);
+    public static EntrevistaApi entrevistaApi = retrofitEntrevista.create(EntrevistaApi.class);
+    public static ProyectoApi proyectoApi = retrofitProyecto.create(ProyectoApi.class);
+    public static PreguntaApi preguntaApi = retrofitPregunta.create(PreguntaApi.class);
 
 }
 

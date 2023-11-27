@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface EntrevistaApi {
-    @GET("albums/entrevistas/{entrevistaId}")
+    @GET("users/entrevistas/{entrevistaId}")
     Call<Entrevista> getEntrevistaById(@Path("entrevistaId") Integer entrevistaId);
 
     @GET("users/entrevistas")
