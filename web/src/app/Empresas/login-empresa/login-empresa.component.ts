@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { empresaoRegistro } from '../empresa';
 import Swal from 'sweetalert2';
-import { ServicioCandidatosService } from '../servicio/servicio-empresa.service';
+import { ServicioEmpresaService } from '../servicio/servicio-empresa.service';
 
 @Component({
   selector: 'app-login-empresa',
@@ -29,7 +29,7 @@ export class LoginEmpresaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private empresaService: ServicioCandidatosService
+    private empresaService: ServicioEmpresaService
   ) {}
 
   ngOnInit(): void {}

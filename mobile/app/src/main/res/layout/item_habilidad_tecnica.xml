@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!-- Campo de entrada para la habilidad técnica -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextSkill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nombre de la habilidad"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <RatingBar
+            android:id="@+id/ratingBarSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:focusable="false"
+            android:indeterminateOnly="false"
+            android:numStars="5"
+            android:rating="0.0"
+            android:stepSize="1" />
+    </LinearLayout>
+
+    <!-- Campo de entrada para calificar la habilidad técnica -->
+
+    <!-- Botón para quitar la habilidad técnica -->
+
+    <ImageButton
+        android:id="@+id/btnRemoveSkill"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="31dp"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/ic_delete" />
+
+</LinearLayout>

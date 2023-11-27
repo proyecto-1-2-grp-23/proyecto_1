@@ -59,24 +59,6 @@
         />
       </div>
 
-      <div class="col-12 mb-3">
-        <textarea
-          class="form-control"
-          placeholder="Idiomas"
-          formControlName="idiomas"
-          rows="2"
-        ></textarea>
-      </div>
-
-      <div class="col-12 mb-3">
-        <textarea
-          class="form-control"
-          placeholder="Rasgos de personalidad"
-          formControlName="rasgos"
-          rows="3"
-        ></textarea>
-      </div>
-
       <div class="input-group mb-3">
         <input
           [type]="fieldTextType ? 'text' : 'password'"
@@ -114,7 +96,30 @@
           ></i>
         </span>
       </div>
+      <div class="col-12 mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Idiomas"
+          formControlName="idiomas"
+          rows="2"
+        ></textarea>
+      </div>
     </form>
+
+    <div class="chips-container col-12 mb-3">
+      <span class="chip mb-3" *ngFor="let chip of chips; let i = index"
+        >{{ chip }}
+        <button class="chip-remove" (click)="eliminarChip(i)">&times;</button>
+      </span>
+      <input
+        type="text"
+        [(ngModel)]="nuevoChip"
+        (keydown.enter)="agregarChip()"
+        placeholder="Rasgos de personalidad"
+        class="col-12 form-control"
+      />
+    </div>
+
     <div class="mt-5 d-flex justify-content-around">
       <button
         id="reigstro"

@@ -56,7 +56,29 @@ export class MenuComponent implements OnInit {
     this.router.navigate([`/proyectos`]);
   }
 
+  verPreguntasTecnicas() {
+    this.router.navigate([`/pruebaTecnica/preguntas`]);
+  }
+
+  verPrueba() {
+    this.router.navigate([`/pruebaTecnica`]);
+  }
+
+  verRegistrarResultadoPrueba() {
+    this.router.navigate([`/pruebaTecnica/registrarResultado`]);
+  }
+
+  verResultadoPrueba() {
+    this.router.navigate([`/pruebaTecnica/verResultado`]);
+  }
+
+  verPruebaDesempeno() {
+    this.router.navigate([`/pruebaDesempeño`]);
+  }
+
   salir() {
     this.router.navigate([`/home`]);
+    sessionStorage.removeItem('idEmpresa');
+    sessionStorage.removeItem('idCandidato');
   }
 }

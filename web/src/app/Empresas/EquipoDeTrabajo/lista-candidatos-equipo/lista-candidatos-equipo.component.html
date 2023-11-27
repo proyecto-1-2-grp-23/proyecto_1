@@ -1,0 +1,21 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">LISTA DE CANDIDATOS</h1>
+  </div>
+  <div class="text">Candidatos del equipo</div>
+  <hr style="color: #21adcc" />
+  <div class="col-12 list">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let candidato of candidatos">
+        {{ candidato.Nombre }}
+      </li>
+    </ul>
+  </div>
+  <button
+    id="ingreso"
+    class="commonButton btn btn-info mt-3"
+    (click)="cerrar()"
+  >
+    Cerrar
+  </button>
+</div>

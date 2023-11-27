@@ -1,11 +1,13 @@
+import json
 from marshmallow import Schema, fields
 from sqlalchemy import Column, String, DateTime, Integer, ForeignKey
 from .model import Model, Base
-
+from sqlalchemy.orm import relationship
 
 class DataLaboral(Model, Base):
     __tablename__ = "datos_laborales_candidato"
 
+    id = Column(Integer, primary_key=True)
     nombre_empresa = Column(String)
     rol = Column(String)
     funciones = Column(Integer)
@@ -13,6 +15,7 @@ class DataLaboral(Model, Base):
     fecha_fin = Column(DateTime)
     habilidades = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
+    
 
     def __init__(
         self,
@@ -31,9 +34,7 @@ class DataLaboral(Model, Base):
         self.fecha_inicio = fecha_inicio
         self.fecha_fin = fecha_fin
         self.habilidades = habilidades
-        if id and idUsuario is not None:
-            self.id = id
-            self.idUsuario = idUsuario
+        self.idUsuario = idUsuario
 
 
 class DataLaboralSchema(Schema):
@@ -45,7 +46,6 @@ class DataLaboralSchema(Schema):
     fecha_fin = fields.DateTime()
     habilidades = fields.Str()
     idUsuario = fields.Int()
-    expireAt = fields.DateTime()
     createdAt = fields.DateTime()
 
 
@@ -63,3 +63,4 @@ class DataLaboralJsonSchema(Schema):
     fecha_fin = fields.DateTime()
     habilidades = fields.Str()
     idUsuario = fields.Int()
+    createdAt = fields.DateTime()

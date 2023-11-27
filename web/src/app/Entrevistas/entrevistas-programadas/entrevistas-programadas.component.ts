@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DetalleEntrevistaComponent } from '../detalle-entrevista/detalle-entrevista.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ResultadoEntrevistaComponent } from '../resultado-entrevista/resultado-entrevista.component';
+import { ServicioEntrevistasService } from '../servicio/servicio-entrevistas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-entrevistas-programadas',
@@ -16,9 +18,24 @@ export class EntrevistasProgramadasComponent implements OnInit {
   dataSource = new MatTableDataSource();
   columnas: any;
   displayedColumns: string[] | undefined;
+  registros: {
+    Entrevista: any;
+    Empresa: any;
+    Candidato: any;
+    Funcionario: any;
+    Fecha: any;
+    Lugar: any;
+    Estado: any;
+    Descripcion: any;
+    Observaciones: any;
+  }[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private entravistaService: ServicioEntrevistasService
+  ) {}
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -34,26 +51,49 @@ export class EntrevistasProgramadasComponent implements OnInit {
     ];
 
     this.displayedColumns = this.columnas.map((ele: any) => ele.nombre);
-
     this.displayedColumns = this.displayedColumns!.concat(['actions']);
   }
 
   cargarEntrevistas() {
-    this.dataTableEntrevistas = [
-      {
-        Entrevista: '1',
-        Empresa: 'Prueba',
-        Candidato: 'Candidato2',
-      },
-      {
-        Entrevista: '2',
-        Empresa: 'Prueba2',
-        Candidato: 'Candidato5',
-      },
-    ];
+    this.entravistaService.listarEntrevistas().subscribe((res) => {
+      res.forEach((registro: any) => {
+        const entrevista = registro.id;
+        const empresa = registro.empresa.razonSocial;
+        const candidato = registro.candidato.nombreCompleto;
+        const funcionario = registro.funcionario.correo;
+        const fecha = registro.fecha;
+        const lugar = registro.lugar;
+        const estado = registro.resultado;
+        const descripcion =
+          'Entrevista realizada para ' + registro.empresa.razonSocial;
+        const observaciones = registro.observaciones;
+        const nuevoRegistro = {
+          Entrevista: entrevista,
+          Empresa: empresa,
+          Candidato: candidato,
+          Funcionario: funcionario,
+          Fecha: fecha,
+          Lugar: lugar,
+          Estado: estado,
+          Descripcion: descripcion,
+          Observaciones: observaciones,
+        };
+        this.registros.push(nuevoRegistro);
+      });
 
-    this.dataSource = new MatTableDataSource(this.dataTableEntrevistas);
-    this.dataSource.paginator = this.paginator;
+      this.dataTableEntrevistas = {};
+
+      this.registros.forEach((item, index) => {
+        this.dataTableEntrevistas[index] = item;
+      });
+
+      const miArreglo = Object.keys(this.dataTableEntrevistas).map(
+        (key) => this.dataTableEntrevistas[key]
+      );
+
+      this.dataSource = new MatTableDataSource(miArreglo);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   programarEntrevista() {
@@ -65,14 +105,19 @@ export class EntrevistasProgramadasComponent implements OnInit {
   }
 
   resultado(element: any) {
-    const dialogRef = this.dialog.open(ResultadoEntrevistaComponent, {
-      width: '60%',
-      height: '90%',
-      data: { info: element },
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.cargarEntrevistas();
-    });
+    if (element.resultado == '') {
+      Swal.fire('', 'No hay resultado registrado', 'info');
+    } else {
+      const dialogRef = this.dialog.open(ResultadoEntrevistaComponent, {
+        width: '60%',
+        height: '50%',
+        data: { info: element },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        this.limpiarTabla();
+        this.cargarEntrevistas();
+      });
+    }
   }
 
   detalle(element: any) {
@@ -82,7 +127,13 @@ export class EntrevistasProgramadasComponent implements OnInit {
       data: { info: element },
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.limpiarTabla();
       this.cargarEntrevistas();
     });
+  }
+
+  limpiarTabla() {
+    this.dataSource = new MatTableDataSource();
+    this.registros = [];
   }
 }

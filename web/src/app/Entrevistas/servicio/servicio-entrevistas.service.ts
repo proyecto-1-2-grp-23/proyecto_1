@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ServicioEntrevistasService {
-  private backUrl: string = environment.baseUrl + '/users';
+  private backUrl: string = environment.baseUrlUsuarios + '/users';
 
   constructor(private http: HttpClient) {}
 
@@ -17,5 +17,9 @@ export class ServicioEntrevistasService {
 
   listarEntrevistas(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/entrevistas`);
+  }
+
+  listarFuncionarios(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/admins`);
   }
 }

@@ -28,6 +28,15 @@ import { ResultadoEntrevistaComponent } from './Entrevistas/resultado-entrevista
 import { ListaProyectosComponent } from './Proyectos/lista-proyectos/lista-proyectos.component';
 import { CrearProyectoComponent } from './Proyectos/crear-proyecto/crear-proyecto.component';
 import { AgregarCandidatoProyectoComponent } from './Proyectos/agregar-candidato-proyecto/agregar-candidato-proyecto.component';
+import { ListaCandidatosEquipoComponent } from './Empresas/EquipoDeTrabajo/lista-candidatos-equipo/lista-candidatos-equipo.component';
+import { DetalleProyectoComponent } from './Proyectos/detalle-proyecto/detalle-proyecto.component';
+import { ListarCandidatosProyectoComponent } from './Proyectos/listar-candidatos-proyecto/listar-candidatos-proyecto.component';
+import { ModificarProyectoComponent } from './Proyectos/modificar-proyecto/modificar-proyecto.component';
+import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-preguntas.component';
+import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
+import { RegistrarResultadoComponent } from './PruebaTecnica/registrar-resultado/registrar-resultado.component';
+import { VerResultadoComponent } from './PruebaTecnica/ver-resultado/ver-resultado.component';
+import { CrearPruebaDesempeñoComponent } from './Prueba Desempeño/crearPruebaDesempeño/crearPruebaDesempeño.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +57,15 @@ import { AgregarCandidatoProyectoComponent } from './Proyectos/agregar-candidato
     ListaProyectosComponent,
     CrearProyectoComponent,
     AgregarCandidatoProyectoComponent,
+    ListaCandidatosEquipoComponent,
+    DetalleProyectoComponent,
+    ListarCandidatosProyectoComponent,
+    ModificarProyectoComponent,
+    CrearPreguntasComponent,
+    PresentarPruebaComponent,
+    RegistrarResultadoComponent,
+    VerResultadoComponent,
+    CrearPruebaDesempeñoComponent,
   ],
   imports: [
     BrowserModule,

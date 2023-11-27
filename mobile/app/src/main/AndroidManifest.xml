@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,21 +13,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AbcJobsgrp23"
-        tools:targetApi="31" >
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".view.candidato.CandidatoLoginActivity"
-            android:label="Candidato Login Activity"
+            android:label="Login Candidato"
+            android:exported="true" />
+        <activity
+            android:name=".view.empresa.EmpresaLoginActivity"
+            android:label="Login Empresa"
             android:exported="true" />
         <activity
             android:name=".PostLoginActivity"
-            android:label="post loguin activity"
+            android:label="Home"
             android:exported="true" />
         <activity
             android:name=".view.candidato.CandidatoRegisterActivity"
-            android:label="Candidato Register Activity"
+            android:label="Registro Candidato"
             android:exported="true" />
-
+        <activity
+            android:name=".view.entrevistas.DetalleEntrevistaCandidatoActivity"
+            android:label="Detalle Entrevista Candidato"
+            android:exported="true" />
+        <activity
+            android:name=".view.entrevistas.ResultadoEntrevistaActivity"
+            android:label="Resultado Entrevista"
+            android:exported="true" />
+        <activity
+            android:name=".view.pruebaTecnica.DetalleTecnicalInterviewActivity"
+            android:label="Detalle Tecnical Interview"
+            android:exported="true" />
+        <activity
+            android:name=".view.pruebaTecnica.CrearTecnicalInterviewActivity"
+            android:label="Crear Tecnical Interview"
+            android:exported="true" />
+        <activity
+            android:name=".view.pruebaDesempeno.CrearPruebaDesempenoActivity"
+            android:label="Crear prueba desempeño"
+            android:exported="true" />
         <activity
             android:name=".PreLoginActivity"
             android:exported="true"

@@ -171,88 +171,88 @@ spec:
 ###################################
 # Tests
 ###################################
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: tests
-#   labels:
-#     app: tests
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: tests
-#   template:
-#     metadata:
-#       labels:
-#         app: tests
-#     spec:
-#       containers:
-#         - name: tests
-#           image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/tests:latest
-#           env:
-#             - name: "ENV"
-#               value: "PROD"
-#             - name: "DB_USER"
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: appsecrets 
-#                   key: db_user
-#             - name: "DB_HOST"
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: appsecrets 
-#                   key: db_host
-#             - name: "DB_PORT"
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: appsecrets 
-#                   key: db_port
-#             - name: "DB_NAME"
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: appsecrets 
-#                   key: db_name
-#             - name: "DB_PASSWORD"
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: appsecrets 
-#                   key: db_password
-#           ports:
-#             - containerPort: 3000
-#           # Realizar pull siempre a la imagen
-#           imagePullPolicy: Always
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pruebas
+  labels:
+    app: pruebas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pruebas
+  template:
+    metadata:
+      labels:
+        app: pruebas
+    spec:
+      containers:
+        - name: pruebas
+          image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/backend/pruebas:latest
+          env:
+            - name: "ENV"
+              value: "PROD"
+            - name: "DB_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_user
+            - name: "DB_HOST"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_host
+            - name: "DB_PORT"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_port
+            - name: "DB_NAME"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_name
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: db_password
+          ports:
+            - containerPort: 3000
+          # Realizar pull siempre a la imagen
+          imagePullPolicy: Always
 
-# ---
+---
 
-# apiVersion: cloud.google.com/v1
-# kind: BackendConfig
-# metadata:
-#   name: tests-config
-# spec:
-#   healthCheck:
-#     checkIntervalSec: 30
-#     port: 3000
-#     type: HTTP
-#     requestPath: /tests/ping
-# ---
-# kind: Service
-# apiVersion: v1
-# metadata:
-#   name: servicio-tests
-#   annotations:
-#     cloud.google.com/backend-config: '{"default": "tests-config"}'
-# spec:
-#   type: NodePort
-#   selector:
-#     app: tests
-#   ports:
-#     - protocol: TCP
-#       port: 80
-#       targetPort: 3000
-#       nodePort: 31022
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: pruebas-config
+spec:
+  healthCheck:
+    checkIntervalSec: 30
+    port: 3000
+    type: HTTP
+    requestPath: /pruebas/ping
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: servicio-pruebas
+  annotations:
+    cloud.google.com/backend-config: '{"default": "pruebas-config"}'
+spec:
+  type: NodePort
+  selector:
+    app: pruebas
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      nodePort: 31022
 
-# ---
+---
 
 ###################################
 # Auth

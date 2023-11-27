@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class ServicioCandidatosService {
-  private backUrl: string = environment.baseUrl + '/users';
+export class ServicioEmpresaService {
+  private backUrl: string = environment.baseUrlUsuarios + '/users';
 
   constructor(private http: HttpClient) {}
 
@@ -15,18 +15,32 @@ export class ServicioCandidatosService {
     return this.http.post<any>(`${this.backUrl}/empresa`, empresa);
   }
 
-  listarEquipo(): Observable<any> {
+  listarEmpresas(): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/empresa`);
   }
 
+  listarEquipo(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/equipo/listar-equipos`);
+  }
+
   crearEquipo(equipo: any): Observable<any> {
+    return this.http.post<any>(`${this.backUrl}/equipo/crear-equipos`, equipo);
+  }
+
+  listarFuncionarios(idEmpresa: number): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/funcionarios/` + idEmpresa);
+  }
+
+  agregarCandidatoEquipo(candidatoEquipo: any): Observable<any> {
     return this.http.post<any>(
-      `${this.backUrl}/equipo/listar-equipos/`,
-      equipo
+      `${this.backUrl}/equipo/equipo-candidato`,
+      candidatoEquipo
     );
   }
 
-  listarEmpresas(): Observable<any> {
-    return this.http.get<any>(`${this.backUrl}/empresas`);
+  listarCandidatosEquipo(idEquipo: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/equipo/listar-candidatos/` + idEquipo
+    );
   }
 }

@@ -2,59 +2,99 @@
   <div class="col-12">
     <h1 class="title">AGREGAR CANDIDATO AL PROYECTO</h1>
   </div>
-  <div class="row col-6 mt-5">
-    <form [formGroup]="registrationForm" class="mx-auto">
-      <div class="col-12 mb-3">
-        <select
-          class="custom-select select"
-          formControlName="caracteristicasTecnicas"
+  <div class="row col-6">
+    <div class="mt-5 d-flex flex-column justify-content-around col-12">
+      <form [formGroup]="registrationForm" class="mx-auto">
+        <div class="col-12 mb-3">
+          <select
+            class="custom-select select"
+            formControlName="caracteristicasTecnicas"
+          >
+            <option value="" disabled selected>Características Técnicas</option>
+            <option
+              *ngFor="let caracteristica of caracteristicasTecnicas"
+              [value]="caracteristica.Nombre"
+            >
+              {{ caracteristica.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 mb-3">
+          <select
+            class="custom-select select"
+            formControlName="caracteristicasPersonalidad"
+          >
+            <option value="" disabled selected>
+              Características Personalidad
+            </option>
+            <option
+              *ngFor="let caracteristica of caracteristicasPersonalidad"
+              [value]="caracteristica.Nombre"
+            >
+              {{ caracteristica.Nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-around mb-3 col-12">
+          <button
+            id="ingreso"
+            class="commonButton2 btn btn-info"
+            (click)="buscarCandidatos()"
+          >
+            Buscar Candidatos
+          </button>
+        </div>
+
+        <hr />
+        <div class="mx-auto">
+          <button
+            id="reigstro"
+            class="commonButton2 mb-3 btn btn-info mt-3"
+            (click)="buscarRecomendado()"
+          >
+            Realizar busqueda recomendada
+          </button>
+        </div>
+        <hr />
+
+        <div
+          class="col-12 mb-3"
+          *ngIf="candidatos.length != 0 || candidatos_recomendados.length != 0"
         >
-          <option value="" disabled selected>Características Técnicas</option>
-          <option value="1">opc 1</option>
-          <option value="2">opc 2</option>
-          <option value="3">opc 3</option>
-        </select>
-      </div>
-      <div class="col-12 mb-3">
-        <select
-          class="custom-select select"
-          formControlName="caracteristicasPersonalidad"
-        >
-          <option value="" disabled selected>
-            Características Personalidad
-          </option>
-          <option value="1">opc 1</option>
-          <option value="2">opc 2</option>
-          <option value="3">opc 3</option>
-        </select>
-      </div>
-      <div class="col-12 mb-3">
-        <select
-          class="custom-select select"
-          formControlName="candidatosCompatibles"
-        >
-          <option value="" disabled selected>Candidatos compatibles</option>
-          <option value="1">candidato 1</option>
-          <option value="2">candidato 2</option>
-          <option value="3">candidato 3</option>
-        </select>
-      </div>
-      <div class="mt-5 d-flex justify-content-around col-12">
-        <button
-          id="reigstro"
-          class="commonButton btn btn-info mt-3"
-          (click)="agregar()"
-        >
-          Guardar
-        </button>
-        <button
-          id="ingreso"
-          class="commonButton btn btn-info mt-3"
-          (click)="verProyectos()"
-        >
-          Cancelar
-        </button>
-      </div>
-    </form>
+          <select
+            class="custom-select select"
+            formControlName="candidatosCompatibles"
+          >
+            <option value="" disabled selected>Candidatos compatibles</option>
+            <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
+              {{ candidato.Nombre }}
+            </option>
+            <option
+              *ngFor="let recomendado of candidatos_recomendados"
+              [value]="recomendado.Nombre"
+            >
+              {{ recomendado.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mt-3 d-flex justify-content-around col-12">
+          <button
+            id="reigstro"
+            class="commonButton btn btn-info mt-3"
+            (click)="agregar()"
+          >
+            Guardar
+          </button>
+          <button
+            id="ingreso"
+            class="commonButton btn btn-info mt-3"
+            (click)="verProyectos()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

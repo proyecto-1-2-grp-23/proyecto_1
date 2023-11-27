@@ -23,6 +23,26 @@ export class DetalleEntrevistaComponent implements OnInit {
     if (data != null) {
       let informacion = data.info;
       console.log(informacion, 'info');
+
+      const fecha = new Date(informacion.Fecha);
+      const dia = fecha.getDate();
+      const mes = fecha.getMonth() + 1;
+      const anio = fecha.getFullYear();
+
+      // Formateamos la fecha en el formato "d/m/y"
+      const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+      this.registrationForm
+        .get('funcionario')
+        ?.setValue(informacion.Funcionario);
+
+      this.registrationForm.get('empresa')?.setValue(informacion.Empresa);
+
+      this.registrationForm.get('candidato')?.setValue(informacion.Candidato);
+
+      this.registrationForm.get('fecha')?.setValue(fechaFormateada);
+
+      this.registrationForm.get('lugar')?.setValue(informacion.Lugar);
     }
   }
 

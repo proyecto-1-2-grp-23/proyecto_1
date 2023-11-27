@@ -7,25 +7,28 @@
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="funcionario">
           <option value="" disabled selected>Seleccionar funcionario</option>
-          <option value="1">funcionario 1</option>
-          <option value="2">funcionario 2</option>
-          <option value="3">funcionario 3</option>
+          <option
+            *ngFor="let funcionario of funcionarios"
+            [value]="funcionario.Id"
+          >
+            {{ funcionario.Correo }}
+          </option>
         </select>
       </div>
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="empresa">
           <option value="" disabled selected>Seleccionar empresa</option>
-          <option value="1">empresa 1</option>
-          <option value="2">empresa 2</option>
-          <option value="3">empresa 3</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.Id">
+            {{ empresa.Nombre }}
+          </option>
         </select>
       </div>
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="candidato">
           <option value="" disabled selected>Seleccionar candidato</option>
-          <option value="1">candidato 1</option>
-          <option value="2">candidato 2</option>
-          <option value="3">candidato 3</option>
+          <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
+            {{ candidato.Nombre }}
+          </option>
         </select>
       </div>
       <div class="col-12 mb-3">
