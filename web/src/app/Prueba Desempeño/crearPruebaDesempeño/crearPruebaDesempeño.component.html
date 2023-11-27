@@ -1,0 +1,80 @@
+<div class="container content">
+  <div class="col-12">
+    <h1 class="title">REGISTRAR RESULTADO PRUEBA TECNICA</h1>
+  </div>
+  <div class="row col-6 mt-5">
+    <form [formGroup]="registrationForm" class="mx-auto">
+      <div class="col-12 mb-3">
+        <select class="custom-select select" formControlName="candidatos">
+          <option value="" disabled selected>Candidatos</option>
+          <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
+            {{ candidato.Nombre }}
+          </option>
+        </select>
+      </div>
+    </form>
+    <div class="col-12 d-flex align-items-center">
+      <div class="col-5">
+        <input
+          type="text"
+          [(ngModel)]="nuevoItem"
+          placeholder="Habilidad"
+          class="col-5 form-control"
+        />
+      </div>
+      <div class="col-5">
+        <input
+          type="text"
+          [(ngModel)]="nuevoPuntaje"
+          placeholder="Puntaje"
+          type="number"
+          class="col-5 form-control"
+        />
+      </div>
+      <div class="col-2">
+        <mat-icon class="icon" (click)="agregarPregunta()"
+          >add_circle
+        </mat-icon>
+      </div>
+    </div>
+    <div class="text mt-2" *ngIf="habilidades.length > 0">
+      Lista de Habilidades
+    </div>
+    <div
+      *ngFor="let item of habilidades; let i = index"
+      class="d-flex justify-content-between mt-3"
+    >
+      <div>
+        <label class="form-check-label" [for]="'item' + i">{{
+          item.Nombre
+        }}</label>
+      </div>
+      <div>
+        <mat-icon class="iconRemove" (click)="eliminarRespuesta(i)"
+          >delete
+        </mat-icon>
+      </div>
+    </div>
+
+    <div
+      class="mt-5 mb-5 d-flex justify-content-around"
+      *ngIf="habilidades.length > 0"
+    >
+      <button
+        id="GUARDAR"
+        class="commonButton btn btn-info mt-3"
+        (click)="guardar()"
+        [disabled]="!registrationForm.valid"
+      >
+        Guardar
+      </button>
+      <button
+        id="ingreso"
+        class="commonButton btn btn-info mt-3"
+        (click)="verMenu()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

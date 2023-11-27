@@ -4,6 +4,7 @@ from ..models.envio import Envio, EnvioSchema
 from ..models.pregunta import Pregunta, PreguntaSchema
 from ..models.respuesta import Respuesta, RespuestaSchema
 from ..session import Session
+from sqlalchemy import desc
 
 
 class ObtenerResultados(BaseCommannd):
@@ -19,6 +20,7 @@ class ObtenerResultados(BaseCommannd):
                 Envio.idCandidato == self.idCandidato
                 and Envio.idProyecto == self.idProyecto
             )
+            .order_by(desc(Envio.createdAt))
             .first()
         )
         if not envio:

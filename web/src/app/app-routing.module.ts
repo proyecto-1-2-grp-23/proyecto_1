@@ -18,6 +18,7 @@ import { CrearPreguntasComponent } from './PruebaTecnica/crear-preguntas/crear-p
 import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/presentar-prueba.component';
 import { RegistrarResultadoComponent } from './PruebaTecnica/registrar-resultado/registrar-resultado.component';
 import { VerResultadoComponent } from './PruebaTecnica/ver-resultado/ver-resultado.component';
+import { CrearPruebaDesempeñoComponent } from './Prueba Desempeño/crearPruebaDesempeño/crearPruebaDesempeño.component';
 
 const routes: Routes = [
   {
@@ -113,6 +114,11 @@ const routes: Routes = [
   {
     path: 'pruebaTecnica/verResultado',
     component: VerResultadoComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'pruebaDesempeño',
+    component: CrearPruebaDesempeñoComponent,
     pathMatch: 'full',
   },
 ];
