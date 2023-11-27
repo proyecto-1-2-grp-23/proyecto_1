@@ -18,35 +18,39 @@
 
         <activity
             android:name=".view.candidato.CandidatoLoginActivity"
-            android:label="Candidato Login Activity"
+            android:label="Login Candidato"
             android:exported="true" />
         <activity
             android:name=".view.empresa.EmpresaLoginActivity"
-            android:label="Empresa Login Activity"
+            android:label="Login Empresa"
             android:exported="true" />
         <activity
             android:name=".PostLoginActivity"
-            android:label="post loguin activity"
+            android:label="Home"
             android:exported="true" />
         <activity
             android:name=".view.candidato.CandidatoRegisterActivity"
-            android:label="Candidato Register Activity"
+            android:label="Registro Candidato"
             android:exported="true" />
         <activity
             android:name=".view.entrevistas.DetalleEntrevistaCandidatoActivity"
-            android:label="Entrevista Candidato Activity"
+            android:label="Detalle Entrevista Candidato"
             android:exported="true" />
         <activity
             android:name=".view.entrevistas.ResultadoEntrevistaActivity"
-            android:label="Resultado Entrevista Activity"
+            android:label="Resultado Entrevista"
             android:exported="true" />
         <activity
             android:name=".view.pruebaTecnica.DetalleTecnicalInterviewActivity"
-            android:label="Detalle Tecnical Interview Activity"
+            android:label="Detalle Tecnical Interview"
             android:exported="true" />
         <activity
             android:name=".view.pruebaTecnica.CrearTecnicalInterviewActivity"
-            android:label="Crear Tecnical Interview Activity"
+            android:label="Crear Tecnical Interview"
+            android:exported="true" />
+        <activity
+            android:name=".view.pruebaDesempeno.CrearPruebaDesempenoActivity"
+            android:label="Crear prueba desempeño"
             android:exported="true" />
         <activity
             android:name=".PreLoginActivity"

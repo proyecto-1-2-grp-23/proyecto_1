@@ -55,6 +55,9 @@ public class CrearTecnicalInterviewActivity extends AppCompatActivity {
         // Configurar Spinners
         setupSpinners();
 
+        // Obtener preguntas
+        cargarPreguntas();
+
         // Configurar ViewModel
         viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(TecnicalInterviewViewModel.class);
 

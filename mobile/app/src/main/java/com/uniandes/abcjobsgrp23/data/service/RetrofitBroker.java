@@ -3,10 +3,13 @@ package com.uniandes.abcjobsgrp23.data.service;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.uniandes.abcjobsgrp23.data.model.ApiResponse;
 import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
+import com.uniandes.abcjobsgrp23.data.model.HabilidadPuntaje;
 import com.uniandes.abcjobsgrp23.data.model.Pregunta;
 import com.uniandes.abcjobsgrp23.data.model.Proyecto;
+import com.uniandes.abcjobsgrp23.data.model.ResultadosDesempeno;
 import com.uniandes.abcjobsgrp23.data.model.UserCredential;
 
 import java.io.IOException;
@@ -227,5 +230,39 @@ public class RetrofitBroker {
             }
         });
     }
+
+
+    /**
+     * Pruebas Desempeño
+     * **/
+    public static void enviarPruebaDesempeno(int candidatoId, int idPrueba, int idEmpresa, String nombreHabilidad, int puntaje, Callback<ApiResponse> callback) {
+        HabilidadPuntaje habilidadPuntaje = new HabilidadPuntaje(nombreHabilidad, puntaje);
+        ResultadosDesempeno resultadosDesempeno = new ResultadosDesempeno( idPrueba,  candidatoId,  idEmpresa, habilidadPuntaje);
+
+        Call<ApiResponse> call = ApiClient.pruebaDesempenoApi.enviarPruebaDesempeno(resultadosDesempeno);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
 }
 
