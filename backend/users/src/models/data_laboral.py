@@ -4,18 +4,18 @@ from sqlalchemy import Column, String, DateTime, Integer, ForeignKey
 from .model import Model, Base
 from sqlalchemy.orm import relationship
 
+
 class DataLaboral(Model, Base):
     __tablename__ = "datos_laborales_candidato"
 
     id = Column(Integer, primary_key=True)
     nombre_empresa = Column(String)
     rol = Column(String)
-    funciones = Column(Integer)
+    funciones = Column(String)
     fecha_inicio = Column(DateTime)
     fecha_fin = Column(DateTime)
     habilidades = Column(String)
     idUsuario = Column(Integer, ForeignKey("users.id"))
-    
 
     def __init__(
         self,
