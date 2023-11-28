@@ -2,6 +2,7 @@ package com.uniandes.abcjobsgrp23.view.pruebaTecnica;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -16,9 +17,12 @@ import com.uniandes.abcjobsgrp23.R;
 import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.Pregunta;
 import com.uniandes.abcjobsgrp23.data.model.Proyecto;
+import com.uniandes.abcjobsgrp23.data.model.TecnicaPreguntas;
+import com.uniandes.abcjobsgrp23.data.model.TecnicalInterview;
 import com.uniandes.abcjobsgrp23.data.service.RetrofitBroker;
 import com.uniandes.abcjobsgrp23.viewmodel.TecnicalInterviewViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -84,7 +88,15 @@ public class CrearTecnicalInterviewActivity extends AppCompatActivity {
         RetrofitBroker.getAllUsersCandidatos(new retrofit2.Callback<List<Candidato>>() {
             @Override
             public void onResponse(Call<List<Candidato>> call, Response<List<Candidato>> response) {
-                ArrayAdapter<Candidato> candidatosAdapter = new ArrayAdapter<>(CrearTecnicalInterviewActivity.this, android.R.layout.simple_spinner_item, response.body());
+
+                // Crear una lista de strings con la información deseada
+                List<String> candidatoStrings = new ArrayList<>();
+                for (Candidato candidato : response.body()) {
+                    String candidatoInfo = candidato.getId() + "- " + candidato.getNombreCompleto();  // Ajusta esto según tus atributos
+                    candidatoStrings.add(candidatoInfo);
+                }
+                // Crear un ArrayAdapter con la lista de strings
+                ArrayAdapter<String> candidatosAdapter = new ArrayAdapter<>(CrearTecnicalInterviewActivity.this, android.R.layout.simple_spinner_item, candidatoStrings);
                 candidatosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerCandidatos.setAdapter(candidatosAdapter);
             }
@@ -100,7 +112,15 @@ public class CrearTecnicalInterviewActivity extends AppCompatActivity {
         RetrofitBroker.getAllProyectos(new Callback<List<Proyecto>>() {
             @Override
             public void onResponse(Call<List<Proyecto>> call, Response<List<Proyecto>> response) {
-                ArrayAdapter<Proyecto> proyectosAdapter = new ArrayAdapter<>(CrearTecnicalInterviewActivity.this, android.R.layout.simple_spinner_item, response.body());
+
+                // Crear una lista de strings con la información deseada
+                List<String> proyectoStrings = new ArrayList<>();
+                for (Proyecto proyecto : response.body()) {
+                    String proyectoInfo = proyecto.getId() + ") " + proyecto.getNombre() + " [" + proyecto.getStartDate() + " - " + proyecto.getFinishDate() + "] ";  // Ajusta esto según tus atributos
+                    proyectoStrings.add(proyectoInfo);
+                }
+
+                ArrayAdapter<String> proyectosAdapter = new ArrayAdapter<>(CrearTecnicalInterviewActivity.this, android.R.layout.simple_spinner_item, proyectoStrings);
                 proyectosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerProyectos.setAdapter(proyectosAdapter);
             }
@@ -111,19 +131,61 @@ public class CrearTecnicalInterviewActivity extends AppCompatActivity {
                 Toast.makeText(CrearTecnicalInterviewActivity.this, "Fallo al obtener proyectos", Toast.LENGTH_SHORT).show();
             }
         });
+
+        spinnerProyectos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Obtener la cadena seleccionada en lugar de un objeto Proyecto
+                String proyectoSeleccionadoString = (String) parentView.getItemAtPosition(position);
+
+                if (proyectoSeleccionadoString != null) {
+                    // Obtener el ID del proyecto seleccionado a partir de la cadena
+                    String[] parts = proyectoSeleccionadoString.split("\\) ");
+                    int idProyecto = Integer.parseInt(parts[0]);
+
+                    // Llamar al método para cargar las preguntas basadas en el proyecto seleccionado
+                    cargarPreguntasPorProyecto(idProyecto);
+                }
+            }
+
+            private void cargarPreguntasPorProyecto(int idProyecto) {
+                // Realizar la llamada para obtener preguntas basadas en el proyecto seleccionado
+                RetrofitBroker.getAllPreguntasTecnicasbyIdProyecto(idProyecto, new Callback<List<TecnicaPreguntas>>() {
+                    @Override
+                    public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
+                        // Actualizar el adaptador del RecyclerView con las preguntas
+                        PreguntasAdapter preguntasAdapter = (PreguntasAdapter) recyclerViewPreguntas.getAdapter();
+                        preguntasAdapter.setPreguntas(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
+                        // Manejar fallo
+                        Toast.makeText(CrearTecnicalInterviewActivity.this, "Fallo al obtener preguntas", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // No se necesita realizar ninguna acción aquí
+            }
+        });
+
     }
 
+
     private void cargarPreguntas() {
-        RetrofitBroker.getAllPreguntas(new Callback<List<Pregunta>>() {
+        RetrofitBroker.getAllPreguntasTecnicas(new Callback<List<TecnicaPreguntas>>() {
             @Override
-            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+            public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
                 // Actualizar el adaptador del RecyclerView con las preguntas
                 PreguntasAdapter preguntasAdapter = (PreguntasAdapter) recyclerViewPreguntas.getAdapter();
                 preguntasAdapter.setPreguntas(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+            public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
                 // Manejar fallo
                 Toast.makeText(CrearTecnicalInterviewActivity.this, "Fallo al obtener preguntas", Toast.LENGTH_SHORT).show();
             }

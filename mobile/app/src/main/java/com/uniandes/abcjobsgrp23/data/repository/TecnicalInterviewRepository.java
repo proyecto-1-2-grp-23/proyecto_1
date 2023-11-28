@@ -30,7 +30,18 @@ public class TecnicalInterviewRepository {
         MutableLiveData<List<TecnicalInterview>> tecnicalInterviewLiveData = new MutableLiveData<>();
 
         // Primer registro de prueba
-        Proyecto proyecto1 = new Proyecto("Proyecto 1", "Descripción del Proyecto 1", 1);
+        Proyecto proyecto1 = new Proyecto(
+                "HTML, CSS, JavaScript",
+                "2023-11-27T13:50:57.748667",
+                "Crear una aplicación Web",
+                "2023-11-16",
+                "Resolución de problemas",
+                2,
+                1,
+                "Aplicación de Web",
+                "Gerente de proyecto.",
+                "2023-11-16"
+        );
         Candidato candidato1 = new Candidato("Candidato 1", 28, "123-456-7890", "candidato1@example.com", "País 1", "Ciudad 1", "Español, Inglés", "Rasgos 1", "Password 1");
         ArrayList<RecordTecnicalInterview> preguntas1 = new ArrayList<>();
         preguntas1.add(new RecordTecnicalInterview("Pregunta 1", "Calificación 1"));
@@ -39,7 +50,18 @@ public class TecnicalInterviewRepository {
         TecnicalInterview entrevista1 = new TecnicalInterview(proyecto1, candidato1, preguntas1, "Observaciones de la Entrevista 1");
 
         // Segundo registro de prueba
-        Proyecto proyecto2 = new Proyecto("Proyecto 2", "Descripción del Proyecto 2", 2);
+        Proyecto proyecto2 = new Proyecto(
+                "Java, Spring Boot",
+                "2023-11-28T09:30:45.123456",
+                "Desarrollar un sistema de gestión",
+                "2023-12-10",
+                "Trabajo en equipo",
+                3,
+                1,
+                "Sistema de Gestión",
+                "Desarrollador senior",
+                "2023-12-01"
+        );
         Candidato candidato2 = new Candidato("Candidato 2", 30, "987-654-3210", "candidato2@example.com", "País 2", "Ciudad 2", "Español, Francés", "Rasgos 2", "Password 2");
         ArrayList<RecordTecnicalInterview> preguntas2 = new ArrayList<>();
         preguntas2.add(new RecordTecnicalInterview("Pregunta A", "Calificación A"));
@@ -48,7 +70,18 @@ public class TecnicalInterviewRepository {
         TecnicalInterview entrevista2 = new TecnicalInterview(proyecto2, candidato2, preguntas2, "Observaciones de la Entrevista 2");
 
         // Tercer registro de prueba
-        Proyecto proyecto3 = new Proyecto("Proyecto 3", "Descripción del Proyecto 3", 3);
+        Proyecto proyecto3 = new Proyecto(
+                "Python, Django",
+                "2023-11-29T14:20:30.987654",
+                "Crear una plataforma de comercio electrónico",
+                "2023-12-20",
+                "Comunicación efectiva",
+                4,
+                2,
+                "Plataforma de E-commerce",
+                "Product manager",
+                "2023-12-05"
+        );
         Candidato candidato3 = new Candidato("Candidato 3", 25, "555-123-4567", "candidato3@example.com", "País 3", "Ciudad 3", "Español, Alemán", "Rasgos 3", "Password 3");
         ArrayList<RecordTecnicalInterview> preguntas3 = new ArrayList<>();
         preguntas3.add(new RecordTecnicalInterview("Pregunta X", "Calificación X"));

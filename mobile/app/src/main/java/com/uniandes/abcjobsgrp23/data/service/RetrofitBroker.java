@@ -10,6 +10,7 @@ import com.uniandes.abcjobsgrp23.data.model.HabilidadPuntaje;
 import com.uniandes.abcjobsgrp23.data.model.Pregunta;
 import com.uniandes.abcjobsgrp23.data.model.Proyecto;
 import com.uniandes.abcjobsgrp23.data.model.ResultadosDesempeno;
+import com.uniandes.abcjobsgrp23.data.model.TecnicaPreguntas;
 import com.uniandes.abcjobsgrp23.data.model.UserCredential;
 
 import java.io.IOException;
@@ -203,13 +204,13 @@ public class RetrofitBroker {
     }
 
     /**
-     * Proyecto Service
+     * Preguntas Service
      * **/
-    public static void getAllPreguntas(Callback<List<Pregunta>> callback) {
-        Call<List<Pregunta>> call = ApiClient.preguntaApi.getAllPreguntas();
-        call.enqueue(new Callback<List<Pregunta>>() {
+    public static void getAllPreguntasTecnicas(Callback<List<TecnicaPreguntas>> callback) {
+        Call<List<TecnicaPreguntas>> call = ApiClient.preguntaApi.getAllPreguntasTecnicas();
+        call.enqueue(new Callback<List<TecnicaPreguntas>>() {
             @Override
-            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+            public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
                 httpClient.addInterceptor(new LoggingInterceptor());
                 if (response.isSuccessful()) {
@@ -223,7 +224,33 @@ public class RetrofitBroker {
                 }
             }
             @Override
-            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+            public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    public static void getAllPreguntasTecnicasbyIdProyecto(int idProyecto, Callback<List<TecnicaPreguntas>> callback) {
+        Call<List<TecnicaPreguntas>> call = ApiClient.preguntaApi.getAllPreguntasTecnicasbyIdProyecto(idProyecto);
+        call.enqueue(new Callback<List<TecnicaPreguntas>>() {
+            @Override
+            public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
                 if (callback != null) {
                     callback.onFailure(call, t);
                 }
