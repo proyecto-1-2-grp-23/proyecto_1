@@ -35,10 +35,6 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
     Id: any;
   }[] = [];
 
-  candidatos_recomendados: {
-    Nombre: any;
-  }[] = [];
-
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     public dialogRef: MatDialogRef<AgregarCandidatoProyectoComponent>,
@@ -125,7 +121,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
   llenarCaracteristicasPersonalidad() {
     this.candidatoService.obtenerCandidatos().subscribe((res) => {
       res.forEach((registro: any) => {
-        console.log(registro);
+        console.log(registro, 'registro');
         const nombre = registro.rasgosPersonalidad;
         const valores: string[] = nombre.split(',');
         for (let valor of valores) {
@@ -148,7 +144,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
     this.candidatos = [];
     this.candidatoService
       .obtenerCandidatosHabTec(
-        this.registrationForm.get('caracteristicasTecnicas')?.value
+        this.registrationForm.get('caracteristicasTecnicas')?.value.trim()
       )
       .subscribe((res) => {
         console.log(res, 'res');
@@ -159,7 +155,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
 
     this.candidatoService
       .obtenerCandidatosHabPer(
-        this.registrationForm.get('caracteristicasPersonalidad')?.value
+        this.registrationForm.get('caracteristicasPersonalidad')?.value.trim()
       )
       .subscribe((res) => {
         res.forEach((registro: any) => {
@@ -169,6 +165,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
   }
 
   consultarCandidato(id: any) {
+    this.candidatos = [];
     this.candidatoService.obtenerCandidatoPorId(id).subscribe((res) => {
       res.forEach((registro: any) => {
         const nombre = registro.nombreCompleto;
@@ -189,13 +186,15 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
   }
 
   buscarRecomendado() {
+    this.candidatos = [];
     const tecnica = this.registrationForm.get('caracteristicasTecnicas')?.value;
     const personalidad = this.registrationForm.get(
       'caracteristicasPersonalidad'
     )?.value;
 
+    console.log(tecnica, 'tecnica');
     this.candidatoService
-      .obtenerCandidatosRecomen(tecnica, personalidad)
+      .obtenerCandidatosRecomen(tecnica.trim(), personalidad.trim())
       .subscribe((res) => {
         if (res == null || res.length == 0) {
           Swal.fire(
@@ -203,19 +202,18 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
             'Puede realizar la busqueda basica para agregar empleados con alguna de las dos características ',
             'warning'
           );
-          this.candidatos_recomendados = [];
         } else {
           res.forEach((registro: any) => {
-            const nombre = registro;
-            const Candidatos = {
+            const nombre = registro.nombreCompleto;
+            const id = registro.idUsuario;
+            const nuevoRegistro = {
               Nombre: nombre,
+              Id: id,
             };
 
-            this.candidatos_recomendados.push(Candidatos);
+            this.candidatos.push(nuevoRegistro);
           });
         }
-
-        console.log(this.candidatos_recomendados);
       });
   }
 }

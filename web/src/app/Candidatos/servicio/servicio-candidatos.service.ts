@@ -35,18 +35,13 @@ export class ServicioCandidatosService {
 
   obtenerCandidatosHabPer(personal: any): Observable<any> {
     return this.http.get<any>(
-      `${this.backUrl}/candidatos/caracteristicas-personalidad/` + personal);
+      `${this.backUrl}/candidatos/caracteristicas-personalidad/` + personal
+    );
   }
 
-  obtenerCandidatosRecomen(tecnica: any, personalidad:any): Observable<any>{
-
-    let params = new HttpParams();
-    params = params.set('tecnica', tecnica);
-    params = params.set('personalidad', personalidad);
-
+  obtenerCandidatosRecomen(tecnica: any, personalidad: any): Observable<any> {
     return this.http.get<any>(
-      `${this.backUrl}/candidatos/recomendados`,
-      { params: params }
+      `${this.backUrl}/candidatos/recomendados/` + tecnica + `/` + personalidad
     );
   }
 }
