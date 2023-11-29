@@ -39,9 +39,17 @@ class ListCandidatoRecomendado(BaseCommannd):
                 palabras_habilidad_tecnica = habilidades[
                     "conocimientos_tecnicos"
                 ].split(", ")
+                print("palabras_habilidad_tecnica")
+                print(palabras_habilidad_tecnica)
                 palabras_habilidad_personalidad = habilidades[
                     "habilidades_blandas"
                 ].split(", ")
+                print("palabras_habilidad_personalidad")
+                print(palabras_habilidad_personalidad)
+
+                print("palabras entrada")
+                print(self.personalidad)
+                print(self.tecnica)
 
                 if (
                     self.tecnica in palabras_habilidad_tecnica
