@@ -75,7 +75,7 @@ export class CrearPruebaDesempeñoComponent implements OnInit {
   }
 
   verMenu() {
-    this.router.navigate([`/menu/administrador`]);
+    this.router.navigate([`/menu/empresa`]);
   }
 
   guardar() {
