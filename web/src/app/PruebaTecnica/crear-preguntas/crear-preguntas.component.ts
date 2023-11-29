@@ -26,7 +26,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./crear-preguntas.component.css'],
 })
 export class CrearPreguntasComponent implements OnInit, AfterViewInit {
-
   @ViewChild('referenceDiv') referenceDiv: ElementRef | undefined;
 
   registrationForm: FormGroup = new FormGroup({
@@ -173,7 +172,7 @@ export class CrearPreguntasComponent implements OnInit, AfterViewInit {
       if (res.id > 0) {
         this.listarPreguntas();
         this.limpiarFormulario();
-        Swal.fire('', 'Proyecto Modificado', 'success');
+        Swal.fire('', 'Pregunta creada', 'success');
       } else {
         Swal.fire('', 'Error en la modificación del proyecto', 'error');
       }

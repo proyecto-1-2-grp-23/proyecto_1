@@ -103,7 +103,7 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
       .subscribe((res) => {
         //console.log(res);
         res.forEach((registro: any) => {
-          const nombre = registro.conocimientos_tecnicos;
+          const nombre = registro.habilidades_blandas;
           const valores: string[] = nombre.split(',');
           console.log('nombre', nombre);
           console.log('valores', valores);
@@ -197,12 +197,13 @@ export class AgregarCandidatoProyectoComponent implements OnInit {
     this.candidatoService
       .obtenerCandidatosRecomen(tecnica, personalidad)
       .subscribe((res) => {
-        if (res == null) {
+        if (res == null || res.length == 0) {
           Swal.fire(
             'No se encuentran candidatos compatibles con ambas características',
             'Puede realizar la busqueda basica para agregar empleados con alguna de las dos características ',
             'warning'
           );
+          this.candidatos_recomendados = [];
         } else {
           res.forEach((registro: any) => {
             const nombre = registro;
