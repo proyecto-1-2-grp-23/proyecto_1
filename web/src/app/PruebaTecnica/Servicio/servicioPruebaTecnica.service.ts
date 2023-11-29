@@ -28,4 +28,10 @@ export class ServicioPruebaTecnicaService {
   crearEnvio(envio: any): Observable<any> {
     return this.http.post<any>(`${this.backUrl}/respuesta-enviada`, envio);
   }
+
+  consultarResultado(idProyecto: number, idCandidato: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.backUrl}/proyectos/` + idProyecto + `/candidatos/` + idCandidato
+    );
+  }
 }

@@ -19,6 +19,10 @@ export class ServicioProyectosService {
     return this.http.get<any>(`${this.backUrl}/listar-projects/` + idEmpresa);
   }
 
+  listarProyectosTodos(): Observable<any> {
+    return this.http.get<any>(`${this.backUrl}/listar-projects`);
+  }
+
   listarProyectosById(id: number): Observable<any> {
     return this.http.get<any>(`${this.backUrl}/listar-project/` + id);
   }

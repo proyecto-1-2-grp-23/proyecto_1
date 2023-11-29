@@ -5,28 +5,25 @@
   <div class="row col-6 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
       <div class="col-12 mb-3">
-        <select class="custom-select select" formControlName="empresas">
-          <option value="" disabled selected>Empresas</option>
-          <option *ngFor="let empresa of empresas" [value]="empresa.Nombre">
-            {{ empresa.Nombre }}
-          </option>
-        </select>
-      </div>
-      <div class="col-12 mb-3">
-        <select class="custom-select select" formControlName="proyectos">
+        <select
+          class="custom-select select"
+          formControlName="proyectos"
+          (change)="cargarDatosPRoyecto()"
+        >
           <option value="" disabled selected>Proyectos</option>
-          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Nombre">
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.Id">
             {{ proyecto.Nombre }}
           </option>
         </select>
       </div>
       <div class="col-12 mb-3">
-        <select class="custom-select select" formControlName="candidatos">
+        <select
+          class="custom-select select"
+          formControlName="candidatos"
+          (change)="llenarDatosPrueba()"
+        >
           <option value="" disabled selected>Candidatos</option>
-          <option
-            *ngFor="let candidato of candidatos"
-            [value]="candidato.Nombre"
-          >
+          <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
             {{ candidato.Nombre }}
           </option>
         </select>
@@ -154,7 +151,7 @@
         class="commonButton btn btn-info mt-3"
         (click)="verMenu()"
       >
-        Cancelar
+        Volver
       </button>
     </div>
   </div>
