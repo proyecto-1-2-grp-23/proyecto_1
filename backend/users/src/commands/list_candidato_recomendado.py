@@ -2,7 +2,7 @@ from .base_command import BaseCommannd
 from ..models.candidato import Candidato, CandidatoJsonSchema
 from ..models.data_laboral import DataLaboral, DataLaboralJsonSchema
 from ..session import Session
-import requests
+import json
 
 
 class ListCandidatoRecomendado(BaseCommannd):
@@ -13,8 +13,6 @@ class ListCandidatoRecomendado(BaseCommannd):
     def execute(self):
         # print("self.personalidad",self.personalidad)
         session = Session()
-        habilidades_proyects = "http://34.110.178.56/projects/listar-projects"
-        response_habilidades_proyects = requests.get(habilidades_proyects)
 
         tecnica = (
             session.query(DataLaboral)
@@ -31,50 +29,46 @@ class ListCandidatoRecomendado(BaseCommannd):
         data_personalidad = CandidatoJsonSchema(many=True).dump(personalidad)
         session.close()
 
-        if (response_habilidades_proyects).status_code == 200:
-            body_proyects = response_habilidades_proyects.json()
-            candidatos = []
+        print(data_tecnica)
+        print("********************")
+        print(data_personalidad)
 
-            for habilidades in body_proyects:
-                palabras_habilidad_tecnica = habilidades[
-                    "conocimientos_tecnicos"
-                ].split(", ")
-                print("palabras_habilidad_tecnica")
-                print(palabras_habilidad_tecnica)
-                palabras_habilidad_personalidad = habilidades[
-                    "habilidades_blandas"
-                ].split(", ")
-                print("palabras_habilidad_personalidad")
-                print(palabras_habilidad_personalidad)
+        candidatos = []
+        idUsuarios = set()
 
-                print("palabras entrada")
-                print(self.personalidad)
-                print(self.tecnica)
+        for tecnicas in data_tecnica:
+            valor = tecnicas.get("idUsuario")
+            if valor is not None:
+                idUsuarios.add(valor)
 
-                if (
-                    self.tecnica in palabras_habilidad_tecnica
-                    and self.personalidad in palabras_habilidad_personalidad
-                ):
-                    for tecnica_candidato in data_tecnica:
-                        palabras_habilidad_tecnica_candidato = tecnica_candidato[
-                            "habilidades"
-                        ].split(",")
-                    for laboral_candidato in data_personalidad:
-                        palabras_habilidad_laboral_candidato = laboral_candidato[
-                            "rasgosPersonalidad"
-                        ].split(", ")
-                        if (
-                            self.personalidad in palabras_habilidad_laboral_candidato
-                            and self.tecnica in palabras_habilidad_tecnica_candidato
-                        ):
-                            candidatos.append(laboral_candidato["nombreCompleto"])
+        for personalidad in data_personalidad:
+            valor = personalidad.get("idUsuario")
+            if valor is not None:
+                idUsuarios.add(valor)
 
-                print(
-                    f"Las palabras '{self.tecnica}' y '{self.personalidad}' se encuentran en 'habilidades'"
-                )
-            else:
-                print(
-                    f"Las palabras '{self.tecnica}' y '{self.personalidad}' no se encuentran en 'habilidades'"
-                )
+        # Obtener los valores de 'idUsuario' de cada JSON
+        valores_personalidad = [d.get("idUsuario") for d in data_personalidad]
+        valores_tecnica = [d.get("idUsuario") for d in data_tecnica]
 
-            return candidatos
+        print("valores_personalidad")
+        print(valores_personalidad)
+
+        print("valores_tecnica")
+        print(valores_tecnica)
+
+        # Encontrar los objetos que contienen los valores de 'idUsuario' que coinciden en ambos JSON
+        objetos_encontrados = [
+            obj
+            for obj in data_personalidad
+            if obj["idUsuario"] in idUsuarios and obj["idUsuario"] in valores_tecnica
+        ]
+
+        # Verificar si se encontraron objetos
+        if objetos_encontrados:
+            print(
+                f"Encontró los siguientes objetos en 'data_tecnica' que coinciden en 'idUsuario': {objetos_encontrados}"
+            )
+        else:
+            print(f"No encontró coincidencias de 'idUsuario' en ambos JSON.")
+
+        return objetos_encontrados

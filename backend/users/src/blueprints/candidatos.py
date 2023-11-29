@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request, Blueprint
 from ..session import Session, engine
 from ..commands.list_candidatos import ListCandidato
@@ -59,10 +58,12 @@ def ListCandidatosHabilidadesPersonalidad(personalidad):
     candidatosPer = ListCandidatoHabPer(personalidad).execute()
     return jsonify(candidatosPer), 201
 
-@candidatos_blueprint.route("/users/candidatos/recomendados",methods=["GET"])
-def ListCandidatosRecomendados():
-    tecnica = request.args.get('tecnica', type=str)
-    personalidad = request.args.get('personalidad', type=str)
-    candidatos = ListCandidatoRecomendado(tecnica,personalidad).execute()
-    
+
+@candidatos_blueprint.route(
+    "/users/candidatos/recomendados/<string:tecnica>/<string:personalidad>",
+    methods=["GET"],
+)
+def ListCandidatosRecomendados(tecnica, personalidad):
+    candidatos = ListCandidatoRecomendado(tecnica, personalidad).execute()
+
     return jsonify(candidatos), 200
