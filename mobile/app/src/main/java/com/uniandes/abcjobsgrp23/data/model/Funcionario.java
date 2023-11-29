@@ -8,9 +8,20 @@ public class Funcionario {
     private String correo;
     private Integer id;
     private String pais;
+    private String createdAt; // Nuevo campo
+    private Integer idEmpresa; // Nuevo campo
+    private String nombre_funcionario; // Nuevo campo
 
     // Constructor vacío requerido por Retrofit
     public Funcionario() {
+    }
+
+    // Constructor para la respuesta específica
+    public Funcionario(String createdAt, Integer id, Integer idEmpresa, String nombreFuncionario) {
+        this.createdAt = createdAt;
+        this.id = id;
+        this.idEmpresa = idEmpresa;
+        this.nombre_funcionario = nombreFuncionario;
     }
 
     public Funcionario(String ciudad, String correo, Integer id, String pais) {
@@ -50,6 +61,30 @@ public class Funcionario {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public String getNombreFuncionario() {
+        return nombre_funcionario;
+    }
+
+    public void setNombreFuncionario(String nombreFuncionario) {
+        this.nombre_funcionario = nombreFuncionario;
     }
 
     @Override

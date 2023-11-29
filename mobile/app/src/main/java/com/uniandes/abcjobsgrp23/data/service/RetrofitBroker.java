@@ -5,11 +5,15 @@ import android.widget.Toast;
 
 import com.uniandes.abcjobsgrp23.data.model.ApiResponse;
 import com.uniandes.abcjobsgrp23.data.model.Candidato;
+import com.uniandes.abcjobsgrp23.data.model.Empresa;
 import com.uniandes.abcjobsgrp23.data.model.Entrevista;
+import com.uniandes.abcjobsgrp23.data.model.Funcionario;
 import com.uniandes.abcjobsgrp23.data.model.HabilidadPuntaje;
+import com.uniandes.abcjobsgrp23.data.model.LoginResponse;
 import com.uniandes.abcjobsgrp23.data.model.Pregunta;
 import com.uniandes.abcjobsgrp23.data.model.Proyecto;
 import com.uniandes.abcjobsgrp23.data.model.ResultadosDesempeno;
+import com.uniandes.abcjobsgrp23.data.model.TecnicaPreguntas;
 import com.uniandes.abcjobsgrp23.data.model.UserCredential;
 
 import java.io.IOException;
@@ -29,21 +33,59 @@ public class RetrofitBroker {
     /**
      * Login Service
      * **/
-    public static UserCredential loginUser(UserCredential userCredential) {
-        Call<UserCredential> call = ApiClient.userCredential.loginUser(userCredential);
-        try {
-            Response<UserCredential> response = call.execute();
-            if (response.isSuccessful()) {
-                Log.e("SuccessLoginUser: ", response.toString());
-                return response.body();
-            } else {
-                Log.e("ErrorLoginUser: ", response.toString());
-                return null;
+    public static void  loginUser(UserCredential credential,  Callback<LoginResponse> callback ) {
+        Call<LoginResponse> call = ApiClient.userCredential.loginUser(credential);
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
             }
-        } catch (IOException e) {
-            Log.e("ErrorLoginUser: ", Objects.requireNonNull(e.getMessage()));
-            return null;
-        }
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    /**
+     * Funcionario Service
+     * **/
+    public static void getAllFunsionarios(Callback<List<Funcionario>> callback) {
+        Call<List<Funcionario>> call = ApiClient.funcionarioApi.getAllFunsionarios();
+        call.enqueue(new Callback<List<Funcionario>>() {
+            @Override
+            public void onResponse(Call<List<Funcionario>> call, Response<List<Funcionario>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Funcionario>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
     }
 
     /**
@@ -85,6 +127,35 @@ public class RetrofitBroker {
             }
             @Override
             public void onFailure(Call<List<Candidato>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    /**
+     * Empresa Service
+     * **/
+    public static void getAllEmpresas(Callback<List<Empresa>> callback) {
+        Call<List<Empresa>> call = ApiClient.empresaApi.getAllEmpresa();
+        call.enqueue(new Callback<List<Empresa>>() {
+            @Override
+            public void onResponse(Call<List<Empresa>> call, Response<List<Empresa>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Empresa>> call, Throwable t) {
                 if (callback != null) {
                     callback.onFailure(call, t);
                 }
@@ -203,13 +274,13 @@ public class RetrofitBroker {
     }
 
     /**
-     * Proyecto Service
+     * Preguntas Service
      * **/
-    public static void getAllPreguntas(Callback<List<Pregunta>> callback) {
-        Call<List<Pregunta>> call = ApiClient.preguntaApi.getAllPreguntas();
-        call.enqueue(new Callback<List<Pregunta>>() {
+    public static void getAllPreguntasTecnicas(Callback<List<TecnicaPreguntas>> callback) {
+        Call<List<TecnicaPreguntas>> call = ApiClient.preguntaApi.getAllPreguntasTecnicas();
+        call.enqueue(new Callback<List<TecnicaPreguntas>>() {
             @Override
-            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+            public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
                 httpClient.addInterceptor(new LoggingInterceptor());
                 if (response.isSuccessful()) {
@@ -223,7 +294,33 @@ public class RetrofitBroker {
                 }
             }
             @Override
-            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+            public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
+                if (callback != null) {
+                    callback.onFailure(call, t);
+                }
+            }
+        });
+    }
+
+    public static void getAllPreguntasTecnicasbyIdProyecto(int idProyecto, Callback<List<TecnicaPreguntas>> callback) {
+        Call<List<TecnicaPreguntas>> call = ApiClient.preguntaApi.getAllPreguntasTecnicasbyIdProyecto(idProyecto);
+        call.enqueue(new Callback<List<TecnicaPreguntas>>() {
+            @Override
+            public void onResponse(Call<List<TecnicaPreguntas>> call, Response<List<TecnicaPreguntas>> response) {
+                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+                httpClient.addInterceptor(new LoggingInterceptor());
+                if (response.isSuccessful()) {
+                    if (callback != null) {
+                        callback.onResponse(call, response);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailure(call, new Exception("Error en la llamada a la API"));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<TecnicaPreguntas>> call, Throwable t) {
                 if (callback != null) {
                     callback.onFailure(call, t);
                 }
@@ -236,8 +333,7 @@ public class RetrofitBroker {
      * Pruebas Desempeño
      * **/
     public static void enviarPruebaDesempeno(int candidatoId, int idPrueba, int idEmpresa, String nombreHabilidad, int puntaje, Callback<ApiResponse> callback) {
-        HabilidadPuntaje habilidadPuntaje = new HabilidadPuntaje(nombreHabilidad, puntaje);
-        ResultadosDesempeno resultadosDesempeno = new ResultadosDesempeno( idPrueba,  candidatoId,  idEmpresa, habilidadPuntaje);
+        ResultadosDesempeno resultadosDesempeno = new ResultadosDesempeno( idPrueba,  candidatoId,  idEmpresa, nombreHabilidad, puntaje);
 
         Call<ApiResponse> call = ApiClient.pruebaDesempenoApi.enviarPruebaDesempeno(resultadosDesempeno);
         call.enqueue(new Callback<ApiResponse>() {

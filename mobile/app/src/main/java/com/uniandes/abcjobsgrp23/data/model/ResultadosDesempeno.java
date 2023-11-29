@@ -8,7 +8,8 @@ public class ResultadosDesempeno {
     private int idCandidato;
     private int idEmpresa;
     private List<HabilidadPuntaje> habilidades;
-    private HabilidadPuntaje habilidad;
+    private String habilidad;
+    private int puntaje;
 
     public ResultadosDesempeno() {
         // Constructor vacío necesario para deserialización
@@ -21,11 +22,12 @@ public class ResultadosDesempeno {
         this.habilidades = habilidades;
     }
 
-    public ResultadosDesempeno(int idPrueba, int idCandidato, int idEmpresa, HabilidadPuntaje habilidad) {
+    public ResultadosDesempeno(int idPrueba, int idCandidato, int idEmpresa, String habilidad, int puntaje) {
         this.idPrueba = idPrueba;
         this.idCandidato = idCandidato;
         this.idEmpresa = idEmpresa;
         this.habilidad = habilidad;
+        this.puntaje = puntaje;
     }
 
     public int getIdPrueba() {
@@ -60,11 +62,23 @@ public class ResultadosDesempeno {
         this.habilidades = habilidades;
     }
 
-    public HabilidadPuntaje getHabilidad() {
+    public String getHabilidad() {
         return habilidad;
     }
 
-    public void setHabilidad(HabilidadPuntaje habilidad) {
+    public void setHabilidad(String habilidad) {
         this.habilidad = habilidad;
     }
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+
+
+
 }

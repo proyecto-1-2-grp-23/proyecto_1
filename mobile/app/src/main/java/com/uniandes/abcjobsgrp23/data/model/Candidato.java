@@ -17,7 +17,8 @@ public class Candidato {
 
     // Constructor
     // Constructor para crear candidatos
-    public Candidato(String nombreCompleto, int edad, String telefono, String correo, String pais, String ciudad, String idiomas, String rasgosPersonalidad, String password) {
+    public Candidato(int id, String nombreCompleto, int edad, String telefono, String correo, String pais, String ciudad, String idiomas, String rasgosPersonalidad, String password) {
+        this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.edad = edad;
         this.telefono = telefono;

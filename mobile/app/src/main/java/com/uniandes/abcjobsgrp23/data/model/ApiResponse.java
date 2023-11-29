@@ -1,25 +1,25 @@
 package com.uniandes.abcjobsgrp23.data.model;
 
-import java.util.Date;
+
 
 public class ApiResponse {
-    private Date createdAt;
+    private String createdAt;
     private int id;
 
     public ApiResponse() {
         // Constructor vacío necesario para deserialización
     }
 
-    public ApiResponse(Date createdAt, int id) {
+    public ApiResponse(String createdAt, int id) {
         this.createdAt = createdAt;
         this.id = id;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 

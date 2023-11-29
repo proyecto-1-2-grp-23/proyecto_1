@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniandes.abcjobsgrp23.R;
-import com.uniandes.abcjobsgrp23.data.model.Pregunta;
+import com.uniandes.abcjobsgrp23.data.model.TecnicaPreguntas;
+import com.uniandes.abcjobsgrp23.data.model.TecnicalInterview;
 
 import java.util.List;
 
 public class PreguntasAdapter extends RecyclerView.Adapter<PreguntasAdapter.PreguntaViewHolder> {
 
-    private List<Pregunta> preguntas;
+    private List<TecnicaPreguntas> preguntas;
 
-    public void setPreguntas(List<Pregunta> preguntas) {
+    public void setPreguntas(List<TecnicaPreguntas> preguntas) {
         this.preguntas = preguntas;
         notifyDataSetChanged();
     }
@@ -32,7 +33,7 @@ public class PreguntasAdapter extends RecyclerView.Adapter<PreguntasAdapter.Preg
     @Override
     public void onBindViewHolder(@NonNull PreguntaViewHolder holder, int position) {
         if (preguntas != null) {
-            Pregunta pregunta = preguntas.get(position);
+            TecnicaPreguntas pregunta = preguntas.get(position);
             holder.bind(pregunta);
         }
     }
@@ -51,8 +52,8 @@ public class PreguntasAdapter extends RecyclerView.Adapter<PreguntasAdapter.Preg
             textViewPregunta = itemView.findViewById(R.id.textViewEnunciado);
         }
 
-        public void bind(Pregunta pregunta) {
-            textViewPregunta.setText(pregunta.getPregunta());
+        public void bind(TecnicaPreguntas pregunta) {
+            textViewPregunta.setText(pregunta.getDescripcion());
         }
     }
 }

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Empresa {
     private Integer id;
+    private int idUsuario;
     private String razonSocial;
     private String tipoEmpresa;
     private String correo;
@@ -31,6 +32,14 @@ public class Empresa {
         this.verticalesNegocio = verticalesNegocio;
     }
 
+    public Empresa(int id, int idUsuario, String razonSocial, String tipoEmpresa, String verticalesNegocio) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.razonSocial = razonSocial;
+        this.tipoEmpresa = tipoEmpresa;
+        this.verticalesNegocio = verticalesNegocio;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -38,6 +47,10 @@ public class Empresa {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public int getIdUsuario() { return idUsuario; }
+
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 
     public String getRazonSocial() {
         return razonSocial;

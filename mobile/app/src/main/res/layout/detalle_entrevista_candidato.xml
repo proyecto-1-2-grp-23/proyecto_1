@@ -10,21 +10,31 @@
     android:padding="16dp"
     tools:context=".DetalleEntrevistaCandidatoActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/textViewDetalleTitulo"
-        android:layout_width="375dp"
-        android:layout_height="60dp"
-        android:text="Título" />
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="@string/titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
+    <EditText
         android:id="@+id/textViewDetalleDescripcion"
-        android:layout_width="375dp"
-        android:layout_height="60dp"
-        android:text="Descripción" />
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="@string/descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <!-- Campo Funcionario Asignado (AutoCompleteTextView) -->
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteFuncionario"
+    <Spinner
+        android:id="@+id/spinnerFuncionario"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Funcionario Asignado"

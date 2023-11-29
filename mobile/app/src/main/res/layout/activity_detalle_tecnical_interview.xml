@@ -9,42 +9,17 @@
 
     <TextView
         android:id="@+id/textViewTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Título"
+        android:layout_width="169dp"
+        android:layout_height="96dp"
+        android:text="Registrar resultados prueba tecnica"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
-
-    <TextView
-        android:id="@+id/textViewCandidato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Candidato"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
-
-    <TextView
-        android:id="@+id/textViewCorreo"
-        android:layout_width="171dp"
-        android:layout_height="27dp"
-        android:text="Correo"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.687"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.042"
+        tools:textAlignment="center" />
 
     <Spinner
         android:id="@+id/spinnerCandidatos"
@@ -98,8 +73,9 @@
         app:layout_constraintVertical_bias="0.81">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/observacionesPT"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="108dp"
             android:hint="@string/observaciones" />
     </com.google.android.material.textfield.TextInputLayout>
 

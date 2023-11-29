@@ -14,8 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uniandes.abcjobsgrp23.PostLoginActivity;
 import com.uniandes.abcjobsgrp23.R;
+import com.uniandes.abcjobsgrp23.data.model.ApiResponse;
+import com.uniandes.abcjobsgrp23.data.model.Candidato;
+import com.uniandes.abcjobsgrp23.data.model.LoginResponse;
+import com.uniandes.abcjobsgrp23.data.model.UserCredential;
+import com.uniandes.abcjobsgrp23.data.service.RetrofitBroker;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
 import com.uniandes.abcjobsgrp23.view.candidato.CandidatoRegisterActivity;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EmpresaLoginActivity extends AppCompatActivity {
 
@@ -71,13 +84,43 @@ public class EmpresaLoginActivity extends AppCompatActivity {
     private void onLoginButtonClick() {
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
+        UserCredential loginCredential = new UserCredential(username, password);
+
         if (username.equalsIgnoreCase("empresa") && password.equalsIgnoreCase("1234")) {
             UserType.setUserType(UserType.EMPRESA);
-            startPostLoginActivity();
-        } else {
-            showIncorrectCredentialsMessage();
+            startPostLoginActivity("Usuario logueado con exito");
         }
 
+        // Llama al método de autenticación
+        RetrofitBroker.loginUser(loginCredential, new retrofit2.Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.isSuccessful()) {
+                    // La autenticación fue exitosa
+                    LoginResponse apiResponse = response.body();
+
+                    // Accede a los datos de la respuesta, por ejemplo, al token
+                    String token = apiResponse.getToken();
+                    String message = apiResponse.getMessage();
+
+                    UserType.setUserType(UserType.EMPRESA);
+                    startPostLoginActivity(message);
+                } else {
+                    // La autenticación falló
+                    showIncorrectCredentialsMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                // Error de red o del servidor
+                showErrorMessage();
+            }
+        });
+    }
+
+    private void showErrorMessage() {
+        Toast.makeText(this, "Error de red o del servidor", Toast.LENGTH_SHORT).show();
     }
 
     private void onRegisterButtonClick() {
@@ -91,7 +134,15 @@ public class EmpresaLoginActivity extends AppCompatActivity {
         btnLogin.setEnabled(!isUsernameEmpty && !isPasswordEmpty);
     }
 
-    private void startPostLoginActivity() {
+    private void startPostLoginActivity(String message) {
+        // La prueba de desempeño se guardó exitosamente
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        // Agregar un temporizador para cerrar la actividad después de un breve período
+        new android.os.Handler().postDelayed(
+                () -> finish(), // Cierra la actividad después de guardar
+                1000 // Tiempo de espera en milisegundos (ajusta según sea necesario)
+        );
+
         Intent intent = new Intent(EmpresaLoginActivity.this, PostLoginActivity.class);
         startActivity(intent);
         finish();
@@ -99,6 +150,10 @@ public class EmpresaLoginActivity extends AppCompatActivity {
 
     private void showIncorrectCredentialsMessage() {
         Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+        new android.os.Handler().postDelayed(
+                () -> finish(), // Cierra la actividad después de guardar
+                1000 // Tiempo de espera en milisegundos (ajusta según sea necesario)
+        );
     }
 
 }
