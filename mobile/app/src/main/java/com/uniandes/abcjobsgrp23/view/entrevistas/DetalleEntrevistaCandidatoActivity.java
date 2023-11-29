@@ -44,14 +44,11 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
     private TextView textViewHoraSeleccionada;
 
     private CandidatoViewModel candidatoViewModel;
-    private List<Candidato> candidatosList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalle_entrevista_candidato);
-
-
 
         textViewFechaSeleccionada = findViewById(R.id.textViewFechaSeleccionada);
         textViewHoraSeleccionada = findViewById(R.id.textViewHoraSeleccionada);
@@ -128,7 +125,7 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
         List<String> candidatos = new ArrayList<>();
 
         // Encuentra los elementos del diseño
-        AutoCompleteTextView autoCompleteFuncionario = findViewById(R.id.autoCompleteFuncionario);
+        Spinner spinnerFuncionario = findViewById(R.id.spinnerFuncionario);
         Spinner spinnerCandidato = findViewById(R.id.spinnerCandidato);
         Spinner spinnerEmpresa = findViewById(R.id.spinnerEmpresa);
         DatePicker datePicker = findViewById(R.id.datePicker);
@@ -193,10 +190,8 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
             textViewDescripcion.setText(descripcion);
         }
 
-
-
         // Bloquea o desbloquea los campos según el valor de isEditable
-        autoCompleteFuncionario.setEnabled(isEditable);
+        spinnerFuncionario.setEnabled(isEditable);
         spinnerCandidato.setEnabled(isEditable);
         spinnerEmpresa.setEnabled(isEditable);
         datePicker.setEnabled(isEditable);
@@ -210,7 +205,7 @@ public class DetalleEntrevistaCandidatoActivity extends AppCompatActivity {
         funcionarios.add("Funcionario 3");
 
         ArrayAdapter<String> funcionarioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, funcionarios);
-        autoCompleteFuncionario.setAdapter(funcionarioAdapter);
+        spinnerFuncionario.setAdapter(funcionarioAdapter);
 
         // Inicializa el ViewModel
         //candidatoViewModel = new ViewModelProvider(this).get(CandidatoViewModel.class);

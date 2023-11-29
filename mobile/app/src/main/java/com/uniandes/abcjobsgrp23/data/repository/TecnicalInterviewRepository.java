@@ -22,6 +22,7 @@ import retrofit2.Response;
 public class TecnicalInterviewRepository {
 
     private final Application application;
+
     public TecnicalInterviewRepository(Application application) {
         this.application = application;
     }
@@ -42,7 +43,7 @@ public class TecnicalInterviewRepository {
                 "Gerente de proyecto.",
                 "2023-11-16"
         );
-        Candidato candidato1 = new Candidato("Candidato 1", 28, "123-456-7890", "candidato1@example.com", "País 1", "Ciudad 1", "Español, Inglés", "Rasgos 1", "Password 1");
+        Candidato candidato1 = new Candidato( 1 ,"Luis Felipe Cruz Ceballos", 28, "123-456-7890", "candidato1@example.com", "País 1", "Ciudad 1", "Español, Inglés", "Rasgos 1", "Password 1");
         ArrayList<RecordTecnicalInterview> preguntas1 = new ArrayList<>();
         preguntas1.add(new RecordTecnicalInterview("Pregunta 1", "Calificación 1"));
         preguntas1.add(new RecordTecnicalInterview("Pregunta 2", "Calificación 2"));
@@ -62,7 +63,7 @@ public class TecnicalInterviewRepository {
                 "Desarrollador senior",
                 "2023-12-01"
         );
-        Candidato candidato2 = new Candidato("Candidato 2", 30, "987-654-3210", "candidato2@example.com", "País 2", "Ciudad 2", "Español, Francés", "Rasgos 2", "Password 2");
+        Candidato candidato2 = new Candidato(2 , "David Morales Aquilar", 30, "987-654-3210", "candidato2@example.com", "País 2", "Ciudad 2", "Español, Francés", "Rasgos 2", "Password 2");
         ArrayList<RecordTecnicalInterview> preguntas2 = new ArrayList<>();
         preguntas2.add(new RecordTecnicalInterview("Pregunta A", "Calificación A"));
         preguntas2.add(new RecordTecnicalInterview("Pregunta B", "Calificación B"));
@@ -82,18 +83,11 @@ public class TecnicalInterviewRepository {
                 "Product manager",
                 "2023-12-05"
         );
-        Candidato candidato3 = new Candidato("Candidato 3", 25, "555-123-4567", "candidato3@example.com", "País 3", "Ciudad 3", "Español, Alemán", "Rasgos 3", "Password 3");
-        ArrayList<RecordTecnicalInterview> preguntas3 = new ArrayList<>();
-        preguntas3.add(new RecordTecnicalInterview("Pregunta X", "Calificación X"));
-        preguntas3.add(new RecordTecnicalInterview("Pregunta Y", "Calificación Y"));
-        preguntas3.add(new RecordTecnicalInterview("Pregunta Z", "Calificación Z"));
-        TecnicalInterview entrevista3 = new TecnicalInterview(proyecto3, candidato3, preguntas3, "Observaciones de la Entrevista 3");
 
         // Agregar los registros de prueba a la lista de entrevistas
         List<TecnicalInterview> entrevistasDePrueba = new ArrayList<>();
         entrevistasDePrueba.add(entrevista1);
         entrevistasDePrueba.add(entrevista2);
-        entrevistasDePrueba.add(entrevista3);
 
         // Configurar la LiveData con los registros de prueba
         tecnicalInterviewLiveData.setValue(entrevistasDePrueba);

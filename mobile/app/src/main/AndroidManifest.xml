@@ -44,6 +44,12 @@
             android:name=".view.pruebaTecnica.DetalleTecnicalInterviewActivity"
             android:label="Detalle Tecnical Interview"
             android:exported="true" />
+
+        <activity
+            android:name=".view.entrevistas.CreateEntrevistaCandidatoActivity"
+            android:label="Crear Entrevista"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
         <activity
             android:name=".view.pruebaTecnica.CrearTecnicalInterviewActivity"
             android:label="Crear Tecnical Interview"
