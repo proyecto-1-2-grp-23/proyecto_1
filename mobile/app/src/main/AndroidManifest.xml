@@ -44,13 +44,21 @@
             android:name=".view.pruebaTecnica.DetalleTecnicalInterviewActivity"
             android:label="Detalle Tecnical Interview"
             android:exported="true" />
+
+        <activity
+            android:name=".view.entrevistas.CreateEntrevistaCandidatoActivity"
+            android:label="Crear Entrevista"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
         <activity
             android:name=".view.pruebaTecnica.CrearTecnicalInterviewActivity"
             android:label="Crear Tecnical Interview"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
             android:name=".view.pruebaDesempeno.CrearPruebaDesempenoActivity"
             android:label="Crear prueba desempeño"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
             android:name=".PreLoginActivity"

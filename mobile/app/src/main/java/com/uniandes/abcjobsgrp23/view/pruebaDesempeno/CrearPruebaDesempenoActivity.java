@@ -19,7 +19,7 @@ import com.uniandes.abcjobsgrp23.data.model.Candidato;
 import com.uniandes.abcjobsgrp23.data.model.HabilidadPuntaje;
 import com.uniandes.abcjobsgrp23.data.model.ResultadosDesempeno;
 import com.uniandes.abcjobsgrp23.data.service.RetrofitBroker;
-import com.uniandes.abcjobsgrp23.view.pruebaTecnica.CrearTecnicalInterviewActivity;
+import com.uniandes.abcjobsgrp23.view.candidato.CustomCandidatoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,18 @@ public class CrearPruebaDesempenoActivity extends AppCompatActivity {
         RetrofitBroker.getAllUsersCandidatos(new retrofit2.Callback<List<Candidato>>() {
             @Override
             public void onResponse(Call<List<Candidato>> call, Response<List<Candidato>> response) {
-                ArrayAdapter<Candidato> candidatosAdapter = new ArrayAdapter<>(CrearPruebaDesempenoActivity.this, android.R.layout.simple_spinner_item, response.body());
+                // Crear una lista de strings con la información deseada
+                List<String> candidatoStrings = new ArrayList<>();
+                for (Candidato candidato : response.body()) {
+                    String candidatoInfo = candidato.getId() + "- " + candidato.getNombreCompleto();  // Ajusta esto según tus atributos
+                    candidatoStrings.add(candidatoInfo);
+                }
+
+                // Crear un ArrayAdapter con la lista de strings
+                ArrayAdapter<String> candidatosAdapter = new ArrayAdapter<>(CrearPruebaDesempenoActivity.this, android.R.layout.simple_spinner_item, candidatoStrings);
                 candidatosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                // Configurar el Spinner con el ArrayAdapter modificado
                 spinnerCandidatos.setAdapter(candidatosAdapter);
             }
 
@@ -69,6 +79,7 @@ public class CrearPruebaDesempenoActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void guardarPruebaDesempeno() {
 
@@ -81,7 +92,11 @@ public class CrearPruebaDesempenoActivity extends AppCompatActivity {
                 if (exito) {
                     // La prueba de desempeño se guardó exitosamente
                     Toast.makeText(this, "Prueba de desempeño guardada", Toast.LENGTH_SHORT).show();
-                    finish(); // Cierra la actividad después de guardar
+                    // Agregar un temporizador para cerrar la actividad después de un breve período
+                    new android.os.Handler().postDelayed(
+                            () -> finish(), // Cierra la actividad después de guardar
+                            1000 // Tiempo de espera en milisegundos (ajusta según sea necesario)
+                    );
                 } else {
                     // Hubo un error al guardar la prueba de desempeño
                     Toast.makeText(this, "Error al guardar la prueba de desempeño", Toast.LENGTH_SHORT).show();
@@ -96,18 +111,19 @@ public class CrearPruebaDesempenoActivity extends AppCompatActivity {
         List<HabilidadPuntaje> habilidades = new ArrayList<>();
         LinearLayout containerSkills = findViewById(R.id.containerSkills);
 
-        for (int i = 0; i < containerSkills.getChildCount() -1; i++) {
+        for (int i = 0; i < containerSkills.getChildCount(); i++) {
             View habilidadView = containerSkills.getChildAt(i);
 
             EditText editTextSkill = habilidadView.findViewById(R.id.editTextSkill);
             RatingBar ratingBarSkill = habilidadView.findViewById(R.id.ratingBarSkill);
 
-            String nombreHabilidad = editTextSkill.getText().toString();
-            float puntaje = ratingBarSkill.getRating();
+            if (editTextSkill != null) {
+                String nombreHabilidad = editTextSkill.getText().toString();
+                float puntaje = ratingBarSkill.getRating();
 
-            if (!nombreHabilidad.isEmpty()) {
-                // Agregar a la lista solo si el nombre no está vacío
-                habilidades.add(new HabilidadPuntaje(nombreHabilidad, (int) puntaje));
+                if (!nombreHabilidad.isEmpty()) {
+                    habilidades.add(new HabilidadPuntaje(nombreHabilidad, (int) puntaje));
+                }
             }
         }
 
@@ -129,11 +145,16 @@ public class CrearPruebaDesempenoActivity extends AppCompatActivity {
         EditText editTextSkill = nuevaHabilidadView.findViewById(R.id.editTextSkill);
         ImageButton btnRemoveSkill = nuevaHabilidadView.findViewById(R.id.btnRemoveSkill);
 
+        // Establecer un ID único para el campo de texto y el botón de eliminación
+        int uniqueId = View.generateViewId();
+        editTextSkill.setId(uniqueId);
+        btnRemoveSkill.setId(uniqueId);
+
         // Configurar el botón para quitar la habilidad técnica
         btnRemoveSkill.setOnClickListener(v -> quitarHabilidad(nuevaHabilidadView));
 
         // Agregar la nueva habilidad técnica al contenedor
-        containerSkills.addView(nuevaHabilidadView);
+        containerSkills.addView(nuevaHabilidadView, containerSkills.getChildCount() - 1);
     }
 
     private void quitarHabilidad(View habilidadView) {

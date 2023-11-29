@@ -4,14 +4,24 @@ import java.util.Objects;
 
 public class Entrevista {
 
+    private int idFuncionario;
+    private int idEmpresa;
+    private int idCandidato;
     private Empresa empresa;
     private Candidato candidato;
     private Funcionario funcionario;
     private String fecha;
     private String lugar;
-    private Integer idCandidato;
-    private Integer idEmpresa;
-    private Integer idFuncionario;
+
+
+    public Entrevista(int idFuncionario, int idEmpresa, int idCandidato, String fecha, String lugar) {
+        this.idFuncionario = idFuncionario;
+        this.idEmpresa = idEmpresa;
+        this.idCandidato = idCandidato;
+        this.fecha = fecha;
+        this.lugar = lugar;
+    }
+
 
     // Constructor para crear entrevistas
     public Entrevista(Integer idFuncionario, Empresa empresa, Candidato candidato, String fecha, String lugar) {

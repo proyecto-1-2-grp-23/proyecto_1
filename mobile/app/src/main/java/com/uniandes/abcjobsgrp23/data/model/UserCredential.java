@@ -3,28 +3,28 @@ package com.uniandes.abcjobsgrp23.data.model;
 
 public class UserCredential {
 
-    private String username;
-    private String password;
+    private String correo;
+    private String contraseña;
 
     public UserCredential(String username, String password) {
-        this.username = username;
-        this.password = password;
+        this.correo = username;
+        this.contraseña = password;
     }
 
     public String getUsername() {
-        return username;
+        return correo;
     }
 
     public String getPassword() {
-        return password;
+        return contraseña;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.correo = username;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.contraseña = password;
     }
 
 }

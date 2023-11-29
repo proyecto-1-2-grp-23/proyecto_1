@@ -19,6 +19,8 @@ import com.uniandes.abcjobsgrp23.data.model.Entrevista;
 import com.uniandes.abcjobsgrp23.data.model.RecordEntrevista;
 import com.uniandes.abcjobsgrp23.databinding.FragmentHomeBinding;
 import com.uniandes.abcjobsgrp23.ui.auth.UserType;
+import com.uniandes.abcjobsgrp23.view.entrevistas.CreateEntrevistaCandidatoActivity;
+import com.uniandes.abcjobsgrp23.view.entrevistas.DetalleEntrevistaCandidatoActivity;
 import com.uniandes.abcjobsgrp23.view.entrevistas.RecordEntrevistaAdapter;
 import com.uniandes.abcjobsgrp23.view.pruebaTecnica.CrearTecnicalInterviewActivity;
 import com.uniandes.abcjobsgrp23.viewmodel.EntrevistaViewModel;
@@ -70,14 +72,13 @@ public class HomeFragment extends Fragment {
                 recordEntrevistaAdapter.notifyDataSetChanged();
             });
 
-
-
             btnAddInterview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Agregar aquí la lógica para abrir la pantalla de creación de entrevistas
-                    // Puedes navegar a una nueva actividad o fragmento para agregar una nueva entrevista.
-
+                    Intent intent = new Intent(v.getContext(), CreateEntrevistaCandidatoActivity.class);
+                    intent.putExtra("Editar", true);
+                    // Inicia la nueva actividad
+                    v.getContext().startActivity(intent);
                 }
             });
 
