@@ -1,0 +1,75 @@
+{
+  "cancelar":"Cancelar",
+  "guardar":"Guardar"
+  ,"empresa":"Company"
+  ,"funcionario":"Funcionario"
+  ,"candidato":"Candidate"
+  ,"fecha":"fecha"
+  ,"volver":"Volver"
+  ,"detalle":"Detalle"
+  ,"resultado":"Resultado"
+  ,"acciones":"Acciones"
+  ,"sin_datos":"No hay datos que coincidan con el filtro"
+  ,"seleccionar_candidato":"Seleccionar candidato"
+  ,"seleccionar_empresa":"Seleccionar empresa"
+  ,"seleccionar_funcionario":"Seleccionar funcionario"
+  ,"obervaciones":"Observaciones"
+  ,"descipcion":"Descripción"
+  ,"bienvenido":"BIENVENIDO"
+  ,"equipos":"Equipos de trabajo"
+  ,"registro":"Agregar registro laboral"
+  ,"proyectos":"Proyectos"
+  ,"entrevistas":"Entrevistas"
+  ,"preguntas":"Preguntas Técnicas"
+  ,"prueba":" Prueba Técnica"
+  ,"prueba_resultado":"Resultado prueba técnica"
+  ,"prueba_desempeño":"Prueba de desempeño"
+
+  ,"home_empresas":"Versión Empresarial",
+  "home_admin":"Versión Administrador",
+  "home_candidato":"Versión Candidato",
+  "home_acceder":"Acceder",
+
+  "signin_correo":"Correo",
+  "signin_contraseña":"Contraseña",
+  "signin_registro":"Registrarme",
+  "signin_ingresar":"Ingresar",
+  "signin_titulo_empresa":"EMPRESARIAL",
+
+  "registro_candidato_titulo":"REGISTRO USUARIO",
+  "registro_candidato_nombre":"Nombre Candidato",
+  "registro_candidato_edad":"Edad",
+  "registro_candidato_pais":"Pais",
+  "registro_candidato_ciudad":"Ciudad",
+  "registro_candidato_contrseña":"Ingrese Contraseña",
+  "registro_candidato_contrseñaR":"Repita Contraseña",
+  "registro_candidato_idioma":"Idiomas",
+  "registro_candidato_rasgos":"Rasgos de personalidad",
+
+  "registro_empresa_razon":"Razón social",
+  "registro_empresa_tipo":"Tipo Empresa",
+  "registro_empresa_verticales":"Verticales de negocio",
+  "registro_empresa_titulo":"REGISTRO EMPRESA",
+  "registro_empresa_pequeña":"Pequeña",
+  "registro_empresa_mediana":"Mediana",
+  "registro_empresa_grande":"Grande",
+
+  "entrevistas_detalle_titulo":"DETALLE ENTREVISTA"
+  ,"entrevistas_detalle_fucionario":"Funcionario asignado"
+  ,"entrevistas_detalle_fecha":"Fecha de la entrevista"
+  ,"entrevistas_detalle_lugar":"Lugar / URL"
+
+  ,"entrevistas_titulo":"ENTREVISTAS PROGRAMADAS"
+  ,"entrevistas_lista":"Lista entrevistas programadas"
+  ,"entrevistas_programar":"Programar entrevista"
+
+
+  ,"entrevistas_resultado_titulo":"RESULTADO ENTREVISTA"
+  ,"entrevistas_resultado_estado":"Estado final"
+
+
+
+
+
+
+}

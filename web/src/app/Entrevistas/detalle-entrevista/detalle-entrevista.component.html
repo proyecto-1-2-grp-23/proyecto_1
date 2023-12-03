@@ -1,51 +1,57 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">DETALLE ENTREVISTA</h1>
+    <h1 class="title">{{ "entrevistas_detalle_titulo" | translate }}</h1>
   </div>
   <div class="row col-6 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
       <div class="col-12 mb-3">
-        <label class="text">Funcionario asignado</label>
+        <label class="text">{{
+          "entrevistas_detalle_fucionario" | translate
+        }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Funcionario"
+          placeholder="{{ 'funcionario' | translate }}"
           formControlName="funcionario"
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Empresa</label>
+        <label class="text">{{ "empresa" | translate }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="empresa"
+          placeholder="{{ 'empresa' | translate }}"
           formControlName="empresa"
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Candidato</label>
+        <label class="text">{{ "candidato" | translate }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Candidato"
+          placeholder="{{ 'candidato' | translate }}"
           formControlName="candidato"
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Fecha de la entrevista</label>
+        <label class="text">{{
+          "entrevistas_detalle_fecha" | translate
+        }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="fecha"
+          placeholder="{{ 'fecha' | translate }}"
           formControlName="fecha"
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Lugar / URL</label>
+        <label class="text">{{
+          "entrevistas_detalle_lugar" | translate
+        }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="lugar"
+          placeholder="{{ 'entrevistas_detalle_lugar' | translate }}"
           formControlName="lugar"
         />
       </div>
@@ -58,7 +64,7 @@
       class="commonButton btn btn-info mt-3"
       (click)="verEntrevistas()"
     >
-      Volver
+      {{ "volver" | translate }}
     </button>
   </div>
 </div>

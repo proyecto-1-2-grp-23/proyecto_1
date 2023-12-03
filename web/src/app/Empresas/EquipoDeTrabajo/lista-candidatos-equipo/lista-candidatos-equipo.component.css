@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  max-width: 1200px; /* O cualquier ancho máximo deseado */
+  margin: 0 auto; /* Centra el contenedor */
 }
 
 

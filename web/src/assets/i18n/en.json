@@ -1,0 +1,72 @@
+{
+  "cancelar":"Cancel",
+  "guardar":"Save"
+  ,"empresa":"Company"
+  ,"funcionario":"official"
+  ,"candidato":"Candidate"
+  ,"fecha":"Date"
+  ,"volver":"Back"
+  ,"detalle":"Detail"
+  ,"resultado":"Result"
+  ,"acciones":"Actions"
+  ,"sin_datos":"No data matches the filter"
+  ,"seleccionar_candidato":"Select candidate"
+  ,"seleccionar_empresa":"Select company"
+  ,"seleccionar_funcionario":"Select official"
+  ,"obervaciones":"Observations"
+  ,"descipcion":"Description"
+  ,"bienvenido":"WELCOME"
+  ,"equipos":"Work teams"
+  ,"registro":"Add work record"
+  ,"proyectos":"Projects"
+  ,"entrevistas":"Interviews"
+  ,"preguntas":"Technical Questions"
+  ,"prueba":" Technical Test"
+  ,"prueba_resultado":"Technical test result"
+  ,"prueba_desempeño":"Performance test"
+
+  ,"home_empresas":"Business Version",
+  "home_admin":"Admin Version",
+  "home_candidato":"Candidate Version",
+  "home_acceder":"Log in",
+
+  "signin_correo":"Email",
+  "signin_contraseña":"Password",
+  "signin_registro":"Sign in",
+  "signin_ingresar":"Log in",
+  "signin_titulo_empresa":"BUSINESS",
+
+  "registro_candidato_titulo":"USER REGISTRATION",
+  "registro_candidato_nombre":"Name",
+  "registro_candidato_edad":"Age",
+  "registro_candidato_pais":"Country",
+  "registro_candidato_ciudad":"City",
+  "registro_candidato_contrseña":"Enter password",
+  "registro_candidato_contrseñaR":"Repeat password",
+  "registro_candidato_idioma":"Languages",
+  "registro_candidato_rasgos":"Personality traits",
+
+  "registro_empresa_razon":"Business name",
+
+  "registro_empresa_verticales":"Business verticals",
+
+  "registro_empresa_pequeña":"Small",
+  "registro_empresa_mediana":"Medium",
+  "registro_empresa_grande":"Big",
+  "registro_empresa_tipo":"Company type",
+  "registro_empresa_titulo":"COMPANY REGISTRATION",
+
+
+
+  "entrevistas_detalle_titulo":"INTERVIEW DETAIL"
+  ,"entrevistas_detalle_fucionario":"Assigned official"
+  ,"entrevistas_detalle_fecha":"Interview date"
+  ,"entrevistas_detalle_lugar":"Place / URL"
+
+  ,"entrevistas_titulo":"SCHEDULED INTERVIEWS"
+  ,"entrevistas_lista":"List of scheduled interviews"
+  ,"entrevistas_programar":"Schedule interview"
+  ,"entrevistas_resultado_titulo":"INTERVIEW RESULT"
+  ,"entrevistas_resultado_estado":"Final state"
+
+}

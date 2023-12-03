@@ -5,13 +5,27 @@
     </button>
     <div class="dropdown-menu mt-5" [ngClass]="{ show: estaAbierto }">
       <button class="dropdown-item" (click)="salir()">Salir</button>
-      <button class="dropdown-item">Configuración</button>
+      <label class="dropdown-item">Seleccione el lenguaje</label>
+      <button class="btn_flag" (click)="seleccionarLenguaje('es')">
+        <img
+          class="flags"
+          [src]="'assets/flags/' + 'es' + '.png'"
+          alt="{{ 'es' }} flag"
+        />
+      </button>
+      <button class="btn_flag" (click)="seleccionarLenguaje('en')">
+        <img
+          class="flags"
+          [src]="'assets/flags/' + 'en' + '.png'"
+          alt="{{ 'en' }} flag"
+        />
+      </button>
     </div>
   </div>
 
   <div class="content">
     <div class="col-12">
-      <h1 class="title">BIENVENIDO</h1>
+      <h1 class="title">{{ "bienvenido" | translate }}</h1>
     </div>
     <div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
@@ -20,7 +34,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verEquipoDeTrabajo()"
         >
-          Equipos de trabajo
+          {{ "equipos" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'candidato'">
@@ -29,7 +43,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verRegistroLaboral()"
         >
-          Agregar registro laboral
+          {{ "registro" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
@@ -38,7 +52,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verProyectos()"
         >
-          Proyectos
+          {{ "proyectos" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'administrador'">
@@ -47,7 +61,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verEntrevistas()"
         >
-          Entrevistas
+          {{ "entrevistas" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'administrador'">
@@ -56,7 +70,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verPreguntasTecnicas()"
         >
-          Preguntas Técnicas
+          {{ "preguntas" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'candidato'">
@@ -65,7 +79,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verPrueba()"
         >
-          Prueba Técnica
+          {{ "preguntas" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
@@ -74,7 +88,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verRegistrarResultadoPrueba()"
         >
-          Resultado prueba técnica
+          {{ "prueba_resultado" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'administrador'">
@@ -83,7 +97,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verResultadoPrueba()"
         >
-          Resultado prueba técnica
+          {{ "prueba_resultado" | translate }}
         </button>
       </div>
       <div class="col-6 mt-5" *ngIf="tipoEmpresa == 'empresa'">
@@ -92,7 +106,7 @@
           class="commonButton btn btn-info mt-3"
           (click)="verPruebaDesempeno()"
         >
-          Prueba de desempeño
+          {{ "prueba_desempeño" | translate }}
         </button>
       </div>
     </div>

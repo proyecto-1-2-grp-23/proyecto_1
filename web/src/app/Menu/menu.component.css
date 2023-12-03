@@ -37,3 +37,14 @@
   background: rgba(33, 173, 204, 1);
   color: white;
 }
+.flags{
+  width: 20px;
+  height: 20px;
+
+}
+
+.btn_flag{
+  border: none;
+  margin: 2px;
+  background: none;
+}

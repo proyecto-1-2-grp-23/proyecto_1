@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,12 @@ import { PresentarPruebaComponent } from './PruebaTecnica/presentar-prueba/prese
 import { RegistrarResultadoComponent } from './PruebaTecnica/registrar-resultado/registrar-resultado.component';
 import { VerResultadoComponent } from './PruebaTecnica/ver-resultado/ver-resultado.component';
 import { CrearPruebaDesempeñoComponent } from './Prueba Desempeño/crearPruebaDesempeño/crearPruebaDesempeño.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -81,6 +87,14 @@ import { CrearPruebaDesempeñoComponent } from './Prueba Desempeño/crearPruebaD
     MatInputModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,12 +1,14 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">PROGRAMAR ENTREVISTA</h1>
+    <h1 class="title">{{ "entrevistas_programar" | translate }}</h1>
   </div>
   <div class="row col-6 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="funcionario">
-          <option value="" disabled selected>Seleccionar funcionario</option>
+          <option value="" disabled selected>
+            {{ "seleccionar_funcionario" | translate }}
+          </option>
           <option
             *ngFor="let funcionario of funcionarios"
             [value]="funcionario.Id"
@@ -17,7 +19,9 @@
       </div>
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="empresa">
-          <option value="" disabled selected>Seleccionar empresa</option>
+          <option value="" disabled selected>
+            {{ "seleccionar_empresa" | translate }}
+          </option>
           <option *ngFor="let empresa of empresas" [value]="empresa.Id">
             {{ empresa.Nombre }}
           </option>
@@ -25,7 +29,9 @@
       </div>
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="candidato">
-          <option value="" disabled selected>Seleccionar candidato</option>
+          <option value="" disabled selected>
+            {{ "seleccionar_candidato" | translate }}
+          </option>
           <option *ngFor="let candidato of candidatos" [value]="candidato.Id">
             {{ candidato.Nombre }}
           </option>
@@ -36,7 +42,7 @@
           <input
             class="form-control"
             formControlName="fecha"
-            placeholder="Fecha de la entrevista"
+            placeholder="{{ 'entrevistas_detalle_fecha' | translate }}"
             name="dp"
             [(ngModel)]="fechaInicioSeleccionada"
             ngbDatepicker
@@ -53,7 +59,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Lugar / URL"
+          placeholder="{{ 'entrevistas_detalle_lugar' | translate }}"
           formControlName="lugar"
         />
       </div>
@@ -66,14 +72,14 @@
       class="commonButton btn btn-info mt-3"
       (click)="guardar()"
     >
-      Programar entrevista
+      {{ "entrevistas_programar" | translate }}
     </button>
     <button
       id="ingreso"
       class="commonButton btn btn-info mt-3"
       (click)="cancelar()"
     >
-      Volver
+      {{ "volver" | translate }}
     </button>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">REGISTRO EMPRESA</h1>
+    <h1 class="title">{{ "registro_empresa_titulo" | translate }}</h1>
   </div>
 
   <div class="row col-6 mt-5">
@@ -9,24 +9,32 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Razón social"
+          placeholder="{{ 'registro_empresa_razon' | translate }}"
           formControlName="razonSocial"
         />
       </div>
 
       <div class="col-12 mb-3">
         <select class="custom-select select" formControlName="tipoEmpresa">
-          <option value="" disabled selected>Tipo de empresa</option>
-          <option value="Pequeña">Pequeña</option>
-          <option value="Mediana">Mediana</option>
-          <option value="Grande">Grande</option>
+          <option value="" disabled selected>
+            {{ "registro_empresa_tipo" | translate }}
+          </option>
+          <option value="Pequeña">
+            {{ "registro_empresa_pequeña" | translate }}
+          </option>
+          <option value="Mediana">
+            {{ "registro_empresa_mediana" | translate }}
+          </option>
+          <option value="Grande">
+            {{ "registro_empresa_grande" | translate }}
+          </option>
         </select>
       </div>
 
       <div class="col-12 mb-3">
         <textarea
           class="form-control"
-          placeholder="Verticales de negocio"
+          placeholder="{{ 'registro_empresa_verticales' | translate }}"
           formControlName="verticales"
           rows="3"
         ></textarea>
@@ -36,7 +44,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Pais"
+          placeholder="{{ 'registro_candidato_pais' | translate }}"
           formControlName="pais"
         />
       </div>
@@ -45,7 +53,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Ciudad"
+          placeholder="{{ 'registro_candidato_ciudad' | translate }}"
           formControlName="ciudad"
         />
       </div>
@@ -54,7 +62,7 @@
         <input
           type="email"
           class="form-control"
-          placeholder="Correo"
+          placeholder="{{ 'signin_correo' | translate }}"
           formControlName="correo"
         />
       </div>
@@ -64,7 +72,7 @@
           [type]="fieldTextType ? 'text' : 'password'"
           class="form-control"
           formControlName="contraseña"
-          placeholder="Ingrese Contraseña"
+          placeholder="{{ 'registro_candidato_contrseña' | translate }}"
         />
         <span class="input-group-text">
           <i
@@ -83,7 +91,7 @@
           [type]="repeatFieldTextType ? 'text' : 'password'"
           class="form-control"
           formControlName="repContraseña"
-          placeholder="Repita Contraseña"
+          placeholder="{{ 'registro_candidato_contrseñaR' | translate }}"
         />
         <span class="input-group-text">
           <i
@@ -104,14 +112,14 @@
         (click)="hacerRegistro()"
         [disabled]="!registrationForm.valid"
       >
-        Registrarme
+        {{ "signin_registro" | translate }}
       </button>
       <button
         id="ingreso"
         class="commonButton btn btn-info mt-3"
         (click)="signIn()"
       >
-        Cancelar
+        {{ "cancelar" | translate }}
       </button>
     </div>
   </div>

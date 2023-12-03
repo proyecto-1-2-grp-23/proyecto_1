@@ -1,11 +1,13 @@
 <div class="container content">
   <div class="col-12">
-    <h1 class="title">RESULTADO ENTREVISTA</h1>
+    <h1 class="title">{{ "entrevistas_resultado_titulo" | translate }}</h1>
   </div>
   <div class="row col-6 mt-5">
     <form [formGroup]="registrationForm" class="mx-auto">
       <div class="col-12 mb-3">
-        <label class="text">Estado final</label>
+        <label class="text">{{
+          "entrevistas_resultado_estado" | translate
+        }}</label>
         <input
           type="text"
           class="form-control"
@@ -14,7 +16,7 @@
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Descripción</label>
+        <label class="text">{{ "descipcion" | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -23,11 +25,11 @@
         />
       </div>
       <div class="col-12 mb-3">
-        <label class="text">Observaciones técnicas</label>
+        <label class="text">{{ "obervaciones" | translate }}</label>
         <input
           type="text"
           class="form-control"
-          placeholder="observaciones"
+          placeholder="{{ 'obervaciones' | translate }}"
           formControlName="observaciones"
         />
       </div>
@@ -40,7 +42,7 @@
       class="commonButton btn btn-info mt-3"
       (click)="verEntrevistas()"
     >
-      Volver
+      {{ "volver" | translate }}
     </button>
   </div>
 </div>
