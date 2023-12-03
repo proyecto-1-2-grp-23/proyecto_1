@@ -4,8 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   flex-direction: column;
+  width: 100%;
+  max-width: 1200px; /* O cualquier ancho máximo deseado */
+  margin: 0 auto; /* Centra el contenedor */
 }
 
 .title{
@@ -27,4 +29,16 @@
   color: white;
   width: 100px;
   border-radius: 20px;
+}
+
+.flags{
+  width: 20px;
+  height: 20px;
+
+}
+
+.btn_flag{
+  border: none;
+  margin: 2px;
+  background: none;
 }

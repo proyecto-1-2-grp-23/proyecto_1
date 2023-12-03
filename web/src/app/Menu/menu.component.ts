@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,6 +15,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private rutaActiva: ActivatedRoute,
+    private translateService: TranslateService,
     private router: Router,
     private elementRef: ElementRef
   ) {}
@@ -80,5 +83,9 @@ export class MenuComponent implements OnInit {
     this.router.navigate([`/home`]);
     sessionStorage.removeItem('idEmpresa');
     sessionStorage.removeItem('idCandidato');
+  }
+
+  seleccionarLenguaje(event: any) {
+    this.translateService.use(event);
   }
 }

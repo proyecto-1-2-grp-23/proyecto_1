@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { candidatoRegistroPersonal } from '../candidato';
 import { ServicioCandidatosService } from '../servicio/servicio-candidatos.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-candidato',
@@ -33,10 +34,15 @@ export class LoginCandidatoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private candidatoService: ServicioCandidatosService
+    private candidatoService: ServicioCandidatosService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {}
+
+  seleccionarLenguaje(event: any) {
+    this.translateService.use(event);
+  }
 
   agregarChip() {
     console.log(this.nuevoChip, 'enter');

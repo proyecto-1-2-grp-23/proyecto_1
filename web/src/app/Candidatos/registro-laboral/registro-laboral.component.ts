@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ServicioRegistroLaboralService } from '../servicio/servicio-registro-laboral.service';
 import { candidatoRegistroLaboral } from '../laboral';
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
-import { candidatoSignIn } from 'src/app/Usuarios/usuario';
 
 @Component({
   selector: 'app-registro-laboral',
@@ -32,10 +32,15 @@ export class RegistroLaboralComponent implements OnInit {
   constructor(
     private calendar: NgbCalendar,
     private router: Router,
-    private laboralService: ServicioRegistroLaboralService
+    private laboralService: ServicioRegistroLaboralService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {}
+
+  seleccionarLenguaje(event: any) {
+    this.translateService.use(event);
+  }
 
   abrirDatepicker() {
     // Inicializa la fecha con el valor actual

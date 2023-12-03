@@ -110,7 +110,7 @@ export class EntrevistasProgramadasComponent implements OnInit {
     } else {
       const dialogRef = this.dialog.open(ResultadoEntrevistaComponent, {
         width: '60%',
-        height: '50%',
+        height: '90%',
         data: { info: element },
       });
       dialogRef.afterClosed().subscribe((result) => {
