@@ -1,11 +1,15 @@
 <div class="container">
   <div class="dropdown col-12 d-flex justify-content-end mt-5">
     <button class="btn optionButton" (click)="toggleDropdown()">
-      Opciones
+      {{ "options" | translate }}
     </button>
     <div class="dropdown-menu mt-5" [ngClass]="{ show: estaAbierto }">
-      <button class="dropdown-item" (click)="salir()">Salir</button>
-      <label class="dropdown-item">Seleccione el lenguaje</label>
+      <button class="dropdown-item" (click)="salir()">
+        {{ "salir" | translate }}
+      </button>
+      <label class="dropdown-item">{{
+        "seleccion_lenguaje" | translate
+      }}</label>
       <button class="btn_flag" (click)="seleccionarLenguaje('es')">
         <img
           class="flags"
