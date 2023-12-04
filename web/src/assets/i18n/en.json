@@ -24,6 +24,9 @@
   ,"prueba":" Technical Test"
   ,"prueba_resultado":"Technical test result"
   ,"prueba_desempeño":"Performance test"
+  ,"opciones":"Options"
+  ,"salir":"Leave"
+  ,"seleccion_lenguaje":"Select a language"
 
   ,"home_empresas":"Business Version",
   "home_admin":"Admin Version",
